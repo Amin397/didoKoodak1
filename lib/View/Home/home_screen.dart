@@ -1,3 +1,5 @@
+import 'package:dido_koodak1/Const/colors.dart';
+import 'package:dido_koodak1/Const/measures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,65 +16,28 @@ class HomeScreen extends StatelessWidget {
       body: SizedBox(
         height: Get.height,
         width: Get.width,
-        child: Row(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _buildAnimalsList(),
-            _buildSingleAnimal(),
+            TextButton(
+              onPressed: () {
+                controller.goToAnimalInfo();
+              },
+              child: const Text(
+                'animals info',
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                controller.goToAnimalGame();
+              },
+              child: const Text(
+                'animals game',
+              ),
+            ),
+
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildAnimalItem({required Animals animal}) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 370),
-      margin: const EdgeInsets.all(8.0),
-      color: Colors.red,
-      child: Image(
-        image: AssetImage(
-
-        ),
-      ),
-    );
-    // return TextButton(
-    //   onPressed: () {
-    //     controller.playAnimalSound(animal: animal);
-    //   },
-    //   child: Padding(
-    //     padding: const EdgeInsets.all(8.0),
-    //     child: Text(animal.name),
-    //   ),
-    // );
-  }
-
-  Widget _buildAnimalsList() {
-    return Flexible(
-      flex: 1,
-      child: Container(
-        color: Colors.green,
-        height: double.maxFinite,
-        width: double.maxFinite,
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            childAspectRatio: 1
-          ),
-          itemBuilder: (_, index) => _buildAnimalItem(
-            animal: controller.animalsList[index],
-          ),
-          itemCount: controller.animalsList.length,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSingleAnimal() {
-    return const Flexible(
-      flex: 1,
-      child: SizedBox(
-        height: double.maxFinite,
-        width: double.maxFinite,
       ),
     );
   }
