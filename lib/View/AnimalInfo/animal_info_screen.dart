@@ -32,7 +32,7 @@ class AnimalInfoScreen extends StatelessWidget {
     required AnimalsModel animal,
   }) {
     return Obx(
-          () => InkWell(
+      () => InkWell(
         customBorder: RoundedRectangleBorder(
           borderRadius: radiusAll16,
         ),
@@ -92,7 +92,7 @@ class AnimalInfoScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Obx(
-                  () => SizedBox(
+              () => SizedBox(
                 width: Get.width * .3,
                 height: Get.height * .7,
                 child: Image(

@@ -3,16 +3,18 @@ import 'package:just_audio/just_audio.dart';
 
 import '../../Model/AnimalGame/animal_model.dart';
 
-class AnimalInfoController extends GetxController{
+class AnimalInfoController extends GetxController {
   List<AnimalsModel> animalsList = [
     AnimalsModel(
-        name: 'dolphin',
-        soundPath: 'assets/sounds/dolphin.wav',
-        isSelected: true.obs,
-        player: AudioPlayer(),
-        imagePath: 'assets/images/dolphin.png'
+      id: 0,
+      name: 'dolphin',
+      soundPath: 'assets/sounds/dolphin.wav',
+      isSelected: true.obs,
+      player: AudioPlayer(),
+      imagePath: 'assets/images/dolphin.png',
     ),
     AnimalsModel(
+      id: 1,
       name: 'dog',
       soundPath: 'assets/sounds/dog.wav',
       isSelected: false.obs,
@@ -20,34 +22,39 @@ class AnimalInfoController extends GetxController{
       imagePath: 'assets/images/dog.png',
     ),
     AnimalsModel(
-        name: 'bear',
-        soundPath: 'assets/sounds/bear.mp3',
-        isSelected: false.obs,
-        player: AudioPlayer(),
-        imagePath: 'assets/images/bear.png'
+      id: 2,
+      name: 'bear',
+      soundPath: 'assets/sounds/bear.mp3',
+      isSelected: false.obs,
+      player: AudioPlayer(),
+      imagePath: 'assets/images/bear.png',
     ),
     AnimalsModel(
-        name: 'elephant',
-        soundPath: 'assets/sounds/elephant.wav',
-        isSelected: false.obs,
-        player: AudioPlayer(),
-        imagePath:'assets/images/elephant.png'
+      id: 3,
+      name: 'elephant',
+      soundPath: 'assets/sounds/elephant.wav',
+      isSelected: false.obs,
+      player: AudioPlayer(),
+      imagePath: 'assets/images/elephant.png',
     ),
     AnimalsModel(
-        name: 'fox',
-        soundPath: 'assets/sounds/fox.mp3',
-        isSelected: false.obs,
-        player: AudioPlayer(),
-        imagePath:'assets/images/fox.png'
+      id: 4,
+      name: 'fox',
+      soundPath: 'assets/sounds/fox.mp3',
+      isSelected: false.obs,
+      player: AudioPlayer(),
+      imagePath: 'assets/images/fox.png',
     ),
     AnimalsModel(
-        name: 'lion',
-        soundPath: 'assets/sounds/lion.mp3',
-        isSelected: false.obs,
-        player: AudioPlayer(),
-        imagePath:'assets/images/lion.png'
+      id: 5,
+      name: 'lion',
+      soundPath: 'assets/sounds/lion.mp3',
+      isSelected: false.obs,
+      player: AudioPlayer(),
+      imagePath: 'assets/images/lion.png',
     ),
     AnimalsModel(
+      id: 6,
       name: 'horse',
       soundPath: 'assets/sounds/horse.wav',
       isSelected: false.obs,
@@ -55,38 +62,40 @@ class AnimalInfoController extends GetxController{
       imagePath: 'assets/images/horse.png',
     ),
     AnimalsModel(
-        name: 'mouse',
-        soundPath: 'assets/sounds/mouse.mp3',
-        isSelected: false.obs,
-        player: AudioPlayer(),
-        imagePath:'assets/images/mouse.png'
+      id: 7,
+      name: 'mouse',
+      soundPath: 'assets/sounds/mouse.mp3',
+      isSelected: false.obs,
+      player: AudioPlayer(),
+      imagePath: 'assets/images/mouse.png',
     ),
     AnimalsModel(
-        name: 'owl',
-        soundPath: 'assets/sounds/owl.mp3',
-        isSelected: false.obs,
-        player: AudioPlayer(),
-        imagePath:'assets/images/owl.png'
+      id: 8,
+      name: 'owl',
+      soundPath: 'assets/sounds/owl.mp3',
+      isSelected: false.obs,
+      player: AudioPlayer(),
+      imagePath: 'assets/images/owl.png',
     ),
     AnimalsModel(
+      id: 9,
       name: 'tiger',
       soundPath: 'assets/sounds/tiger.wav',
       isSelected: false.obs,
       player: AudioPlayer(),
-      imagePath:'assets/images/tiger.png',
+      imagePath: 'assets/images/tiger.png',
     ),
     AnimalsModel(
+      id: 10,
       name: 'pig',
       soundPath: 'assets/sounds/pig.mp3',
       isSelected: false.obs,
       player: AudioPlayer(),
-      imagePath:'assets/images/pig.png',
+      imagePath: 'assets/images/pig.png',
     ),
   ];
 
   void playAnimalSound({required AnimalsModel animal}) async {
-
-
     for (var element in animalsList) {
       element.player.dispose();
     }
@@ -95,7 +104,6 @@ class AnimalInfoController extends GetxController{
     // var player = ;
     await animal.player.setAsset(animal.soundPath);
     await animal.player.play();
-
   }
 
   void selectAnimal({required AnimalsModel animal}) {
