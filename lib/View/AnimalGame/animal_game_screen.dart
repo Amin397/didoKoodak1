@@ -18,10 +18,26 @@ class AnimalGameScreen extends StatelessWidget {
       body: SizedBox(
         height: Get.height,
         width: Get.width,
-        child: Row(
+        child: Stack(
           children: [
-            _buildAnimalsList(),
-            _buildMainAnimal(),
+            Image(
+              image: AssetImage(
+                'assets/images/gameBg.png',
+              ),
+              height: Get.height,
+              width: Get.width,
+            ),
+            SizedBox(
+              height: double.maxFinite,
+              width: double.maxFinite,
+              child: Row(
+                children: [
+                  _buildAnimalsList(),
+                  _buildMainAnimal(),
+                ],
+              ),
+            ),
+
           ],
         ),
       ),
@@ -42,7 +58,7 @@ class AnimalGameScreen extends StatelessWidget {
       child: Stack(
         children: [
           AnimatedContainer(
-            padding: paddingAll16,
+            padding: paddingAll4,
             height: double.maxFinite,
             width: double.maxFinite,
             duration: const Duration(milliseconds: 300),
@@ -56,6 +72,7 @@ class AnimalGameScreen extends StatelessWidget {
               image: AssetImage(
                 animal.imagePath,
               ),
+              fit: BoxFit.contain,
             ),
           ),
           Obx(
@@ -131,7 +148,7 @@ class AnimalGameScreen extends StatelessWidget {
 
   Widget _buildMainAnimal() {
     return Flexible(
-      flex: 1,
+      flex: 2,
       child: SizedBox(
         height: double.maxFinite,
         width: double.maxFinite,

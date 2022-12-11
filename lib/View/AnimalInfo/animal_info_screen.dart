@@ -43,19 +43,20 @@ class AnimalInfoScreen extends StatelessWidget {
         },
         child: AnimatedContainer(
           padding: (animal.isSelected.isTrue)
-              ? const EdgeInsets.all(6.0)
+              ? const EdgeInsets.all(2.0)
               : const EdgeInsets.all(24.0),
           duration: const Duration(milliseconds: 300),
           margin: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
-            color: (animal.isSelected.isTrue) ? mainYellowBgColor : mainBgColor,
-            boxShadow: shadow(),
+            // color: (animal.isSelected.isTrue) ? mainYellowBgColor : mainBgColor,
+            // boxShadow: shadow(),
             borderRadius: radiusAll16,
           ),
           child: Image(
             image: AssetImage(
               animal.imagePath,
             ),
+            fit: BoxFit.contain,
           ),
         ),
       ),
