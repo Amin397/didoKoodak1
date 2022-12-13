@@ -1,4 +1,3 @@
-import 'package:dido_koodak1/Const/colors.dart';
 import 'package:dido_koodak1/Controller/AnimalGame/animal_game_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,24 +20,14 @@ class AnimalGameScreen extends StatelessWidget {
         child: Stack(
           children: [
             Image(
-              image: AssetImage(
-                'assets/images/gameBg.PNG',
+              image:const AssetImage(
+                'assets/images/Backgrounds/gameBg.PNG',
               ),
               height: Get.height,
               width: Get.width,
             ),
-            SizedBox(
-              height: double.maxFinite,
-              width: double.maxFinite,
-              child: Row(
-                children: [
-                  _buildAnimalsList(),
-                  _buildMainAnimal(),
-                ],
-              ),
-            ),
             Obx(
-              () => InkWell(
+                  () => InkWell(
                 onTap: () {
                   controller.startGame();
                 },
@@ -56,24 +45,35 @@ class AnimalGameScreen extends StatelessWidget {
                     child: Center(
                       child: (controller.isStarted.isTrue)
                           ? Text(
-                              controller.timer.toString(),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 21.0,
-                              ),
-                            )
+                        controller.timer.toString(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 21.0,
+                        ),
+                      )
                           : const Text(
-                              'شروع',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                              ),
-                            ),
+                        'شروع',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
+            SizedBox(
+              height: double.maxFinite,
+              width: double.maxFinite,
+              child: Row(
+                children: [
+                  _buildAnimalsList(),
+                  _buildMainAnimal(),
+                ],
+              ),
+            ),
+
           ],
         ),
       ),
@@ -164,7 +164,9 @@ class AnimalGameScreen extends StatelessWidget {
         builder: (ctx) {
           return Container(
             margin: EdgeInsets.symmetric(
-                vertical: Get.height * .13, horizontal: Get.width * .03),
+              vertical: Get.height * .13,
+              horizontal: Get.width * .03,
+            ),
             height: double.maxFinite,
             width: double.maxFinite,
             padding: paddingAll8,

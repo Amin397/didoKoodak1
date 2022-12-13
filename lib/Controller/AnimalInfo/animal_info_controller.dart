@@ -14,6 +14,14 @@ class AnimalInfoController extends GetxController {
       imagePath: 'assets/images/dolphin.png',
     ),
     AnimalsModel(
+      id: 2,
+      name: 'bear',
+      soundPath: 'assets/sounds/bear.mp3',
+      isSelected: false.obs,
+      player: AudioPlayer(),
+      imagePath: 'assets/images/bear.png',
+    ),
+    AnimalsModel(
       id: 1,
       name: 'dog',
       soundPath: 'assets/sounds/dog.wav',
@@ -22,12 +30,12 @@ class AnimalInfoController extends GetxController {
       imagePath: 'assets/images/dog.png',
     ),
     AnimalsModel(
-      id: 2,
-      name: 'bear',
-      soundPath: 'assets/sounds/bear.mp3',
+      id: 4,
+      name: 'fox',
+      soundPath: 'assets/sounds/fox.mp3',
       isSelected: false.obs,
       player: AudioPlayer(),
-      imagePath: 'assets/images/bear.png',
+      imagePath: 'assets/images/fox.png',
     ),
     AnimalsModel(
       id: 3,
@@ -38,12 +46,12 @@ class AnimalInfoController extends GetxController {
       imagePath: 'assets/images/elephant.png',
     ),
     AnimalsModel(
-      id: 4,
-      name: 'fox',
-      soundPath: 'assets/sounds/fox.mp3',
+      id: 8,
+      name: 'owl',
+      soundPath: 'assets/sounds/owl.mp3',
       isSelected: false.obs,
       player: AudioPlayer(),
-      imagePath: 'assets/images/fox.png',
+      imagePath: 'assets/images/owl.png',
     ),
     AnimalsModel(
       id: 5,
@@ -69,14 +77,7 @@ class AnimalInfoController extends GetxController {
       player: AudioPlayer(),
       imagePath: 'assets/images/mouse.png',
     ),
-    AnimalsModel(
-      id: 8,
-      name: 'owl',
-      soundPath: 'assets/sounds/owl.mp3',
-      isSelected: false.obs,
-      player: AudioPlayer(),
-      imagePath: 'assets/images/owl.png',
-    ),
+
     AnimalsModel(
       id: 9,
       name: 'tiger',

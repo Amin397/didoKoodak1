@@ -19,7 +19,7 @@ class AnimalInfoScreen extends StatelessWidget {
           children: [
             Image(
               image: const AssetImage(
-                'assets/images/gameBg.PNG',
+                'assets/images/Backgrounds/gameBg.PNG',
               ),
               height: Get.height,
               width: Get.width,
@@ -141,7 +141,7 @@ class AnimalInfoScreen extends StatelessWidget {
                   ),
                   child: Image(
                     image:const AssetImage(
-                      'assets/images/playButton.png',
+                      'assets/images/buttons/playButton.png',
                     ),
                     height: Get.height * .08,
                     width: Get.height * .08,
