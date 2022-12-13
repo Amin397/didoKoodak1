@@ -22,7 +22,7 @@ class AnimalGameScreen extends StatelessWidget {
           children: [
             Image(
               image: AssetImage(
-                'assets/images/gameBg.png',
+                'assets/images/gameBg.PNG',
               ),
               height: Get.height,
               width: Get.width,
@@ -37,7 +37,43 @@ class AnimalGameScreen extends StatelessWidget {
                 ],
               ),
             ),
-
+            Obx(
+              () => InkWell(
+                onTap: () {
+                  controller.startGame();
+                },
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    margin: paddingAll12,
+                    width: Get.width * .3,
+                    height: Get.height * .1,
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey.shade600,
+                      borderRadius: radiusAll16,
+                      boxShadow: shadow(),
+                    ),
+                    child: Center(
+                      child: (controller.isStarted.isTrue)
+                          ? Text(
+                              controller.timer.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 21.0,
+                              ),
+                            )
+                          : const Text(
+                              'شروع',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                              ),
+                            ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -64,8 +100,8 @@ class AnimalGameScreen extends StatelessWidget {
             duration: const Duration(milliseconds: 300),
             margin: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
-              color: mainYellowBgColor,
-              boxShadow: shadow(),
+              // color: mainYellowBgColor,
+              // boxShadow: shadow(),
               borderRadius: radiusAll16,
             ),
             child: Image(
@@ -121,12 +157,14 @@ class AnimalGameScreen extends StatelessWidget {
 
   Widget _buildAnimalsList() {
     return Flexible(
-      flex: 1,
+      flex: 19,
       child: GetBuilder(
         id: 'shuffle',
         init: controller,
         builder: (ctx) {
           return Container(
+            margin: EdgeInsets.symmetric(
+                vertical: Get.height * .13, horizontal: Get.width * .03),
             height: double.maxFinite,
             width: double.maxFinite,
             padding: paddingAll8,
@@ -148,66 +186,37 @@ class AnimalGameScreen extends StatelessWidget {
 
   Widget _buildMainAnimal() {
     return Flexible(
-      flex: 2,
+      flex: 20,
       child: SizedBox(
+        // color: Colors.red,
         height: double.maxFinite,
         width: double.maxFinite,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: Get.width * .25,
-              width: Get.width * .25,
-              child: Center(
-                child: Obx(
-                  () => Image(
-                    image: AssetImage(
-                      controller.animalsList
-                          .singleWhere(
-                            (element) =>
-                                element.id == controller.randomAnimal.value,
-                          )
-                          .imagePath,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: SizedBox(
+                height: Get.width * .2,
+                width: Get.width * .2,
+                child: Center(
+                  child: Obx(
+                    () => Image(
+                      image: AssetImage(
+                        controller.animalsList
+                            .singleWhere(
+                              (element) =>
+                                  element.id == controller.randomAnimal.value,
+                            )
+                            .imagePath,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
             SizedBox(
-              height: Get.height * .05,
-            ),
-            Obx(
-              () => InkWell(
-                onTap: () {
-                  controller.startGame();
-                },
-                child: Container(
-                  width: Get.width * .3,
-                  height: Get.height * .1,
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey.shade600,
-                    borderRadius: radiusAll16,
-                    boxShadow: shadow(),
-                  ),
-                  child: Center(
-                    child: (controller.isStarted.isTrue)
-                        ? Text(
-                            controller.timer.toString(),
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 21.0,
-                            ),
-                          )
-                        : const Text(
-                            'شروع',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0,
-                            ),
-                          ),
-                  ),
-                ),
-              ),
+              height: Get.height * .13,
             ),
           ],
         ),
