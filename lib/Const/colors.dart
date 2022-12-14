@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 Color shadowColor = Colors.grey.withOpacity(0.15);
-const Color splash = Color(0xffFFE920);
+const Color switcherToggleColor = Color(0xff0071BC);
 const Color mainDote = Color(0xffEE7518);
 const Color categoryBackGrey = Color(0xffE8E7E7);
 const Color categoryIconGrey = Color(0xff717070);
@@ -15,3 +15,4 @@ Color articlesBgColor = const Color(0xffFADBFF);
 Color mainDarkColor = Colors.blueGrey.shade800;
 Color completeBack = const Color(0xffF0E3CA);
 Color lightYellow = const Color(0xffFBF5C5);
+Color switcherColor = const Color(0xffC1272D);

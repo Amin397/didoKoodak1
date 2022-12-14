@@ -36,6 +36,14 @@ class HomeScreen extends StatelessWidget {
                 'animals game',
               ),
             ),
+            TextButton(
+              onPressed: () {
+                controller.goToSetting();
+              },
+              child: const Text(
+                'settings',
+              ),
+            ),
 
           ],
         ),

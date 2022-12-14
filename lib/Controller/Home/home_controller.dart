@@ -11,5 +11,9 @@ class HomeController extends GetxController {
     Get.toNamed(NameRouts.animalGame);
   }
 
+  void goToSetting() {
+    Get.toNamed(NameRouts.setting);
+  }
+
 }
 
