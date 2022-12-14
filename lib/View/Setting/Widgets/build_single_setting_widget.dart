@@ -151,7 +151,7 @@ class BuildSingleSettingWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Flexible(
+            const Flexible(
               flex: 1,
               child: SizedBox(
                 height: double.maxFinite,
@@ -165,22 +165,27 @@ class BuildSingleSettingWidget extends StatelessWidget {
   }
 
   Widget _buildPanelButton() {
-    return Container(
-      width: double.maxFinite,
-      height: Get.height * .09,
-      padding: paddingSymmetricH12,
-      decoration: BoxDecoration(
-        color: Colors.white54,
-        borderRadius: radiusAll24,
-      ),
-      child: const Center(
-        child: AutoSizeText(
-          'پنل والدین',
-          maxFontSize: 30.0,
-          minFontSize: 20.0,
-          maxLines: 1,
-          style: TextStyle(
-            fontSize: 24.0,
+    return InkWell(
+      onTap: (){
+        controller.goToLoginRegister();
+      },
+      child: Container(
+        width: double.maxFinite,
+        height: Get.height * .09,
+        padding: paddingSymmetricH12,
+        decoration: BoxDecoration(
+          color: Colors.white54,
+          borderRadius: radiusAll24,
+        ),
+        child: const Center(
+          child: AutoSizeText(
+            'پنل والدین',
+            maxFontSize: 30.0,
+            minFontSize: 20.0,
+            maxLines: 1,
+            style: TextStyle(
+              fontSize: 24.0,
+            ),
           ),
         ),
       ),

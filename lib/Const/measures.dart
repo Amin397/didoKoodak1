@@ -9,6 +9,7 @@ const EdgeInsets paddingAll10 = EdgeInsets.all(10.0);
 const EdgeInsets paddingAll6 = EdgeInsets.all(6.0);
 const EdgeInsets paddingAll16 = EdgeInsets.all(16.0);
 const EdgeInsets paddingAll12 = EdgeInsets.all(12.0);
+const EdgeInsets paddingAll18 = EdgeInsets.all(18.0);
 const EdgeInsets paddingAll24 = EdgeInsets.all(24.0);
 const EdgeInsets paddingAll28 = EdgeInsets.all(28.0);
 const EdgeInsets paddingAll32 = EdgeInsets.all(32.0);

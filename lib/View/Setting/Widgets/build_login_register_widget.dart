@@ -1,13 +1,15 @@
+import 'package:dido_koodak1/Const/colors.dart';
 import 'package:dido_koodak1/Controller/Setting/setting_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../Const/measures.dart';
-
+import 'build_single_login_widget.dart';
+import 'build_single_register_widget.dart';
 
 class BuildLoginRegisterWidget extends StatelessWidget {
-  const BuildLoginRegisterWidget({Key? key ,required this.controller}) : super(key: key);
-
+  const BuildLoginRegisterWidget({Key? key, required this.controller})
+      : super(key: key);
 
   final SettingController controller;
 
@@ -20,18 +22,34 @@ class BuildLoginRegisterWidget extends StatelessWidget {
         child: Stack(
           children: [
             _buildBg(),
-            Obx(
-                  () => (controller.step.value == 0)
-                  ? _buildButtons()
-                  : const SizedBox(),
-            ),
-            // _buildMain(),
+            _buildButtons(),
+            _buildMain(),
           ],
         ),
       ),
     );
   }
 
+  Widget _buildMain() {
+    return AnimatedSwitcher(
+      duration: const Duration(seconds: 3),
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        return ScaleTransition(
+          scale: animation,
+          child: child,
+        );
+      },
+      child: Obx(
+        () => (controller.isLogin.isTrue)
+            ? BuildSingleLoginWidget(
+                controller: controller,
+              )
+            : BuildSingleRegisterWidget(
+                controller: controller,
+              ),
+      ),
+    );
+  }
 
   Widget _buildBg() {
     return Center(
@@ -56,35 +74,45 @@ class BuildLoginRegisterWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _buildSingleButton(
-              id: 0,
-            ),
-            SizedBox(
-              width: Get.width * .01,
-            ),
-            _buildSingleButton(
-              id: 1,
-            ),
+            _buildSingleButton(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildSingleButton({required int id}) {
+  Widget _buildSingleButton() {
     return InkWell(
-      onTap: () {
-        controller.buttonsAction(id: id);
-      },
-      child: Image(
-        image: AssetImage(
-          (id == 0)
-              ? 'assets/images/Buttons/homeButton.png'
-              : 'assets/images/Buttons/infoButton.png',
-        ),
+      onTap: () {},
+      child: SizedBox(
         height: Get.height * .1,
-        width: Get.height * .1,
-        fit: BoxFit.contain,
+        width: Get.width * .2,
+        child: Stack(
+          children: [
+            Center(
+              child: Image(
+                image: const AssetImage(
+                  'assets/images/Buttons/loginButton.png',
+                ),
+                height: Get.height * .1,
+                width: Get.height * .2,
+                fit: BoxFit.fill,
+              ),
+            ),
+            Obx(
+              () => Center(
+                child: Text(
+                  (controller.isLogin.isTrue) ? 'ورود' : 'ثبت نام',
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    color: textRedColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

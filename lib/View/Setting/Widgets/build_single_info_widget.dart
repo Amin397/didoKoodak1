@@ -19,7 +19,7 @@ class BuildSingleInfoWidget extends StatelessWidget {
           horizontal: Get.width * .05,
           vertical: Get.height * .15,
         ),
-        child: Center(
+        child: const Center(
           child: Text(
             'در سال ۱۳۹۷، جمع شدیم تا از تجربه‌های‌مان در حوزه فرهنگ و فناوری اطلاعات برای ایجاد، توسعه و سرمایه‌گذاری در کسب‌وکارهای هوشمند در حوزه هنر و فرهنگ و ارائه خدمات در این زمینه استفاده کنیم.',
             style: TextStyle(

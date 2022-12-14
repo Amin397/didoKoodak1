@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -5,10 +6,9 @@ import '../../Model/Setting/setting_model.dart';
 
 class SettingController extends GetxController {
   RxInt step = 0.obs;
-
   RxInt status = 0.obs;
   RxInt semiStatus = 0.obs;
-
+  RxBool isLogin = true.obs;
   List<SettingModel> settingList = [
     SettingModel(
       title: 'صدا',
@@ -20,8 +20,20 @@ class SettingController extends GetxController {
     ),
     SettingModel(title: 'اعلانات', isSwitched: true.obs),
   ];
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController rePasswordController = TextEditingController();
 
-  void buttonsAction({required int id}) {
+
+
+
+
+
+
+  void buttonsAction({
+    required int id,
+  }) {
     if (id == 0) {
       Get.back();
       dispose();
@@ -33,14 +45,18 @@ class SettingController extends GetxController {
   }
 
   void backMethod() {
-    if (step.value == 0) {
-      buttonsAction(id: 0);
-    } else {
+    if (status.value == 1) {
+      status(0);
       step(step.value - 1);
-      if(semiStatus.value == 1){
-        semiStatus(0);
+    } else {
+      if (step.value == 0) {
+        buttonsAction(id: 0);
+      } else {
+        step(step.value - 1);
+        if (semiStatus.value == 1) {
+          semiStatus(0);
+        }
       }
-
     }
   }
 
@@ -48,5 +64,18 @@ class SettingController extends GetxController {
     required SettingModel setting,
   }) {
     setting.isSwitched(!setting.isSwitched.value);
+  }
+
+  void goToLoginRegister() {
+    status(1);
+    step(step.value + 1);
+  }
+
+  void switchToRegister() {
+    userNameController.clear();
+    passwordController.clear();
+    rePasswordController.clear();
+    phoneNumberController.clear();
+    isLogin(!isLogin.value);
   }
 }
