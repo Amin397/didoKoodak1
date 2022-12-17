@@ -17,35 +17,150 @@ class HomeScreen extends StatelessWidget {
       body: SizedBox(
         height: Get.height,
         width: Get.width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
           children: [
-            TextButton(
-              onPressed: () {
-                controller.goToAnimalInfo();
-              },
-              child: const Text(
-                'animals info',
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                controller.goToAnimalGame();
-              },
-              child: const Text(
-                'animals game',
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                controller.goToSetting();
-              },
-              child: const Text(
-                'settings',
-              ),
-            ),
-
+            _buildBg(),
+            _buildSettingButton(),
+            _buildClickableTowerItem(),
+            _buildClickableCarouselItem(),
+            _buildClickableTrainItem(),
+            _buildClickableTentItem(),
           ],
+        ),
+        // child: Column(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     TextButton(
+        //       onPressed: () {
+        //         controller.goToAnimalInfo();
+        //       },
+        //       child: const Text(
+        //         'animals info',
+        //       ),
+        //     ),
+        //     TextButton(
+        //       onPressed: () {
+        //         controller.goToAnimalGame();
+        //       },
+        //       child: const Text(
+        //         'animals game',
+        //       ),
+        //     ),
+        //     TextButton(
+        //       onPressed: () {
+        //       },
+        //       child: const Text(
+        //         'settings',
+        //       ),
+        //     ),
+        //
+        //   ],
+        // ),
+      ),
+    );
+  }
+
+  Widget _buildBg() {
+    return const SizedBox(
+      height: double.maxFinite,
+      width: double.maxFinite,
+      child: Image(
+        image: AssetImage(
+          'assets/images/Backgrounds/homeBg.png',
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSettingButton() {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: InkWell(
+        onTap: () {
+          controller.goToSetting();
+        },
+        child: Container(
+          margin: paddingAll28,
+          height: Get.height * .1,
+          width: Get.height * .1,
+          child: const Image(
+            image: AssetImage(
+              'assets/images/Buttons/settingButton.png',
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildClickableTowerItem() {
+    return Positioned(
+      bottom: Get.height * .15,
+      left: Get.width * .12,
+      child: InkWell(
+        onTap: () {
+          controller.goToSingleHome(id: 0);
+        },
+        child: Transform.rotate(
+          angle: -.2,
+          child: SizedBox(
+            height: Get.height * .35,
+            width: Get.height * .55,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildClickableCarouselItem() {
+    return Positioned(
+      bottom: Get.height * .28,
+      left: Get.width * .375,
+      child: InkWell(
+        onTap: () {
+          controller.goToSingleHome(id: 1);
+        },
+        child: Container(
+          height: Get.height * .4,
+          width: Get.height * .4,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildClickableTrainItem() {
+    return Positioned(
+      bottom: Get.height * .16,
+      left: Get.width * .45,
+      child: InkWell(
+        onTap: () {
+          controller.goToSingleHome(id: 2);
+        },
+        child: SizedBox(
+          height: Get.height * .15,
+          width: Get.width * .25,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildClickableTentItem() {
+    return Positioned(
+      bottom: Get.height * .14,
+      right: Get.width * .15,
+      child: InkWell(
+        onTap: () {
+          controller.goToSingleHome(id: 2);
+        },
+        child: Transform.rotate(
+          angle: .2,
+          child: SizedBox(
+            height: Get.height * .25,
+            width: Get.width * .14,
+          ),
         ),
       ),
     );

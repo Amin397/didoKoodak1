@@ -15,5 +15,12 @@ class HomeController extends GetxController {
     Get.toNamed(NameRouts.setting);
   }
 
+  void goToSingleHome({required int id}) {
+    print(id);
+    Get.toNamed(NameRouts.singleHome , arguments: {
+      'page':id,
+    });
+  }
+
 }
 
