@@ -25,4 +25,12 @@ class SingleHomeController extends GetxController{
   void goToSetting() {
     Get.toNamed(NameRouts.setting);
   }
+
+  void goToGamesList() {
+    Get.toNamed(NameRouts.gamesList);
+  }
+
+  void goToSingleTower() {
+    Get.toNamed(NameRouts.singleTower);
+  }
 }

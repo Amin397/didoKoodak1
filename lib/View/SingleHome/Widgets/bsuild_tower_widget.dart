@@ -16,6 +16,7 @@ class BuildTowerWidget extends StatelessWidget {
       child: Stack(
         children: [
           _buildBg(),
+          _buildClickablePart(),
         ],
       ),
     );
@@ -28,6 +29,20 @@ class BuildTowerWidget extends StatelessWidget {
       child: const Image(
         image: AssetImage(
           'assets/images/Backgrounds/towerBg.png',
+        ),
+      ),
+    );
+  }
+
+  Widget _buildClickablePart() {
+    return Center(
+      child: InkWell(
+        onTap: (){
+          controller.goToSingleTower();
+        },
+        child: SizedBox(
+          width: Get.width * .7,
+          height: Get.height * .9,
         ),
       ),
     );

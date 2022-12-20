@@ -1,10 +1,14 @@
 import 'package:get/get.dart';
 
+import '../View/AlphabetGame/alphabet_game_screen.dart';
 import '../View/AnimalGame/animal_game_screen.dart';
 import '../View/AnimalInfo/animal_info_screen.dart';
+import '../View/GamesList/games_list_screen.dart';
 import '../View/Home/home_screen.dart';
 import '../View/Setting/setting_screen.dart';
 import '../View/SingleHome/single_home_screen.dart';
+import '../View/SingleMovie/single_movie_screen.dart';
+import '../View/SingleTower/single_tower_screen.dart';
 import '../View/Splash/splash_screen.dart';
 
 class NameRouts{
@@ -14,6 +18,10 @@ class NameRouts{
   static const String animalInfo = '/animalInfo';
   static const String animalGame = '/animalGame';
   static const String setting = '/setting';
+  static const String gamesList = '/gamesList';
+  static const String alphabetGame = '/alphabetGame';
+  static const String singleTower = '/singleTower';
+  static const String singleMovie = '/singleMovie';
 }
 
 class PageRout {
@@ -41,6 +49,26 @@ class PageRout {
     GetPage(
       name: NameRouts.setting,
       page: () => SettingScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.gamesList,
+      page: () => GamesListScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.alphabetGame,
+      page: () => AlphabetGameScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.singleTower,
+      page: () => SingleTowerScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.singleMovie,
+      page: () => SingleMovieScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(

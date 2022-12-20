@@ -19,6 +19,13 @@ class HomeScreen extends StatelessWidget {
         width: Get.width,
         child: Stack(
           children: [
+            // InteractiveViewer(
+            //   panEnabled: false,
+            //   boundaryMargin: paddingAll24,
+            //   minScale: 1.0,
+            //   maxScale: 4.0,
+            //   child: _buildBg(),
+            // ),
             _buildBg(),
             _buildSettingButton(),
             _buildClickableTowerItem(),

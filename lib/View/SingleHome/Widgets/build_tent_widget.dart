@@ -16,6 +16,7 @@ class BuildTentWidget extends StatelessWidget {
       child: Stack(
         children: [
           _buildBg(),
+          _buildTrainClickPart(),
         ],
       ),
     );
@@ -33,5 +34,20 @@ class BuildTentWidget extends StatelessWidget {
     );
   }
 
+  Widget _buildTrainClickPart() {
+    return Positioned(
+      bottom: Get.height * .1,
+      left: Get.width * .05,
+      child: InkWell(
+        onTap: (){
+          controller.goToGamesList();
+        },
+        child: SizedBox(
+          width: Get.width * .4,
+          height: Get.height * .3,
+        ),
+      ),
+    );
+  }
 
 }
