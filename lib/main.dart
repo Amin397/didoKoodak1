@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'Utils/rout_utils.dart';
-import 'View/SingleMovie/single_movie_screen.dart';
 
 void main() async{
   // WidgetsFlutterBinding.ensureInitialized();
@@ -25,8 +24,8 @@ void main() async{
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: PageRout.pages,
-      initialRoute: NameRouts.singleMovie,
-      home: SingleMovieScreen(),
+      initialRoute: NameRouts.splash,
+      home: SplashScreen(),
     ),
   );
 }
