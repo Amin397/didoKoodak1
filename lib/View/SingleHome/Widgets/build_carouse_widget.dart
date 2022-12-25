@@ -2,11 +2,9 @@ import 'package:dido_koodak1/Controller/SingleHome/single_home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-
 class BuildCarouseWidget extends StatelessWidget {
-  const BuildCarouseWidget({Key? key , required this.controller}) : super(key: key);
-
+  const BuildCarouseWidget({Key? key, required this.controller})
+      : super(key: key);
 
   final SingleHomeController controller;
 
@@ -18,6 +16,19 @@ class BuildCarouseWidget extends StatelessWidget {
       child: Stack(
         children: [
           _buildBg(),
+          InkWell(
+            onTap: (){
+              controller.showModal();
+            },
+            child: Container(
+              margin: EdgeInsets.only(
+                left: Get.width * .2,
+                top: Get.height * .2
+              ),
+              height: Get.height * .55,
+              width: Get.width * .4,
+            ),
+          ),
         ],
       ),
     );

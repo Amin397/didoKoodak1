@@ -5,43 +5,19 @@ class StorageUtils {
   static final box = GetStorage();
 
 
-  static Future<void> saveUser(String mobile) async {
+  static Future<void> setBgMusic({required bool play}) async {
 
     await box.write(
-      'mobile',
-      mobile,
+      'music',
+      play,
     );
   }
 
-  static Future<String?> getMobile() async {
+  static Future<bool> getBgMusic() async {
     final box = GetStorage();
     return box.read(
-      'mobile',
+      'music',
     );
   }
 
-  static Future<String> getToken() async {
-    final box = GetStorage();
-    return box
-        .read(
-      'token',
-    )
-        .toString()
-        .trim();
-  }
-
-  static Future<void> saveToken(String data) async {
-    print("Token Is Being Saved: $data");
-    final box = GetStorage();
-    await box.write('token', data);
-  }
-
-  static Future<void> clearToken() async {
-    await box.remove('token');
-  }
-
-  static logout() async {
-    final box = GetStorage();
-    await box.remove('token');
-  }
 }

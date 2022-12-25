@@ -1,3 +1,4 @@
+import 'package:chewie/chewie.dart';
 import 'package:dido_koodak1/Const/measures.dart';
 import 'package:dido_koodak1/Controller/SingleMovie/single_movie_controller.dart';
 import 'package:dido_koodak1/Utils/rout_utils.dart';
@@ -27,22 +28,31 @@ class BuildMovieScreenWidget extends StatelessWidget {
               width: 10.0,
             ),
             Expanded(
-              child: Container(
-                height: double.maxFinite,
-                width: double.maxFinite,
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: radiusAll8,
-                  boxShadow: shadow(),
-                  gradient: const RadialGradient(
-                    colors: [
-                      Colors.black54,
-                      Colors.black87,
-                      Colors.black,
-                    ],
-                    center: Alignment.center,
-                    radius: 1.0,
+              child: Obx(
+                () => Container(
+                  height: double.maxFinite,
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: radiusAll8,
+                    boxShadow: shadow(),
+                    gradient: const RadialGradient(
+                      colors: [
+                        Colors.black54,
+                        Colors.black87,
+                        Colors.black,
+                      ],
+                      center: Alignment.center,
+                      radius: 1.0,
+                    ),
                   ),
+                  child: (controller.isLoaded.isTrue)
+                      ? Chewie(
+                          controller: controller.cController!,
+                        )
+                      : const Center(
+                          child: CircularProgressIndicator(),
+                        ),
                 ),
               ),
             ),
@@ -96,6 +106,7 @@ class BuildMovieScreenWidget extends StatelessWidget {
             button: 'assets/images/Buttons/zoomButton.png',
             func: () {
               // Get.back();
+              controller.zoom();
             },
           ),
           const SizedBox(
@@ -105,16 +116,22 @@ class BuildMovieScreenWidget extends StatelessWidget {
             button: 'assets/images/Buttons/reloadButton.png',
             func: () {
               // Get.back();
+              controller.reload();
             },
           ),
           const SizedBox(
             height: 10.0,
           ),
-          _buildButton(
-            button: 'assets/images/Buttons/muteButton.png',
-            func: () {
-              // Get.back();
-            },
+          Obx(
+            () => _buildButton(
+              button: (!controller.isMute.isTrue)
+                  ? 'assets/images/Buttons/unmuteButton.png'
+                  : 'assets/images/Buttons/muteButton.png',
+              func: () {
+                // Get.back();
+                controller.mute();
+              },
+            ),
           ),
           const SizedBox(
             height: 10.0,
@@ -123,6 +140,7 @@ class BuildMovieScreenWidget extends StatelessWidget {
             button: 'assets/images/Buttons/pauseButton.png',
             func: () {
               // Get.back();
+              controller.pause();
             },
           ),
           const SizedBox(
@@ -132,6 +150,7 @@ class BuildMovieScreenWidget extends StatelessWidget {
             button: 'assets/images/Buttons/playButton.png',
             func: () {
               // Get.back();
+              controller.play();
             },
           ),
         ],
@@ -139,8 +158,7 @@ class BuildMovieScreenWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildButton(
-      {required String button, required Null Function() func}) {
+  Widget _buildButton({required String button, required Null Function() func}) {
     return InkWell(
       onTap: () {
         func();

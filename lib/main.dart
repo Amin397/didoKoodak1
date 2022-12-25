@@ -6,19 +6,8 @@ import 'package:get_storage/get_storage.dart';
 import 'Utils/rout_utils.dart';
 
 void main() async{
-  // WidgetsFlutterBinding.ensureInitialized();
-  //
-  // SystemChrome.setPreferredOrientations(
-  //   [
-  //     DeviceOrientation.landscapeLeft,
-  //     DeviceOrientation.landscapeRight,
-  //   ],
-  // );
-
 
   await GetStorage.init();
-
-
 
   runApp(
     GetMaterialApp(

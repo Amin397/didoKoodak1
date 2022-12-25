@@ -66,36 +66,37 @@ class AnimalGameController extends GetxController {
       player: AudioPlayer(),
       imagePath: 'assets/images/horse.png',
     ),
-    AnimalsModel(
-        id: 7,
-        name: 'mouse',
-        soundPath: 'assets/sounds/mouse.mp3',
-        isSelected: false.obs,
-        player: AudioPlayer(),
-        imagePath: 'assets/images/mouse.png'),
-    AnimalsModel(
-        id: 8,
-        name: 'owl',
-        soundPath: 'assets/sounds/owl.mp3',
-        isSelected: false.obs,
-        player: AudioPlayer(),
-        imagePath: 'assets/images/owl.png'),
-    AnimalsModel(
-      id: 9,
-      name: 'tiger',
-      soundPath: 'assets/sounds/tiger.wav',
-      isSelected: false.obs,
-      player: AudioPlayer(),
-      imagePath: 'assets/images/tiger.png',
-    ),
-    AnimalsModel(
-      id: 10,
-      name: 'pig',
-      soundPath: 'assets/sounds/pig.mp3',
-      isSelected: false.obs,
-      player: AudioPlayer(),
-      imagePath: 'assets/images/pig.png',
-    ),
+    // ),
+    // AnimalsModel(
+    //     id: 7,
+    //     name: 'mouse',
+    //     soundPath: 'assets/sounds/mouse.mp3',
+    //     isSelected: false.obs,
+    //     player: AudioPlayer(),
+    //     imagePath: 'assets/images/mouse.png'),
+    // AnimalsModel(
+    //     id: 8,
+    //     name: 'owl',
+    //     soundPath: 'assets/sounds/owl.mp3',
+    //     isSelected: false.obs,
+    //     player: AudioPlayer(),
+    //     imagePath: 'assets/images/owl.png'),
+    // AnimalsModel(
+    //   id: 9,
+    //   name: 'tiger',
+    //   soundPath: 'assets/sounds/tiger.wav',
+    //   isSelected: false.obs,
+    //   player: AudioPlayer(),
+    //   imagePath: 'assets/images/tiger.png',
+    // ),
+    // AnimalsModel(
+    //   id: 10,
+    //   name: 'pig',
+    //   soundPath: 'assets/sounds/pig.mp3',
+    //   isSelected: false.obs,
+    //   player: AudioPlayer(),
+    //   imagePath: 'assets/images/pig.png',
+    // ),
   ];
 
   startGame() async {
@@ -124,7 +125,7 @@ class AnimalGameController extends GetxController {
 
   void randomAnimalStart() {
     randomTimer = Timer.periodic(const Duration(milliseconds: 150), (sec) {
-      randomAnimal(Random().nextInt(11));
+      randomAnimal(Random().nextInt(6));
       if (timer.value == 0) {
         sec.cancel();
         randomTimer.cancel();

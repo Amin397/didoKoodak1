@@ -32,12 +32,17 @@ class SplashScreen extends StatelessWidget {
                 bottom: (controller.isStarted.isTrue)
                     ? Get.height * .1
                     : -Get.height * .6,
-                child: SizedBox(
-                  width: Get.width,
-                  height: Get.height * .8,
-                  child: const Image(
-                    image: AssetImage(
-                      'assets/images/didoLogo.png',
+                child: InkWell(
+                  onTap: (){
+                    controller.goToHome();
+                  },
+                  child: SizedBox(
+                    width: Get.width,
+                    height: Get.height * .8,
+                    child: const Image(
+                      image: AssetImage(
+                        'assets/images/didoLogo.png',
+                      ),
                     ),
                   ),
                 ),

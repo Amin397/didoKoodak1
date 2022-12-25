@@ -20,7 +20,7 @@ class SingleMovieScreen extends StatelessWidget {
             _buildBg(),
             BuildMovieScreenWidget(
               controller:controller,
-            )
+            ),
           ],
         ),
       ),

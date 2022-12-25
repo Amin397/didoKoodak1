@@ -1,3 +1,4 @@
+import 'package:dido_koodak1/Globals/blocs.dart';
 import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:get/get.dart';
 
@@ -9,12 +10,25 @@ class SplashController extends GetxController {
     Future.delayed(const Duration(seconds: 1), () {
       isStarted(true);
     });
-
-    Future.delayed(const Duration(seconds: 3), () {
-      Get.offAndToNamed(
-        NameRouts.home,
-      );
-    });
+    // initMusic();
     super.onInit();
+  }
+
+
+
+  void goToHome(){
+
+    initMusic();
+
+    Get.toNamed(
+      NameRouts.home,
+    );
+  }
+
+  void initMusic() async{
+    Blocs.musicBloc.init();
+      Blocs.musicBloc.player.play();
+    // Future.delayed(const Duration(seconds: 2) , (){
+    // });
   }
 }

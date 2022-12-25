@@ -36,7 +36,6 @@ class SingleTowerScreen extends StatelessWidget {
                             fit: BoxFit.fill,
                           ),
                         ),
-
                         _buildFirstTowerPart(),
                         _buildSecondTowerPart(),
                         _buildLastTowerPart()
@@ -116,7 +115,7 @@ class SingleTowerScreen extends StatelessWidget {
                 width: double.maxFinite,
                 child: Row(
                   children: [
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
@@ -126,7 +125,7 @@ class SingleTowerScreen extends StatelessWidget {
                     SizedBox(
                       width: Get.width * .01,
                     ),
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
@@ -147,7 +146,7 @@ class SingleTowerScreen extends StatelessWidget {
                 width: double.maxFinite,
                 child: Row(
                   children: [
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
@@ -157,7 +156,7 @@ class SingleTowerScreen extends StatelessWidget {
                     SizedBox(
                       width: Get.width * .02,
                     ),
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
@@ -178,7 +177,7 @@ class SingleTowerScreen extends StatelessWidget {
                 width: double.maxFinite,
                 child: Row(
                   children: [
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
@@ -188,7 +187,7 @@ class SingleTowerScreen extends StatelessWidget {
                     SizedBox(
                       width: Get.width * .015,
                     ),
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
@@ -223,23 +222,21 @@ class SingleTowerScreen extends StatelessWidget {
                 width: double.maxFinite,
                 child: Row(
                   children: [
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
                         width: double.maxFinite,
-
                       ),
                     ),
                     SizedBox(
                       width: Get.width * .01,
                     ),
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
                         width: double.maxFinite,
-
                       ),
                     ),
                   ],
@@ -256,23 +253,21 @@ class SingleTowerScreen extends StatelessWidget {
                 width: double.maxFinite,
                 child: Row(
                   children: [
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
                         width: double.maxFinite,
-
                       ),
                     ),
                     SizedBox(
                       width: Get.width * .01,
                     ),
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
                         width: double.maxFinite,
-
                       ),
                     ),
                   ],
@@ -287,21 +282,19 @@ class SingleTowerScreen extends StatelessWidget {
               child: SizedBox(
                 height: double.maxFinite,
                 width: double.maxFinite,
-
                 child: Row(
                   children: [
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
                         width: double.maxFinite,
-
                       ),
                     ),
                     SizedBox(
                       width: Get.width * .015,
                     ),
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
@@ -340,11 +333,13 @@ class SingleTowerScreen extends StatelessWidget {
                     Flexible(
                       flex: 1,
                       child: InkWell(
-                        onTap: (){
-                          controller.goToSingleMovie();
+                        onTap: () {
+                          controller.goToSingleMovie(
+                            videoPath:
+                                'http://192.168.88.221:8096/Items/5594b295a9a22a17daffd66fe5b05170/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
+                          );
                         },
-                        child: Container(
-                          color: Colors.red,
+                        child: const SizedBox(
                           height: double.maxFinite,
                           width: double.maxFinite,
                         ),
@@ -355,9 +350,17 @@ class SingleTowerScreen extends StatelessWidget {
                     ),
                     Flexible(
                       flex: 1,
-                      child: SizedBox(
-                        height: double.maxFinite,
-                        width: double.maxFinite,
+                      child: InkWell(
+                        onTap: (){
+                          controller.goToSingleMovie(
+                            videoPath:
+                            'http://192.168.88.221:8096/Items/5232ae8b56df326b8f9f39417593f560/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
+                          );
+                        },
+                        child: const SizedBox(
+                          height: double.maxFinite,
+                          width: double.maxFinite,
+                        ),
                       ),
                     ),
                   ],
@@ -376,21 +379,27 @@ class SingleTowerScreen extends StatelessWidget {
                   children: [
                     Flexible(
                       flex: 1,
-                      child: SizedBox(
-                        height: double.maxFinite,
-                        width: double.maxFinite,
-
+                      child: InkWell(
+                        onTap: (){
+                          controller.goToSingleMovie(
+                            videoPath:
+                            'http://192.168.88.221:8096/Items/f02a22f7b3452ff8093eafa189cd8b1d/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
+                          );
+                        },
+                        child: SizedBox(
+                          height: double.maxFinite,
+                          width: double.maxFinite,
+                        ),
                       ),
                     ),
                     SizedBox(
                       width: Get.width * .01,
                     ),
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
                         width: double.maxFinite,
-
                       ),
                     ),
                   ],
@@ -405,21 +414,19 @@ class SingleTowerScreen extends StatelessWidget {
               child: SizedBox(
                 height: double.maxFinite,
                 width: double.maxFinite,
-
                 child: Row(
                   children: [
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,
                         width: double.maxFinite,
-
                       ),
                     ),
                     SizedBox(
                       width: Get.width * .015,
                     ),
-                    Flexible(
+                    const Flexible(
                       flex: 1,
                       child: SizedBox(
                         height: double.maxFinite,

@@ -1,3 +1,5 @@
+import 'package:dido_koodak1/Globals/blocs.dart';
+import 'package:dido_koodak1/Utils/storage_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -10,26 +12,24 @@ class SettingController extends GetxController {
   RxInt semiStatus = 0.obs;
   RxBool isLogin = true.obs;
   List<SettingModel> settingList = [
-    SettingModel(
-      title: 'صدا',
-      isSwitched: false.obs,
-    ),
-    SettingModel(
-      title: 'موسیقی',
-      isSwitched: false.obs,
-    ),
-    SettingModel(title: 'اعلانات', isSwitched: true.obs),
+    SettingModel(title: 'صدا', isSwitched: false.obs, id: 0),
+    SettingModel(title: 'موسیقی', isSwitched: false.obs, id: 1),
+    SettingModel(title: 'اعلانات', isSwitched: true.obs, id: 2),
   ];
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController rePasswordController = TextEditingController();
 
+  @override
+  void onInit() {
+    initData();
+    super.onInit();
+  }
 
-
-
-
-
+  initData() async {
+    settingList[1].isSwitched(Blocs.musicBloc.player.playing);
+  }
 
   void buttonsAction({
     required int id,
@@ -63,6 +63,15 @@ class SettingController extends GetxController {
   void switchToggle({
     required SettingModel setting,
   }) {
+    if (setting.id == 1) {
+      if (setting.isSwitched.isTrue) {
+        Blocs.musicBloc.offMusic(setOff: true);
+        StorageUtils.setBgMusic(play: setting.isSwitched.value);
+      } else {
+        Blocs.musicBloc.offMusic(setOff: false);
+        StorageUtils.setBgMusic(play: setting.isSwitched.value);
+      }
+    }
     setting.isSwitched(!setting.isSwitched.value);
   }
 

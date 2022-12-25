@@ -24,7 +24,23 @@ class GamesListScreen extends StatelessWidget {
               child: const Text(
                 'alphabet',
               ),
-            )
+            ),
+            TextButton(
+              onPressed: () {
+                controller.goToAnimalInfo();
+              },
+              child: const Text(
+                'animal info ',
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                controller.goToAnimalGame();
+              },
+              child: const Text(
+                'animal Game',
+              ),
+            ),
           ],
         ),
       ),
