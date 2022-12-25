@@ -18,7 +18,7 @@ class BuildCarouseWidget extends StatelessWidget {
           _buildBg(),
           InkWell(
             onTap: (){
-              controller.showModal();
+              controller.goToSinglePodcast();
             },
             child: Container(
               margin: EdgeInsets.only(

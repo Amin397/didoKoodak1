@@ -6,7 +6,6 @@ class StorageUtils {
 
 
   static Future<void> setBgMusic({required bool play}) async {
-
     await box.write(
       'music',
       play,
@@ -14,7 +13,6 @@ class StorageUtils {
   }
 
   static Future<bool> getBgMusic() async {
-    final box = GetStorage();
     return box.read(
       'music',
     );
