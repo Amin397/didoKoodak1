@@ -17,7 +17,6 @@ class SplashController extends GetxController {
 
   void goToHome() {
     initMusic();
-
     Get.offAndToNamed(
       NameRouts.home,
     );

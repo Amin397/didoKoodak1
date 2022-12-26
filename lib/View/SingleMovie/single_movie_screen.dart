@@ -33,8 +33,9 @@ class SingleMovieScreen extends StatelessWidget {
       width: Get.width,
       child:const Image(
         image: AssetImage(
-          'assets/images/Backgrounds/single_video_bg.png',
+          'assets/images/Backgrounds/singleVideoBg.PNG',
         ),
+        fit: BoxFit.fill,
       ),
     );
   }

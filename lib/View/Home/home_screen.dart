@@ -75,6 +75,7 @@ class HomeScreen extends StatelessWidget {
         image: AssetImage(
           'assets/images/Backgrounds/homeBg.png',
         ),
+        fit: BoxFit.fill,
       ),
     );
   }

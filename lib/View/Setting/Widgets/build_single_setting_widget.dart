@@ -79,11 +79,11 @@ class BuildSingleSettingWidget extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: AutoSizeText(
                     setting.title,
-                    maxFontSize: 24.0,
-                    minFontSize: 16.0,
+                    maxFontSize: 18.0,
+                    minFontSize: 14.0,
                     maxLines: 1,
                     style: const TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 16.0,
                     ),
                   ),
                 ),
@@ -99,7 +99,7 @@ class BuildSingleSettingWidget extends StatelessWidget {
     required SettingModel setting,
   }) {
     return Flexible(
-      flex: 1,
+      flex: 2,
       child: SizedBox(
         height: double.maxFinite,
         width: double.maxFinite,
@@ -180,11 +180,11 @@ class BuildSingleSettingWidget extends StatelessWidget {
         child: const Center(
           child: AutoSizeText(
             'پنل والدین',
-            maxFontSize: 30.0,
-            minFontSize: 20.0,
+            maxFontSize: 20.0,
+            minFontSize: 16.0,
             maxLines: 1,
             style: TextStyle(
-              fontSize: 24.0,
+              fontSize: 18.0,
             ),
           ),
         ),

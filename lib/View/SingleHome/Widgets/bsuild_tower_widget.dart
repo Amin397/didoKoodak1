@@ -30,6 +30,7 @@ class BuildTowerWidget extends StatelessWidget {
         image: AssetImage(
           'assets/images/Backgrounds/towerBg.png',
         ),
+        fit: BoxFit.fill,
       ),
     );
   }

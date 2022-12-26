@@ -1,3 +1,4 @@
+import 'package:dido_koodak1/Const/measures.dart';
 import 'package:dido_koodak1/Utils/widget_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,15 +27,19 @@ class SettingScreen extends StatelessWidget {
                 image: AssetImage(
                   'assets/images/Backgrounds/splashBg.PNG',
                 ),
+                fit: BoxFit.fill,
               ),
             ),
             Obx(
               () => (controller.step.value != 0)
                   ? Align(
                       alignment: Alignment.topLeft,
-                      child: WidgetUtil.backButton(function: () {
-                        controller.backMethod();
-                      }),
+                      child: Padding(
+                        padding: paddingAll32,
+                        child: WidgetUtil.backButton(function: () {
+                          controller.backMethod();
+                        }),
+                      ),
                     )
                   : const SizedBox(),
             ),

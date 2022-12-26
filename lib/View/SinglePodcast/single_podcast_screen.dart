@@ -73,9 +73,14 @@ class SinglePodcastScreen extends StatelessWidget {
   }
 
   Widget _buildBg() {
-    return const Image(
-      image: AssetImage(
-        'assets/images/Backgrounds/singlePodcastBg.png',
+    return SizedBox(
+      height: Get.height,
+      width: Get.width,
+      child: const Image(
+        image: AssetImage(
+          'assets/images/Backgrounds/singlePodcastBg.png',
+        ),
+        fit: BoxFit.fill,
       ),
     );
   }

@@ -28,8 +28,9 @@ class BuildTentWidget extends StatelessWidget {
       width: Get.width,
       child: const Image(
         image: AssetImage(
-          'assets/images/Backgrounds/tentBg.png',
+          'assets/images/Backgrounds/tentBg.PNG',
         ),
+        fit: BoxFit.fill,
       ),
     );
   }

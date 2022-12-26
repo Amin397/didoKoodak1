@@ -23,7 +23,7 @@ class BuildSingleInfoWidget extends StatelessWidget {
           child: Text(
             'در سال ۱۳۹۷، جمع شدیم تا از تجربه‌های‌مان در حوزه فرهنگ و فناوری اطلاعات برای ایجاد، توسعه و سرمایه‌گذاری در کسب‌وکارهای هوشمند در حوزه هنر و فرهنگ و ارائه خدمات در این زمینه استفاده کنیم.',
             style: TextStyle(
-              fontSize: 24.0,
+              fontSize: 14.0,
               color: Color(0xffAC3F44)
             ),
           ),

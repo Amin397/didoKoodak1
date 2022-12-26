@@ -16,5 +16,9 @@ class GamesListController extends GetxController{
 
   }
 
+  void goToSetting() {
+    Get.toNamed(NameRouts.setting);
+  }
+
 
 }
