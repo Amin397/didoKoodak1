@@ -1,14 +1,16 @@
 import 'package:dido_koodak1/Const/measures.dart';
 import 'package:dido_koodak1/Controller/SinglePodcast/single_podcast_controller.dart';
-import 'package:dido_koodak1/Utils/view_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../Model/Podcast/podcast_model.dart';
 
 class BuildPodcastPartWidget extends StatelessWidget {
-  const BuildPodcastPartWidget({Key? key, required this.controller})
+  const BuildPodcastPartWidget(
+      {Key? key, required this.controller, required this.podcast})
       : super(key: key);
 
   final SinglePodcastController controller;
+  final PodcastModel podcast;
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +27,12 @@ class BuildPodcastPartWidget extends StatelessWidget {
               thumbColor: const Color(0xffDB8686),
               activeColor: const Color(0xffEE3F6C),
               inactiveColor: Colors.white,
-              max: controller.duration.value.inSeconds.toDouble(),
-              value: controller.position.value.inSeconds.toDouble(),
+              max: podcast.duration.value.inSeconds.toDouble(),
+              value: podcast.position.value.inSeconds.toDouble(),
               onChanged: (value) async {
                 controller.changePosition(
                   newPosition: value,
+                  podcast: podcast,
                 );
               },
             ),
@@ -45,7 +48,7 @@ class BuildPodcastPartWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    controller.position.value.toString().split('.').first,
+                    podcast.position.value.toString().split('.').first,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16.0,
@@ -61,9 +64,11 @@ class BuildPodcastPartWidget extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              controller.reload();
+                              controller.reload(
+                                podcast: podcast,
+                              );
                             },
-                            child:const  Image(
+                            child: const Image(
                               image: AssetImage(
                                 'assets/images/Buttons/reloadButton.png',
                               ),
@@ -74,7 +79,9 @@ class BuildPodcastPartWidget extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              controller.play();
+                              controller.play(
+                                podcast: podcast,
+                              );
                             },
                             child: const Image(
                               image: AssetImage(
@@ -87,7 +94,9 @@ class BuildPodcastPartWidget extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              controller.pause();
+                              controller.pause(
+                                podcast: podcast,
+                              );
                             },
                             child: const Image(
                               image: AssetImage(
@@ -99,13 +108,8 @@ class BuildPodcastPartWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // IconButton(
-                  //     onPressed: () {
-                  //       controller.player.play();
-                  //     },
-                  //     icon: const Icon(Icons.abc)),
                   Text(
-                    (controller.duration.value - controller.position.value)
+                    (podcast.duration.value - podcast.position.value)
                         .toString()
                         .split('.')
                         .first,

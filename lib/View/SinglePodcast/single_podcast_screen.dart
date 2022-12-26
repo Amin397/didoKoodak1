@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../Const/colors.dart';
 import '../../Const/measures.dart';
 import '../../Controller/SinglePodcast/single_podcast_controller.dart';
+import 'Widgets/build_podcast_item_widget.dart';
 import 'Widgets/build_podcast_part_widget.dart';
 
 class SinglePodcastScreen extends StatelessWidget {
@@ -18,12 +20,10 @@ class SinglePodcastScreen extends StatelessWidget {
         width: Get.width,
         child: Stack(
           children: [
-            _buildBg(),
-            BuildPodcastPartWidget(
-              controller:controller,
-            ),
+            _buildPageView(),
             _buildHomeButton(),
             _buildSettingButton(),
+            _buildPageViewButtons(),
           ],
         ),
       ),
@@ -72,15 +72,62 @@ class SinglePodcastScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBg() {
+  Widget _buildPageViewButtons() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: SizedBox(
+        height: Get.height * .1,
+        width: Get.width,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {
+                controller.changePage(
+                  next: false,
+                );
+              },
+              icon: Icon(
+                Icons.arrow_back_ios_new,
+                color: textRedColor,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                controller.changePage(
+                  next: true,
+                );
+              },
+              icon: Icon(
+                Icons.arrow_forward_ios,
+                color: textRedColor,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPageView() {
     return SizedBox(
       height: Get.height,
       width: Get.width,
-      child: const Image(
-        image: AssetImage(
-          'assets/images/Backgrounds/singlePodcastBg.png',
-        ),
-        fit: BoxFit.fill,
+      child: PageView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: controller.podcastsList.length,
+        controller: controller.pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        onPageChanged: (page) {
+          controller.currentPage(page);
+          // controller.listener(podcast: controller.podcastsList[page]);
+        },
+        itemBuilder: (BuildContext context, int index) {
+          return BuildPodcastItemWidget(
+            controller: controller,
+            podcast: controller.podcastsList[index],
+          );
+        },
       ),
     );
   }

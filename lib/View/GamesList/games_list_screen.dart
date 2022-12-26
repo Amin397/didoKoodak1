@@ -18,8 +18,6 @@ class GamesListScreen extends StatelessWidget {
         width: Get.width,
         child: Stack(
           children: [
-
-
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: SizedBox(
@@ -38,8 +36,6 @@ class GamesListScreen extends StatelessWidget {
             ),
             _buildSettingButton(),
             _buildHomeButton(),
-
-
             // _buildBg(),
             // Column(
             //   mainAxisAlignment: MainAxisAlignment.center,
@@ -122,10 +118,11 @@ class GamesListScreen extends StatelessWidget {
 
 
   Widget _buildBg() {
-    return Image(
+    return const Image(
       image: AssetImage(
         'assets/images/Backgrounds/gameListBg.png',
       ),
+      fit: BoxFit.fill,
     );
   }
 }
