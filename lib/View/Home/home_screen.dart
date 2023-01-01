@@ -89,8 +89,8 @@ class HomeScreen extends StatelessWidget {
         },
         child: Container(
           margin: paddingAll28,
-          height: Get.height * .1,
-          width: Get.height * .1,
+          height: Get.height * .12,
+          width: Get.height * .12,
           child: const Image(
             image: AssetImage(
               'assets/images/Buttons/settingButton.png',

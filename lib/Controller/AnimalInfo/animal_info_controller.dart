@@ -98,9 +98,8 @@ class AnimalInfoController extends GetxController {
 
   void playAnimalSound({required AnimalsModel animal}) async {
     for (var element in animalsList) {
-      element.player.dispose();
+      element.player.pause();
     }
-    animal.player = AudioPlayer();
 
     // var player = ;
     await animal.player.setAsset(animal.soundPath);

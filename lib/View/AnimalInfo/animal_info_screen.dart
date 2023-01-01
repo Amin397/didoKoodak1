@@ -23,6 +23,7 @@ class AnimalInfoScreen extends StatelessWidget {
               ),
               height: Get.height,
               width: Get.width,
+              fit: BoxFit.fill,
             ),
             SizedBox(
               height: double.maxFinite,

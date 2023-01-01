@@ -20,14 +20,15 @@ class AnimalGameScreen extends StatelessWidget {
         child: Stack(
           children: [
             Image(
-              image:const AssetImage(
+              image: const AssetImage(
                 'assets/images/Backgrounds/gameBg.PNG',
               ),
               height: Get.height,
               width: Get.width,
+              fit: BoxFit.fill,
             ),
             Obx(
-                  () => InkWell(
+              () => InkWell(
                 onTap: () {
                   controller.startGame();
                 },
@@ -45,19 +46,19 @@ class AnimalGameScreen extends StatelessWidget {
                     child: Center(
                       child: (controller.isStarted.isTrue)
                           ? Text(
-                        controller.timer.toString(),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 21.0,
-                        ),
-                      )
+                              controller.timer.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 21.0,
+                              ),
+                            )
                           : const Text(
-                        'شروع',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                        ),
-                      ),
+                              'شروع',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                              ),
+                            ),
                     ),
                   ),
                 ),
@@ -73,7 +74,6 @@ class AnimalGameScreen extends StatelessWidget {
                 ],
               ),
             ),
-
           ],
         ),
       ),

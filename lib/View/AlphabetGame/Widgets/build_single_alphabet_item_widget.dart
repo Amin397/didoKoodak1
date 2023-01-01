@@ -47,23 +47,30 @@ class BuildSingleAlphabetItemWidget extends StatelessWidget {
   Widget _buildLetterPart() {
     return Align(
       alignment: Alignment.centerRight,
-      child: Container(
-        margin: EdgeInsets.only(
-          right: Get.width * .09,
-          bottom: Get.height * .06,
-        ),
-        height: Get.height * .7,
-        width: Get.width * .35,
-        child: Center(
-          child: AutoSizeText(
-            '${letter.upperLetter} ${letter.lowerLetter}',
-            maxLines: 1,
-            maxFontSize: 240.0,
-            minFontSize: 160.0,
-            style: const TextStyle(
-              fontSize: 200.0,
-              fontFamily: 'xKoodak',
-              color: Color(0xffFCEE21),
+      child: InkWell(
+        onTap: () {
+          controller.playLetterSound(
+            path: letter.letterVoice,
+          );
+        },
+        child: Container(
+          margin: EdgeInsets.only(
+            right: Get.width * .09,
+            bottom: Get.height * .06,
+          ),
+          height: Get.height * .7,
+          width: Get.width * .35,
+          child: Center(
+            child: AutoSizeText(
+              '${letter.upperLetter} ${letter.lowerLetter}',
+              maxLines: 1,
+              maxFontSize: 240.0,
+              minFontSize: 160.0,
+              style: const TextStyle(
+                fontSize: 200.0,
+                fontFamily: 'xKoodak',
+                color: Color(0xffFCEE21),
+              ),
             ),
           ),
         ),
@@ -105,36 +112,43 @@ class BuildSingleAlphabetItemWidget extends StatelessWidget {
   Widget _buildExampleItem({required AlphabetExamples example}) {
     return Flexible(
       flex: 1,
-      child: Container(
-        padding: paddingAll8,
-        height: double.maxFinite,
-        width: double.maxFinite,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: SizedBox(
-                height: double.maxFinite,
-                width: double.maxFinite,
-                child: Image(
-                  image: AssetImage(
-                    example.path,
+      child: InkWell(
+        onTap: (){
+          controller.playLetterSound(
+            path: example.exampleVoice,
+          );
+        },
+        child: Container(
+          padding: paddingAll8,
+          height: double.maxFinite,
+          width: double.maxFinite,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: SizedBox(
+                  height: double.maxFinite,
+                  width: double.maxFinite,
+                  child: Image(
+                    image: AssetImage(
+                      example.path,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 4.0,
-            ),
-            AutoSizeText(
-              example.text,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16.0,
-                fontFamily: 'xKoodak',
+              const SizedBox(
+                height: 4.0,
               ),
-            )
-          ],
+              AutoSizeText(
+                example.text,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  fontFamily: 'xKoodak',
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -186,25 +200,33 @@ class BuildSingleAlphabetItemWidget extends StatelessWidget {
   Widget _buildLetterItem({
     required AlphabetModel gridLetter,
   }) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 500),
-      margin: const EdgeInsets.all(2.0),
-      decoration: BoxDecoration(
-        borderRadius: radiusAll6,
-        color:(letter.id == gridLetter.id)?const Color(0xFF7EA317): const Color(0xFFC1272D),
-        // boxShadow: shadow(),
-      ),
-      child: Center(
-        child: AutoSizeText(
-          gridLetter.upperLetter,
-          maxLines: 1,
-          maxFontSize: 22.0,
-          minFontSize: 18.0,
-          style: const TextStyle(
-            fontFamily: 'xKoodak',
-            color: Color(0xfffbb03b),
-            fontSize: 20.0,
-
+    return InkWell(
+      onTap: (){
+        controller.playLetterSound(
+          path: gridLetter.letterVoice,
+        );
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 500),
+        margin: const EdgeInsets.all(2.0),
+        decoration: BoxDecoration(
+          borderRadius: radiusAll6,
+          color: (letter.id == gridLetter.id)
+              ? const Color(0xFF7EA317)
+              : const Color(0xFFC1272D),
+          // boxShadow: shadow(),
+        ),
+        child: Center(
+          child: AutoSizeText(
+            gridLetter.upperLetter,
+            maxLines: 1,
+            maxFontSize: 22.0,
+            minFontSize: 18.0,
+            style: const TextStyle(
+              fontFamily: 'xKoodak',
+              color: Color(0xfffbb03b),
+              fontSize: 20.0,
+            ),
           ),
         ),
       ),

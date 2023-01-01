@@ -16,10 +16,11 @@ class SplashController extends GetxController {
   }
 
   void goToHome() {
-    initMusic();
-    Get.offAndToNamed(
-      NameRouts.home,
-    );
+    initMusic().then((value){
+      Get.offAndToNamed(
+        NameRouts.home,
+      );
+    });
   }
 
   @override
@@ -33,15 +34,15 @@ class SplashController extends GetxController {
     super.onClose();
   }
 
-  void initMusic() async {
-    StorageUtils.getBgMusic().then((value) {
-      if (value is bool) {
-        if (value) {
+  Future<void> initMusic() async {
+    // StorageUtils.getBgMusic().then((value) {
+    //   if (value is bool) {
+    //     if (value) {
           Blocs.musicBloc.init();
-          Blocs.musicBloc.player.play();
-        }
-      }
-    });
+          // Blocs.musicBloc.player.play();
+        // }
+      // }
+    // });
 
     // Future.delayed(const Duration(seconds: 2) , (){
     // });

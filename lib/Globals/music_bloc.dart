@@ -14,7 +14,7 @@ class MusicBloc {
 
   Future<void> init()async{
     player = AudioPlayer();
-    await player.setUrl('https://cdn.pixabay.com/download/audio/2022/08/22/audio_ee05e9861e.mp3?filename=kids-117853.mp3');
+    await player.setUrl('https://cdn.pixabay.com/download/audio/2022/08/22/audio_ee05e9861e.mp3?filename=kids-117853.mp3' );
     player.setVolume(.5).whenComplete(() => play());
   }
 
