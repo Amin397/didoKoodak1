@@ -141,7 +141,7 @@ class AnimalInfoScreen extends StatelessWidget {
                   ),
                   child: Image(
                     image:const AssetImage(
-                      'assets/images/buttons/playMusicButton.png',
+                      'assets/images/Buttons/unmuteButton.png',
                     ),
                     height: Get.height * .08,
                     width: Get.height * .08,

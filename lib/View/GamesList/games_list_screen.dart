@@ -34,6 +34,59 @@ class GamesListScreen extends StatelessWidget {
                 ),
               ),
             ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: EdgeInsets.only(bottom: Get.height * .1),
+                height: Get.height * .5,
+                width: Get.width * 1.63,
+                child: Row(
+                  children: [
+                    SizedBox(width: Get.width * .15,),
+                    InkWell(
+                      onTap: (){
+                        controller.goToAnimalInfo();
+                      },
+                      child: SizedBox(
+                        height: Get.height * .4,
+                        width: Get.width * .18,
+                      ),
+                    ),
+                    SizedBox(width: Get.width * .06,),
+                    Transform.rotate(
+                      angle: .1,
+                      child: InkWell(
+                        onTap: (){
+                          controller.goToAnimalGame();
+                        },
+                        child: SizedBox(
+                          height: Get.height * .4,
+                          width: Get.width * .18,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: Get.width * .03,),
+                    Transform.rotate(
+                      angle: -.1,
+                      child: InkWell(
+                        onTap: (){
+                          controller.goToAlphabetGame();
+                        },
+                        child: SizedBox(
+                          height: Get.height * .42,
+                          width: Get.width * .18,
+                        ),
+                      ),
+                    ),
+                    // SizedBox(
+                    //   height: double.maxFinite,
+                    //   width: double.maxFinite,
+                    //   child: _buildBg(),
+                    // ),
+                  ],
+                ),
+              ),
+            ),
             _buildSettingButton(),
             _buildHomeButton(),
             // _buildBg(),

@@ -22,6 +22,17 @@ class SplashController extends GetxController {
     );
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+  }
+
   void initMusic() async {
     StorageUtils.getBgMusic().then((value) {
       if (value is bool) {

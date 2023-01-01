@@ -5,6 +5,7 @@ import 'package:onboarding_animation/onboarding_animation.dart';
 
 import '../../Controller/AlphabetGame/alphabet_game_controller.dart';
 import '../../Model/AlphabetGame/alphabet_model.dart';
+import 'Widgets/build_single_alphabet_item_widget.dart';
 
 class AlphabetGameScreen extends StatelessWidget {
   AlphabetGameScreen({Key? key}) : super(key: key);
@@ -17,51 +18,125 @@ class AlphabetGameScreen extends StatelessWidget {
       body: SizedBox(
         height: Get.height,
         width: Get.width,
-        child: Center(
-          child: Obx(
-            () => (controller.isLoaded.isTrue)
-                ? _buildMainLetters()
-                : const CircularProgressIndicator(),
-          ),
+        child: Stack(
+          children: [
+            SizedBox(
+              height: Get.height,
+              width: Get.width,
+              child: PageView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: controller.alphabetList.length,
+                onPageChanged: (page){
+                  controller.changePage(page:page);
+                },
+                itemBuilder: (BuildContext context, int index) =>
+                    BuildSingleAlphabetItemWidget(
+                  controller: controller,
+                  letter: controller.alphabetList[index],
+                ),
+                controller: controller.pageController,
+              ),
+            ),
+            _buildArrowLeft(),
+            _buildArrowRight(),
+            _buildBackButtonPart(),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildMainLetters() {
-    return GetBuilder(
-      init: controller,
-      id: 'letter',
-      builder: (ctx) {
-        return OnBoardingAnimation(
-          pages: controller.alphabetList
-              .map((e) => _buildLetterItemWidget(letter: e))
-              .toList(),
-          controller: controller.pageController,
-        );
-      },
+
+
+  Widget _buildBackButtonPart() {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Container(
+        margin: EdgeInsets.symmetric(
+          horizontal: Get.width * .08,
+          vertical: Get.height * .11,
+        ),
+        height: Get.height * .17,
+        width: Get.width * .2,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InkWell(
+              onTap: (){
+                Get.back();
+              },
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Image(
+                  image: AssetImage(
+                    'assets/images/Buttons/backButton.png',
+                  ),
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: (){
+                controller.goToHome();
+              },
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Image(
+                  image: AssetImage(
+                    'assets/images/Buttons/homeButton.png',
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
-  Widget _buildLetterItemWidget({
-    required AlphabetModel letter,
-  }) {
-    return Container(
-      height: Get.height,
-      width: Get.height,
-      margin: paddingAll24,
-      decoration: BoxDecoration(
-        color: Colors.green,
-        borderRadius: radiusAll36,
+
+
+
+  Widget _buildArrowLeft() {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Obx(
+          () => (controller.currentPage.value != 0)
+              ? IconButton(
+                  onPressed: () {
+                    controller.pageController.previousPage(duration:const Duration(seconds: 1), curve: Curves.easeInOutCubic);
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back_ios_rounded,
+                    size: 60.0,
+                    color: Color(0xff390000),
+                  ),
+                )
+              : const SizedBox(),
+        ),
       ),
-      child: Center(
-        child: InkWell(
-          onTap: () {
-            controller.nextPage();
-          },
-          child: Text(
-            letter.letter.toString(),
-          ),
+    );
+  }
+
+  Widget _buildArrowRight() {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Obx(
+          () => (controller.currentPage.value != controller.alphabetList.length)
+              ? IconButton(
+                  onPressed: () {
+                    controller.pageController.nextPage(duration:const Duration(seconds: 1), curve: Curves.easeInOutCubic);
+                  },
+                  icon: const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 60.0,
+                    color: Color(0xff390000),
+                  ),
+                )
+              : const SizedBox(),
         ),
       ),
     );
