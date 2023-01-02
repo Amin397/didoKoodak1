@@ -26,10 +26,32 @@ class BuildPodcastItemWidget extends StatelessWidget {
             controller: controller,
             podcast:podcast,
           ),
+          buildCat(),
         ],
       ),
     );
   }
+
+  Widget buildCat() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: Get.width * .6,
+          bottom: Get.height * .15
+        ),
+        height: Get.height * .35,
+        width: Get.width * .17,
+        child: Image(
+          image: AssetImage(
+            'assets/images/Characters/cat.png',
+          ),
+        ),
+      ),
+    );
+  }
+
+
 
   Widget _buildBg() {
     return SizedBox(

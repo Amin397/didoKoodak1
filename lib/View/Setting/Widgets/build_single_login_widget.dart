@@ -74,7 +74,7 @@ class BuildSingleLoginWidget extends StatelessWidget {
                       'ایجاد کاربر جدید',
                       style: TextStyle(
                         fontSize: 16.0,
-                        color: Colors.white,
+                        color: Colors.black54,
                       ),
                     ),
                   ),

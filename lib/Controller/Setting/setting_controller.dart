@@ -21,6 +21,9 @@ class SettingController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController rePasswordController = TextEditingController();
 
+
+  RxString groupValue = "group value".obs;
+
   @override
   void onInit() {
     initData();
@@ -87,5 +90,13 @@ class SettingController extends GetxController {
     rePasswordController.clear();
     phoneNumberController.clear();
     isLogin(!isLogin.value);
+  }
+
+  void logicChecked({required dynamic value}) {
+    if(groupValue.value == 'checked'){
+      groupValue('amin');
+    }else{
+      groupValue(value);
+    }
   }
 }

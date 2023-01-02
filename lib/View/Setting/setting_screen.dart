@@ -52,9 +52,32 @@ class SettingScreen extends StatelessWidget {
                       controller: controller,
                     ),
             ),
+            _buildRadin(),
           ],
         ),
       ),
     );
   }
+
+
+  Widget _buildRadin() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: Get.width * .7,
+        ),
+        height: Get.height * .45,
+        width: Get.width * .25,
+        child: Image(
+          image: AssetImage(
+            'assets/images/Characters/radin.png',
+          ),
+          fit: BoxFit.contain,
+        ),
+      ),
+    );
+  }
+
+
 }

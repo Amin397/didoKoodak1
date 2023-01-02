@@ -74,11 +74,33 @@ class AnimalGameScreen extends StatelessWidget {
                 ],
               ),
             ),
+            buildCat(),
           ],
         ),
       ),
     );
   }
+
+
+  Widget buildCat() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: Get.width * .6,
+        ),
+        height: Get.height * .35,
+        width: Get.width * .17,
+        child: Image(
+          image: AssetImage(
+            'assets/images/Characters/cat.png',
+          ),
+        ),
+      ),
+    );
+  }
+
+
 
   Widget _buildAnimalItem({
     required AnimalsModel animal,

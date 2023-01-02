@@ -17,8 +17,8 @@ class BuildLoginRegisterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: Get.height * .8,
-        width: Get.height * .8,
+        height: Get.height * .9,
+        width: Get.height * .9,
         child: Stack(
           children: [
             _buildBg(),
@@ -58,8 +58,8 @@ class BuildLoginRegisterWidget extends StatelessWidget {
           'assets/images/Backgrounds/alertBg.png',
         ),
         fit: BoxFit.fill,
-        height: Get.height * .6,
-        width: Get.height * .7,
+        height: Get.height * .8,
+        width: Get.height * .9,
       ),
     );
   }
@@ -68,9 +68,9 @@ class BuildLoginRegisterWidget extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        margin: paddingSymmetricV16,
-        height: Get.height * .15,
-        width: Get.width * .2,
+        // margin: EdgeInsets.only(),
+        height: Get.height * .2,
+        width: Get.width * .25,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -94,8 +94,8 @@ class BuildLoginRegisterWidget extends StatelessWidget {
                 image: const AssetImage(
                   'assets/images/Buttons/loginButton.png',
                 ),
-                height: Get.height * .1,
-                width: Get.height * .2,
+                height: Get.height * .2,
+                width: Get.height * .25,
                 fit: BoxFit.fill,
               ),
             ),
@@ -104,9 +104,10 @@ class BuildLoginRegisterWidget extends StatelessWidget {
                 child: Text(
                   (controller.isLogin.isTrue) ? 'ورود' : 'ثبت نام',
                   style: TextStyle(
-                    fontSize: 22.0,
+                    fontSize: 16.0,
                     color: textRedColor,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'gohar'
                   ),
                 ),
               ),

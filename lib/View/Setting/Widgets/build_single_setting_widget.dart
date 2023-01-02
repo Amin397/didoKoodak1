@@ -52,7 +52,7 @@ class BuildSingleSettingWidget extends StatelessWidget {
     required SettingModel setting,
   }) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         controller.switchToggle(
           setting: setting,
         );
@@ -82,9 +82,8 @@ class BuildSingleSettingWidget extends StatelessWidget {
                     maxFontSize: 18.0,
                     minFontSize: 14.0,
                     maxLines: 1,
-                    style: const TextStyle(
-                      fontSize: 16.0,
-                    ),
+                    style:
+                        const TextStyle(fontSize: 16.0, fontFamily: 'xKoodak'),
                   ),
                 ),
               ),
@@ -166,7 +165,7 @@ class BuildSingleSettingWidget extends StatelessWidget {
 
   Widget _buildPanelButton() {
     return InkWell(
-      onTap: (){
+      onTap: () {
         controller.goToLoginRegister();
       },
       child: Container(
@@ -185,6 +184,7 @@ class BuildSingleSettingWidget extends StatelessWidget {
             maxLines: 1,
             style: TextStyle(
               fontSize: 18.0,
+              fontFamily: 'xKoodak',
             ),
           ),
         ),

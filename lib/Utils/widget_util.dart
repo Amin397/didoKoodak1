@@ -59,8 +59,9 @@ class WidgetUtil {
           border: InputBorder.none,
           hintText: hint,
           hintStyle: TextStyle(
-            fontSize: 16.0,
+            fontSize: 13.0,
             color:textRedColor.withOpacity(.5),
+            fontFamily: 'xKoodak',
           ),
           enabled: enable,
           suffix: suffix,

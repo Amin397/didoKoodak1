@@ -6,6 +6,7 @@ import '../View/AnimalGame/animal_game_screen.dart';
 import '../View/AnimalInfo/animal_info_screen.dart';
 import '../View/GamesList/games_list_screen.dart';
 import '../View/Home/home_screen.dart';
+import '../View/Setting/Widgets/logic_screen.dart';
 import '../View/Setting/setting_screen.dart';
 import '../View/SingleFlore/single_flore_screen.dart';
 import '../View/SingleHome/single_home_screen.dart';
@@ -28,6 +29,7 @@ class NameRouts{
   static const String singlePodcast = '/singlePodcast';
   static const String singleFlore = '/singleFlore';
   static const String singleRoom = '/singleRoom';
+  static const String logic = '/logic';
 }
 
 class PageRout {
@@ -90,6 +92,11 @@ class PageRout {
     GetPage(
       name: NameRouts.singleRoom,
       page: () => SingleRoomScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.logic,
+      page: () => LogicScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(

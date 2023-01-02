@@ -1,4 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dido_koodak1/Controller/Setting/setting_controller.dart';
+import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:dido_koodak1/Utils/widget_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,10 +8,9 @@ import 'package:get/get.dart';
 import '../../../Const/colors.dart';
 import '../../../Const/measures.dart';
 
-
 class BuildSingleRegisterWidget extends StatelessWidget {
-  const BuildSingleRegisterWidget({Key? key , required this.controller}) : super(key: key);
-
+  const BuildSingleRegisterWidget({Key? key, required this.controller})
+      : super(key: key);
 
   final SettingController controller;
 
@@ -100,6 +101,62 @@ class BuildSingleRegisterWidget extends StatelessWidget {
               bgColor: Colors.white54,
               radius: radiusAll36,
             ),
+            const SizedBox(
+              height: 8.0,
+            ),
+            SizedBox(
+              width: double.maxFinite,
+              height: Get.height * .06,
+              child: Row(
+                children: [
+                  // Obx(
+                  //   () => Radio<bool>(
+                  //     value: controller.checked.value,
+                  //     groupValue: controller.groupValue.value,
+                  //     onChanged: (value) {
+                  //       controller.logicChecked(
+                  //         value: value,
+                  //       );
+                  //     },
+                  //   ),
+                  // ),
+                  Obx(
+                    () => Radio(
+                        value: "checked",
+                        groupValue: controller.groupValue.value,
+                        onChanged: (value){
+                          controller.logicChecked(value: value);
+                        }
+                    ),
+                  ),
+                  Expanded(
+                    child: SizedBox(
+                      height: double.maxFinite,
+                      width: double.maxFinite,
+                      child: InkWell(
+                        onTap: (){
+                          Get.toNamed(NameRouts.logic);
+                        },
+                        child:const Align(
+                          alignment: Alignment.centerRight,
+                          child: AutoSizeText(
+                            'قوانین و مقررات را می پذیرم.',
+                            maxLines: 1,
+                            maxFontSize: 18.0,
+                            minFontSize: 12.0,
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 16.0,
+                              fontFamily: 'xKoodak',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Expanded(
               child: SizedBox(
                 height: double.maxFinite,
@@ -114,7 +171,8 @@ class BuildSingleRegisterWidget extends StatelessWidget {
                       'حساب کاربری دارم',
                       style: TextStyle(
                         fontSize: 16.0,
-                        color: Colors.white,
+                        color: Colors.black45,
+                        fontFamily: 'xKoodak',
                       ),
                     ),
                   ),

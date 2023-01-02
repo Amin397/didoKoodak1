@@ -64,6 +64,7 @@ class AlphabetGameScreen extends StatelessWidget {
             InkWell(
               onTap: (){
                 Get.back();
+                controller.checkBgMusic();
               },
               child: const Padding(
                 padding: EdgeInsets.all(8.0),

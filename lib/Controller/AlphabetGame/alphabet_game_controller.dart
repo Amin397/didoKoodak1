@@ -7,8 +7,10 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:just_audio/just_audio.dart';
 
+import '../../Globals/blocs.dart';
 import '../../Model/API/api_result.dart';
 import '../../Utils/API/project_requests_utils.dart';
+import '../../Utils/storage_utils.dart';
 
 class AlphabetGameController extends GetxController {
 
@@ -635,6 +637,7 @@ class AlphabetGameController extends GetxController {
       initialPage: currentPage.value,
     );
     super.onInit();
+    Blocs.musicBloc.offMusic(setOff: true);
   }
 
   void nextPage() {
@@ -652,5 +655,32 @@ class AlphabetGameController extends GetxController {
 
   void changePage({required int page}) {
     currentPage(page);
+  }
+
+
+
+
+  checkBgMusic()async{
+    StorageUtils.getBgMusic().then((value){
+
+      print(value);
+      if(value){
+        Blocs.musicBloc.offMusic(setOff: false);
+      }else{
+        Blocs.musicBloc.offMusic(setOff: true);
+      }
+    });
+  }
+
+@override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+  }
+
+  @override
+  void dispose() {
+    checkBgMusic();
+    super.dispose();
   }
 }

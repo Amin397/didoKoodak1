@@ -5,7 +5,7 @@ import 'package:dido_koodak1/Model/FloreModel/room_model.dart';
 import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'dart:math' as math;
 import '../../Controller/SingleFlore/single_flore_controller.dart';
 
 class SingleFloreScreen extends StatelessWidget {
@@ -46,7 +46,30 @@ class SingleFloreScreen extends StatelessWidget {
             _buildArrowLeft(),
             _buildArrowRight(),
             _buildButtons(),
+            buildSitCat(),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildSitCat() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        margin: EdgeInsets.only(
+          right: Get.width * .8,
+        ),
+        height: Get.height * .35,
+        width: Get.width * .17,
+        child: Transform(
+          alignment: Alignment.center,
+          transform: Matrix4.rotationY(math.pi),
+          child: Image(
+            image: AssetImage(
+              'assets/images/Characters/cat.png',
+            ),
+          ),
         ),
       ),
     );
@@ -58,7 +81,7 @@ class SingleFloreScreen extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Obx(
-          () => (controller.currentPage.value != controller.listLength - 1 )
+          () => (controller.currentPage.value != controller.listLength - 1)
               ? IconButton(
                   onPressed: () {
                     controller.pageController.nextPage(
@@ -78,7 +101,6 @@ class SingleFloreScreen extends StatelessWidget {
   }
 
   Widget _buildArrowLeft() {
-
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(

@@ -50,19 +50,42 @@ class SingleTowerScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+                        buildSitCat(),
                       ],
                     ),
                   ),
+
                 ],
               ),
             ),
             _buildSettingButton(),
             _buildHomeButton(),
+
           ],
         ),
       ),
     );
   }
+
+  Widget buildSitCat() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        margin: EdgeInsets.only(
+            right: Get.width * .8,
+        ),
+        height: Get.height * .35,
+        width: Get.width * .17,
+        child:const Image(
+          image: AssetImage(
+            'assets/images/Characters/sitCat.png',
+          ),
+        ),
+      ),
+    );
+  }
+
+
 
   Widget _buildSettingButton() {
     return Align(

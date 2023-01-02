@@ -17,4 +17,19 @@ class SingleTowerController extends GetxController {
       'flore':flore,
     });
   }
+
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+  }
+
 }
