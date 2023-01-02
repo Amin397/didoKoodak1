@@ -6,6 +6,7 @@ import '../View/AnimalInfo/animal_info_screen.dart';
 import '../View/GamesList/games_list_screen.dart';
 import '../View/Home/home_screen.dart';
 import '../View/Setting/setting_screen.dart';
+import '../View/SingleFlore/single_flore_screen.dart';
 import '../View/SingleHome/single_home_screen.dart';
 import '../View/SingleMovie/single_movie_screen.dart';
 import '../View/SinglePodcast/single_podcast_screen.dart';
@@ -24,6 +25,7 @@ class NameRouts{
   static const String singleTower = '/singleTower';
   static const String singleMovie = '/singleMovie';
   static const String singlePodcast = '/singlePodcast';
+  static const String singleFlore = '/singleFlore';
 }
 
 class PageRout {
@@ -76,6 +78,11 @@ class PageRout {
     GetPage(
       name: NameRouts.singlePodcast,
       page: () => SinglePodcastScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.singleFlore,
+      page: () => SingleFloreScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(

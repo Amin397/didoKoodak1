@@ -17,10 +17,11 @@ class BuildMovieScreenWidget extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: Container(
         margin: EdgeInsets.only(
-          top: Get.height * .15,
+          top: Get.height * .07,
+          right: Get.width * .02,
         ),
-        height: Get.height * .57,
-        width: Get.width * .65,
+        height: Get.height * .7,
+        width: Get.width * .9,
         child: Row(
           children: [
             _buildLeftPart(),
@@ -34,7 +35,7 @@ class BuildMovieScreenWidget extends StatelessWidget {
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
-                    borderRadius: radiusAll8,
+                    borderRadius: radiusAll6,
                     boxShadow: shadow(),
                     gradient: const RadialGradient(
                       colors: [
@@ -69,7 +70,7 @@ class BuildMovieScreenWidget extends StatelessWidget {
   Widget _buildLeftPart() {
     return SizedBox(
       height: double.maxFinite,
-      width: Get.width * .05,
+      width: Get.width * .1,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -96,11 +97,11 @@ class BuildMovieScreenWidget extends StatelessWidget {
   }
 
   Widget _buildRightPart() {
-    return Container(
+    return SizedBox(
       height: double.maxFinite,
-      width: Get.width * .05,
+      width: Get.width * .1,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           _buildButton(
             button: 'assets/images/Buttons/zoomButton.png',
@@ -163,12 +164,12 @@ class BuildMovieScreenWidget extends StatelessWidget {
       onTap: () {
         func();
       },
-      child: SizedBox(
-        child: Image(
-          image: AssetImage(
-            button,
-          ),
+      child: Image(
+        image: AssetImage(
+          button,
         ),
+        height: Get.height * .1,
+        width: Get.height * .1,
       ),
     );
   }

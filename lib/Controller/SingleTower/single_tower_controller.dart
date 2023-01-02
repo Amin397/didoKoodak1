@@ -11,4 +11,10 @@ class SingleTowerController extends GetxController {
       'path': videoPath,
     });
   }
+
+  void goToSingleFlore({required int flore}) {
+    Get.toNamed(NameRouts.singleFlore , arguments: {
+      'flore':flore,
+    });
+  }
 }

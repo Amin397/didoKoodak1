@@ -314,130 +314,136 @@ class SingleTowerScreen extends StatelessWidget {
   Widget _buildFirstTowerPart() {
     return Align(
       alignment: Alignment.bottomCenter,
-      child: Container(
-        width: Get.width * .6,
-        height: Get.height * .2,
-        // color: Colors.red,
-        margin: EdgeInsets.symmetric(
-          vertical: Get.height * .8,
-        ),
-        child: Row(
-          children: [
-            Flexible(
-              flex: 6,
-              child: SizedBox(
-                height: double.maxFinite,
-                width: double.maxFinite,
-                child: Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: InkWell(
-                        onTap: () {
-                          controller.goToSingleMovie(
-                            videoPath:
-                                'http://192.168.88.221:8096/Items/5594b295a9a22a17daffd66fe5b05170/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
-                          );
-                        },
-                        child: const SizedBox(
-                          height: double.maxFinite,
-                          width: double.maxFinite,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: Get.width * .01,
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: InkWell(
-                        onTap: (){
-                          controller.goToSingleMovie(
-                            videoPath:
-                            'http://192.168.88.221:8096/Items/5232ae8b56df326b8f9f39417593f560/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
-                          );
-                        },
-                        child: const SizedBox(
-                          height: double.maxFinite,
-                          width: double.maxFinite,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              width: Get.width * .005,
-            ),
-            Flexible(
-              flex: 6,
-              child: SizedBox(
-                height: double.maxFinite,
-                width: double.maxFinite,
-                child: Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: InkWell(
-                        onTap: (){
-                          controller.goToSingleMovie(
-                            videoPath:
-                            'http://192.168.88.221:8096/Items/f02a22f7b3452ff8093eafa189cd8b1d/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
-                          );
-                        },
-                        child: SizedBox(
-                          height: double.maxFinite,
-                          width: double.maxFinite,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: Get.width * .01,
-                    ),
-                    const Flexible(
-                      flex: 1,
-                      child: SizedBox(
-                        height: double.maxFinite,
-                        width: double.maxFinite,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              width: Get.width * .005,
-            ),
-            Flexible(
-              flex: 5,
-              child: SizedBox(
-                height: double.maxFinite,
-                width: double.maxFinite,
-                child: Row(
-                  children: [
-                    const Flexible(
-                      flex: 1,
-                      child: SizedBox(
-                        height: double.maxFinite,
-                        width: double.maxFinite,
-                      ),
-                    ),
-                    SizedBox(
-                      width: Get.width * .015,
-                    ),
-                    const Flexible(
-                      flex: 1,
-                      child: SizedBox(
-                        height: double.maxFinite,
-                        width: double.maxFinite,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+      child: InkWell(
+        onTap: () {
+          controller.goToSingleFlore(
+            flore: 0,
+          );
+        },
+        child: Container(
+          width: Get.width * .6,
+          height: Get.height * .2,
+          margin: EdgeInsets.symmetric(
+            vertical: Get.height * .8,
+          ),
+          // child: Row(
+          //   children: [
+          //     Flexible(
+          //       flex: 6,
+          //       child: SizedBox(
+          //         height: double.maxFinite,
+          //         width: double.maxFinite,
+          //         child: Row(
+          //           children: [
+          //             Flexible(
+          //               flex: 1,
+          //               child: InkWell(
+          //                 onTap: () {
+          //                   controller.goToSingleMovie(
+          //                     videoPath:
+          //                         'http://192.168.88.221:8096/Items/5594b295a9a22a17daffd66fe5b05170/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
+          //                   );
+          //                 },
+          //                 child: const SizedBox(
+          //                   height: double.maxFinite,
+          //                   width: double.maxFinite,
+          //                 ),
+          //               ),
+          //             ),
+          //             SizedBox(
+          //               width: Get.width * .01,
+          //             ),
+          //             Flexible(
+          //               flex: 1,
+          //               child: InkWell(
+          //                 onTap: (){
+          //                   controller.goToSingleMovie(
+          //                     videoPath:
+          //                     'http://192.168.88.221:8096/Items/5232ae8b56df326b8f9f39417593f560/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
+          //                   );
+          //                 },
+          //                 child: const SizedBox(
+          //                   height: double.maxFinite,
+          //                   width: double.maxFinite,
+          //                 ),
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //     SizedBox(
+          //       width: Get.width * .005,
+          //     ),
+          //     Flexible(
+          //       flex: 6,
+          //       child: SizedBox(
+          //         height: double.maxFinite,
+          //         width: double.maxFinite,
+          //         child: Row(
+          //           children: [
+          //             Flexible(
+          //               flex: 1,
+          //               child: InkWell(
+          //                 onTap: (){
+          //                   controller.goToSingleMovie(
+          //                     videoPath:
+          //                     'http://192.168.88.221:8096/Items/f02a22f7b3452ff8093eafa189cd8b1d/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
+          //                   );
+          //                 },
+          //                 child: SizedBox(
+          //                   height: double.maxFinite,
+          //                   width: double.maxFinite,
+          //                 ),
+          //               ),
+          //             ),
+          //             SizedBox(
+          //               width: Get.width * .01,
+          //             ),
+          //             const Flexible(
+          //               flex: 1,
+          //               child: SizedBox(
+          //                 height: double.maxFinite,
+          //                 width: double.maxFinite,
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //     SizedBox(
+          //       width: Get.width * .005,
+          //     ),
+          //     Flexible(
+          //       flex: 5,
+          //       child: SizedBox(
+          //         height: double.maxFinite,
+          //         width: double.maxFinite,
+          //         child: Row(
+          //           children: [
+          //             const Flexible(
+          //               flex: 1,
+          //               child: SizedBox(
+          //                 height: double.maxFinite,
+          //                 width: double.maxFinite,
+          //               ),
+          //             ),
+          //             SizedBox(
+          //               width: Get.width * .015,
+          //             ),
+          //             const Flexible(
+          //               flex: 1,
+          //               child: SizedBox(
+          //                 height: double.maxFinite,
+          //                 width: double.maxFinite,
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ),
       ),
     );
