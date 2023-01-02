@@ -2,6 +2,9 @@ import 'package:chewie/chewie.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../Globals/blocs.dart';
+import '../../Utils/storage_utils.dart';
+
 class SingleMovieController extends GetxController {
   VideoPlayerController? vController;
   ChewieController? cController;
@@ -17,6 +20,7 @@ class SingleMovieController extends GetxController {
     videoPath = Get.arguments['path'];
     initVideo();
     super.onInit();
+    Blocs.musicBloc.offMusic(setOff: true);
   }
 
   void initVideo() async {
@@ -40,6 +44,23 @@ class SingleMovieController extends GetxController {
     vController!.dispose();
     cController!.dispose();
     super.dispose();
+  }
+  @override
+  void onClose() {
+    vController!.dispose();
+    cController!.dispose();
+    checkBgMusic();
+    super.onClose();
+  }
+
+  checkBgMusic()async{
+    StorageUtils.getBgMusic().then((value){
+      if(value){
+        Blocs.musicBloc.offMusic(setOff: false);
+      }else{
+        Blocs.musicBloc.offMusic(setOff: true);
+      }
+    });
   }
 
   void zoom() async {

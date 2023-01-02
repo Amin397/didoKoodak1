@@ -12,7 +12,7 @@ class StorageUtils {
     );
   }
 
-  static Future<bool> getBgMusic() async {
+  static Future<dynamic> getBgMusic() async {
     return box.read(
       'music',
     );

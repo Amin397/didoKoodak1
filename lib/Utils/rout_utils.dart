@@ -1,3 +1,4 @@
+import 'package:dido_koodak1/View/SingleRoom/single_room_screen.dart';
 import 'package:get/get.dart';
 
 import '../View/AlphabetGame/alphabet_game_screen.dart';
@@ -26,6 +27,7 @@ class NameRouts{
   static const String singleMovie = '/singleMovie';
   static const String singlePodcast = '/singlePodcast';
   static const String singleFlore = '/singleFlore';
+  static const String singleRoom = '/singleRoom';
 }
 
 class PageRout {
@@ -83,6 +85,11 @@ class PageRout {
     GetPage(
       name: NameRouts.singleFlore,
       page: () => SingleFloreScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.singleRoom,
+      page: () => SingleRoomScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(

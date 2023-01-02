@@ -18,7 +18,7 @@ class SinglePodcastController extends GetxController {
       id: 0,
       isLoaded: false,
       path:
-          'https://cdn.pixabay.com/download/audio/2022/08/22/audio_ee05e9861e.mp3?filename=kids-117853.mp3',
+          'http://192.168.88.221:8096/Items/fb3c5264cb620528a3cd57156c025ecd/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
       player: AudioPlayer(),
       position: Duration.zero.obs,
     ),
@@ -27,7 +27,7 @@ class SinglePodcastController extends GetxController {
       id: 1,
       isLoaded: false,
       path:
-          'https://cdn.pixabay.com/download/audio/2022/10/14/audio_84b5738b17.mp3?filename=cinim-brainfluid-122844.mp3',
+          'http://192.168.88.221:8096/Items/3907887956646f52ff41b64fd42709ac/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
       player: AudioPlayer(),
       position: Duration.zero.obs,
     ),
@@ -36,7 +36,7 @@ class SinglePodcastController extends GetxController {
       id: 2,
       isLoaded: false,
       path:
-          'https://cdn.pixabay.com/download/audio/2022/10/14/audio_84b5738b17.mp3',
+          'http://192.168.88.221:8096/Items/6f19a0d3d2af98f0ae337b80dcedda6a/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
       player: AudioPlayer(),
       position: Duration.zero.obs,
     ),
@@ -45,7 +45,7 @@ class SinglePodcastController extends GetxController {
       id: 3,
       isLoaded: false,
       path:
-          'https://cdn.pixabay.com/download/audio/2022/11/11/audio_684ca37dc0.mp3?filename=mountain-path-125573.mp3',
+          'http://192.168.88.221:8096/Items/6f19a0d3d2af98f0ae337b80dcedda6a/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
       player: AudioPlayer(),
       position: Duration.zero.obs,
     ),
@@ -57,6 +57,7 @@ class SinglePodcastController extends GetxController {
       initialPage: currentPage.value,
     );
     super.onInit();
+    Blocs.musicBloc.offMusic(setOff: true);
     initMusicData();
     // player.positionStream.listen((event) {
     //   position.value = event;
@@ -101,7 +102,9 @@ class SinglePodcastController extends GetxController {
   checkBgMusic()async{
     StorageUtils.getBgMusic().then((value){
       if(value){
-        Blocs.musicBloc.player.play();
+        Blocs.musicBloc.offMusic(setOff: false);
+      }else{
+        Blocs.musicBloc.offMusic(setOff: true);
       }
     });
   }

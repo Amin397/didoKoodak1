@@ -11,13 +11,12 @@ class MusicBloc {
 
   AudioPlayer player = AudioPlayer();
 
-
   Future<void> init()async{
     player = AudioPlayer();
-    await player.setUrl('https://cdn.pixabay.com/download/audio/2022/08/22/audio_ee05e9861e.mp3?filename=kids-117853.mp3' );
+    player.setLoopMode(LoopMode.all);
+    await player.setAsset('assets/sounds/bgMusic.mp3');
     player.setVolume(.5).whenComplete(() => play());
   }
-
 
   void play()async{
     await player.play();
@@ -25,9 +24,9 @@ class MusicBloc {
 
   void offMusic({required bool setOff})async{
     if(setOff){
-      player.dispose();
+      await player.pause();
     }else{
-      init();
+      await player.play();
     }
   }
 

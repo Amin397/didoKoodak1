@@ -26,19 +26,34 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    // setInitBgMusic();
+    setInitBgMusic();
     super.onInit();
   }
 
-  // void setInitBgMusic() async {
-  //   // print(Blocs.musicBloc.player.playing);
-  //   if (!Blocs.musicBloc.player.playing) {
-  //     StorageUtils.getBgMusic().then((value) {
-  //       print(value);
-  //       // if (!value) {
-  //       //   Blocs.musicBloc.player.play();
-  //       // }
-  //     });
-  //   }
-  // }
+  void setInitBgMusic() async {
+    StorageUtils.getBgMusic().then((value) {
+      print(value);
+      if (value is bool) {
+        if (value) {
+          if (!Blocs.musicBloc.player.playing) {
+            Blocs.musicBloc.init();
+          }
+        }
+      } else {
+        StorageUtils.setBgMusic(play: true).then((value) {
+          Blocs.musicBloc.init();
+        });
+      }
+    });
+
+    // print(Blocs.musicBloc.player.playing);
+    // if (!Blocs.musicBloc.player.playing) {
+    //   StorageUtils.getBgMusic().then((value) {
+    //     print(value);
+    //     // if (!value) {
+    //     //   Blocs.musicBloc.player.play();
+    //     // }
+    //   });
+    // }
+  }
 }

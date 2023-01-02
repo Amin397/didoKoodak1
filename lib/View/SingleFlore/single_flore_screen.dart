@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dido_koodak1/Const/measures.dart';
+import 'package:dido_koodak1/Model/FloreModel/flore_two_model.dart';
 import 'package:dido_koodak1/Model/FloreModel/room_model.dart';
 import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:flutter/material.dart';
@@ -28,11 +29,19 @@ class SingleFloreScreen extends StatelessWidget {
                 onPageChanged: (page) {
                   controller.changePage(page: page);
                 },
-                itemCount: controller.roomList.length,
+                itemCount: (controller.flore == 0)
+                    ? controller.roomList.length
+                    : controller.floreTwoModel.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return _buildRoomItem(
-                    room: controller.roomList[index],
-                  );
+                  if (controller.flore == 0) {
+                    return _buildRoomItem(
+                      room: controller.roomList[index],
+                    );
+                  } else {
+                    return _buildRoomItem2(
+                      room: controller.floreTwoModel[index],
+                    );
+                  }
                 },
               ),
             ),
@@ -46,12 +55,13 @@ class SingleFloreScreen extends StatelessWidget {
   }
 
   Widget _buildArrowRight() {
+    int len = (controller.flore == 0)?controller.roomList.length-1:controller.floreTwoModel.length-1;
     return Align(
       alignment: Alignment.centerRight,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Obx(
-          () => (controller.currentPage.value != controller.roomList.length - 1)
+          () => (controller.currentPage.value != len)
               ? IconButton(
                   onPressed: () {
                     controller.pageController.nextPage(
@@ -71,6 +81,7 @@ class SingleFloreScreen extends StatelessWidget {
   }
 
   Widget _buildArrowLeft() {
+
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
@@ -201,9 +212,9 @@ class SingleFloreScreen extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding:const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: InkWell(
-                onTap: (){
+                onTap: () {
                   Get.back();
                 },
                 child: const Image(
@@ -216,7 +227,7 @@ class SingleFloreScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
-                onTap: (){
+                onTap: () {
                   Get.offAndToNamed(NameRouts.home);
                 },
                 child: const Image(
@@ -227,6 +238,62 @@ class SingleFloreScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRoomItem2({required FloreTwoModel room}) {
+    return SizedBox(
+      height: Get.height,
+      width: Get.width,
+      child: Stack(
+        children: [
+          _buildBg(),
+          _buildTitleImage(
+            title: room.imagePath,
+          ),
+          _buildDoor2(
+            room: room,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTitleImage({required String title}) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Container(
+        margin: EdgeInsets.only(
+          right: Get.width * .17,
+          top: Get.height * .08,
+        ),
+        width: Get.width * .38,
+        height: Get.height * .5,
+        child: Image(
+          image: AssetImage(
+            title,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDoor2({required FloreTwoModel room}) {
+    return Center(
+      child: InkWell(
+        onTap: () {
+          controller.doorClick2(
+            room: room,
+          );
+        },
+        child: Container(
+          margin: EdgeInsets.only(
+            right: Get.width * .4,
+          ),
+          width: Get.width * .2,
+          height: Get.height * .65,
         ),
       ),
     );
