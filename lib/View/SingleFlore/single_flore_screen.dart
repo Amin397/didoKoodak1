@@ -29,9 +29,7 @@ class SingleFloreScreen extends StatelessWidget {
                 onPageChanged: (page) {
                   controller.changePage(page: page);
                 },
-                itemCount: (controller.flore == 0)
-                    ? controller.roomList.length
-                    : controller.floreTwoModel.length,
+                itemCount: controller.listLength,
                 itemBuilder: (BuildContext context, int index) {
                   if (controller.flore == 0) {
                     return _buildRoomItem(
@@ -55,13 +53,12 @@ class SingleFloreScreen extends StatelessWidget {
   }
 
   Widget _buildArrowRight() {
-    int len = (controller.flore == 0)?controller.roomList.length-1:controller.floreTwoModel.length-1;
     return Align(
       alignment: Alignment.centerRight,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Obx(
-          () => (controller.currentPage.value != len)
+          () => (controller.currentPage.value != controller.listLength - 1 )
               ? IconButton(
                   onPressed: () {
                     controller.pageController.nextPage(
@@ -122,7 +119,7 @@ class SingleFloreScreen extends StatelessWidget {
         }
       default:
         {
-          bgPath = 'assets/images/Backgrounds/singleFloreOneBg.png';
+          bgPath = 'assets/images/Backgrounds/singleFloreTwoBg.png';
           break;
         }
     }

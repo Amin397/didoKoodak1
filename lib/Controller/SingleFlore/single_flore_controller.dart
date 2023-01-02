@@ -7,6 +7,7 @@ import '../../Model/FloreModel/room_model.dart';
 
 class SingleFloreController extends GetxController {
   int flore = 0;
+  int listLength = 0;
 
   RxInt currentPage = 0.obs;
 
@@ -38,6 +39,117 @@ class SingleFloreController extends GetxController {
           'http://192.168.88.221:8096/Items/01b209277284ad8cdafecbcc5672a99e/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
     ),
   ];
+
+
+  List<FloreTwoModel> floreThreeList = [
+
+    FloreTwoModel(
+      imagePath: 'assets/images/lastFloreRoomBg1.png',
+      singleRoomVideos: [
+        VideoModel(
+          title: 'قسمت اول',
+          videoPath:
+          'http://192.168.88.221:8096/Items/ef540166ac77fb978a49c2ac196587ec/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img1.png',
+        ),
+        VideoModel(
+          title: 'قسمت دوم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/d2c984563240f4d1693214788d82867e/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img2.png',
+        ),
+        VideoModel(
+          title: 'قسمت سوم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/fb95e7713a6e554dd8c5e340450aa31d/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img3.png',
+        ),
+        VideoModel(
+          title: 'قسمت چهارم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/beaf2cb06c775f6d6971902f5b1e6049/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img1.png',
+        ),
+        VideoModel(
+          title: 'قسمت پنجم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/6ce1855e742028328b55f538abdaa823/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img2.png',
+        ),
+      ],
+    ),
+    FloreTwoModel(
+      imagePath: 'assets/images/lastFloreRoomBg2.png',
+      singleRoomVideos: [
+        VideoModel(
+          title: 'قسمت اول',
+          videoPath:
+          'http://192.168.88.221:8096/Items/ef540166ac77fb978a49c2ac196587ec/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img1.png',
+        ),
+        VideoModel(
+          title: 'قسمت دوم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/d2c984563240f4d1693214788d82867e/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img2.png',
+        ),
+        VideoModel(
+          title: 'قسمت سوم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/fb95e7713a6e554dd8c5e340450aa31d/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img3.png',
+        ),
+        VideoModel(
+          title: 'قسمت چهارم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/beaf2cb06c775f6d6971902f5b1e6049/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img1.png',
+        ),
+        VideoModel(
+          title: 'قسمت پنجم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/6ce1855e742028328b55f538abdaa823/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img2.png',
+        ),
+      ],
+    ),
+    FloreTwoModel(
+      imagePath: 'assets/images/lastFloreRoomBg3.png',
+      singleRoomVideos: [
+        VideoModel(
+          title: 'قسمت اول',
+          videoPath:
+          'http://192.168.88.221:8096/Items/ef540166ac77fb978a49c2ac196587ec/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img1.png',
+        ),
+        VideoModel(
+          title: 'قسمت دوم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/d2c984563240f4d1693214788d82867e/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img2.png',
+        ),
+        VideoModel(
+          title: 'قسمت سوم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/fb95e7713a6e554dd8c5e340450aa31d/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img3.png',
+        ),
+        VideoModel(
+          title: 'قسمت چهارم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/beaf2cb06c775f6d6971902f5b1e6049/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img1.png',
+        ),
+        VideoModel(
+          title: 'قسمت پنجم',
+          videoPath:
+          'http://192.168.88.221:8096/Items/6ce1855e742028328b55f538abdaa823/Download?api_key=2d358326f9bd4e7db6d79a4205d9d182',
+          imagePath: 'assets/images/img2.png',
+        ),
+      ],
+    ),
+  ];
+
 
   List<FloreTwoModel> floreTwoModel = [
     FloreTwoModel(
@@ -163,13 +275,31 @@ class SingleFloreController extends GetxController {
   @override
   void onInit() {
     flore = Get.arguments['flore'];
-
-    print('flore');
-    print(flore);
     pageController = PageController(
       initialPage: currentPage.value,
     );
+    initData();
     super.onInit();
+  }
+
+
+  initData(){
+    switch(flore){
+      case 0:{
+        listLength = roomList.length;
+        break;
+      }
+      case 1:{
+        listLength = floreTwoModel.length;
+        break;
+      }
+      default:{
+        floreTwoModel.clear();
+        floreTwoModel.addAll(floreThreeList);
+        listLength = floreTwoModel.length;
+        break;
+      }
+    }
   }
 
   void changePage({required int page}) {

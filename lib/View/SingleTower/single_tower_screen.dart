@@ -111,110 +111,118 @@ class SingleTowerScreen extends StatelessWidget {
   Widget _buildLastTowerPart() {
     return Align(
       alignment: Alignment.bottomCenter,
-      child: Container(
-        width: Get.width * .65,
-        height: Get.height * .25,
-        // margin: EdgeInsets.symmetric(
-        //   vertical: Get.height * .1,
-        // ),
-        margin: EdgeInsets.only(
-          top: Get.height * .08,
+      child: InkWell(
+        onTap: () {
+          print('flore 2');
+          controller.goToSingleFlore(
+            flore: 2,
+          );
+        },
+        child: Container(
+          width: Get.width * .65,
+          height: Get.height * .25,
+          // margin: EdgeInsets.symmetric(
+          //   vertical: Get.height * .1,
+          // ),
+          margin: EdgeInsets.only(
+            top: Get.height * .08,
+          ),
+          // color: Colors.red,
+          // child: Row(
+          //   children: [
+          //     Flexible(
+          //       flex: 6,
+          //       child: SizedBox(
+          //         height: double.maxFinite,
+          //         width: double.maxFinite,
+          //         child: Row(
+          //           children: [
+          //             const Flexible(
+          //               flex: 1,
+          //               child: SizedBox(
+          //                 height: double.maxFinite,
+          //                 width: double.maxFinite,
+          //               ),
+          //             ),
+          //             SizedBox(
+          //               width: Get.width * .01,
+          //             ),
+          //             const Flexible(
+          //               flex: 1,
+          //               child: SizedBox(
+          //                 height: double.maxFinite,
+          //                 width: double.maxFinite,
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //     SizedBox(
+          //       width: Get.width * .01,
+          //     ),
+          //     Flexible(
+          //       flex: 6,
+          //       child: SizedBox(
+          //         height: double.maxFinite,
+          //         width: double.maxFinite,
+          //         child: Row(
+          //           children: [
+          //             const Flexible(
+          //               flex: 1,
+          //               child: SizedBox(
+          //                 height: double.maxFinite,
+          //                 width: double.maxFinite,
+          //               ),
+          //             ),
+          //             SizedBox(
+          //               width: Get.width * .02,
+          //             ),
+          //             const Flexible(
+          //               flex: 1,
+          //               child: SizedBox(
+          //                 height: double.maxFinite,
+          //                 width: double.maxFinite,
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //     SizedBox(
+          //       width: Get.width * .01,
+          //     ),
+          //     Flexible(
+          //       flex: 5,
+          //       child: SizedBox(
+          //         height: double.maxFinite,
+          //         width: double.maxFinite,
+          //         child: Row(
+          //           children: [
+          //             const Flexible(
+          //               flex: 1,
+          //               child: SizedBox(
+          //                 height: double.maxFinite,
+          //                 width: double.maxFinite,
+          //               ),
+          //             ),
+          //             SizedBox(
+          //               width: Get.width * .015,
+          //             ),
+          //             const Flexible(
+          //               flex: 1,
+          //               child: SizedBox(
+          //                 height: double.maxFinite,
+          //                 width: double.maxFinite,
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ),
-        // color: Colors.red,
-        // child: Row(
-        //   children: [
-        //     Flexible(
-        //       flex: 6,
-        //       child: SizedBox(
-        //         height: double.maxFinite,
-        //         width: double.maxFinite,
-        //         child: Row(
-        //           children: [
-        //             const Flexible(
-        //               flex: 1,
-        //               child: SizedBox(
-        //                 height: double.maxFinite,
-        //                 width: double.maxFinite,
-        //               ),
-        //             ),
-        //             SizedBox(
-        //               width: Get.width * .01,
-        //             ),
-        //             const Flexible(
-        //               flex: 1,
-        //               child: SizedBox(
-        //                 height: double.maxFinite,
-        //                 width: double.maxFinite,
-        //               ),
-        //             ),
-        //           ],
-        //         ),
-        //       ),
-        //     ),
-        //     SizedBox(
-        //       width: Get.width * .01,
-        //     ),
-        //     Flexible(
-        //       flex: 6,
-        //       child: SizedBox(
-        //         height: double.maxFinite,
-        //         width: double.maxFinite,
-        //         child: Row(
-        //           children: [
-        //             const Flexible(
-        //               flex: 1,
-        //               child: SizedBox(
-        //                 height: double.maxFinite,
-        //                 width: double.maxFinite,
-        //               ),
-        //             ),
-        //             SizedBox(
-        //               width: Get.width * .02,
-        //             ),
-        //             const Flexible(
-        //               flex: 1,
-        //               child: SizedBox(
-        //                 height: double.maxFinite,
-        //                 width: double.maxFinite,
-        //               ),
-        //             ),
-        //           ],
-        //         ),
-        //       ),
-        //     ),
-        //     SizedBox(
-        //       width: Get.width * .01,
-        //     ),
-        //     Flexible(
-        //       flex: 5,
-        //       child: SizedBox(
-        //         height: double.maxFinite,
-        //         width: double.maxFinite,
-        //         child: Row(
-        //           children: [
-        //             const Flexible(
-        //               flex: 1,
-        //               child: SizedBox(
-        //                 height: double.maxFinite,
-        //                 width: double.maxFinite,
-        //               ),
-        //             ),
-        //             SizedBox(
-        //               width: Get.width * .015,
-        //             ),
-        //             const Flexible(
-        //               flex: 1,
-        //               child: SizedBox(
-        //                 height: double.maxFinite,
-        //                 width: double.maxFinite,
-        //               ),
-        //             ),
-        //           ],
-        //         ),
-        //       ),
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
