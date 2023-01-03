@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
@@ -27,77 +28,95 @@ class SplashScreen extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            Obx(
-              () => AnimatedPositioned(
-                duration: const Duration(milliseconds: 500),
-                bottom: (controller.isStarted.isTrue)
-                    ? Get.height * .25
-                    : -Get.height * .6,
-                child: InkWell(
-                  onTap: () {
-                    controller.goToHome();
-                  },
-                  child: SizedBox(
-                    width: Get.width,
-                    height: Get.height * .8,
-                    child: const Image(
-                      image: AssetImage(
-                        'assets/images/didoLogo.png',
-                      ),
-                    ),
-                  ),
+            InkWell(
+              onTap: () {
+                controller.goToHome();
+              },
+              child: Center(
+                child: SizedBox(
+                  width: Get.width * .5,
+                  height: Get.height * .8,
+                  child: SvgPicture.asset('assets/images/didoLogo.svg'),
+                  // child: const Image(
+                  //   image: AssetImage(
+                  //     'assets/images/didoLogo.png',
+                  //   ),
+                  // ),
                 ),
               ),
             ),
+            // Obx(
+            //   () => AnimatedPositioned(
+            //     duration: const Duration(milliseconds: 500),
+            //     bottom: (controller.isStarted.isTrue)
+            //         ? Get.height * .1
+            //         : -Get.height * .6,
+            //     child: InkWell(
+            //       onTap: () {
+            //         controller.goToHome();
+            //       },
+            //       child: SizedBox(
+            //         width: Get.width * .5,
+            //         height: Get.height * .8,
+            //         child: SvgPicture.asset('assets/images/didoLogo.svg'),
+            //         // child: const Image(
+            //         //   image: AssetImage(
+            //         //     'assets/images/didoLogo.png',
+            //         //   ),
+            //         // ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
 
-            _buildImage(
-                path: 'assets/images/Characters/shoshoJump.png',
-                height: Get.height * .4,
-                width: Get.width * .25,
-                padding: EdgeInsets.only(
-                  bottom: Get.height * .1,
-                  right: Get.width * .25,
-                )),
-            _buildImage(
-                path: 'assets/images/Characters/krok.png',
-                height: Get.height * .3,
-                width: Get.width * .2,
-                padding: EdgeInsets.only(
-                  bottom: Get.height * .1,
-                  left: Get.width * .3,
-                )),
-            _buildImage(
-                path: 'assets/images/Characters/ihihi.png',
-                height: Get.height * .3,
-                width: Get.width * .2,
-                padding: EdgeInsets.only(
-                  bottom: Get.height * .1,
-                  left: Get.width * .05,
-                )),
-            _buildImage(
-                path: 'assets/images/Characters/pospos.png',
-                height: Get.height * .2,
-                width: Get.width * .1,
-                padding: EdgeInsets.only(
-                  bottom: Get.height * .05,
-                  right: Get.width * .05,
-                )),
-            _buildImage(
-                path: 'assets/images/Characters/cat.png',
-                height: Get.height * .35,
-                width: Get.width * .15,
-                padding: EdgeInsets.only(
-                  // bottom: Get.height * .01,
-                  left: Get.width * .75,
-                )),
-            _buildImage(
-                path: 'assets/images/Characters/radinJump.png',
-                height: Get.height * .5,
-                width: Get.width * .25,
-                padding: EdgeInsets.only(
-                  bottom: Get.height * .05,
-                  left: Get.width * .5,
-                )),
+            // _buildImage(
+            //     path: 'assets/images/Characters/shoshoJump.png',
+            //     height: Get.height * .4,
+            //     width: Get.width * .25,
+            //     padding: EdgeInsets.only(
+            //       bottom: Get.height * .1,
+            //       right: Get.width * .25,
+            //     )),
+            // _buildImage(
+            //     path: 'assets/images/Characters/krok.png',
+            //     height: Get.height * .3,
+            //     width: Get.width * .2,
+            //     padding: EdgeInsets.only(
+            //       bottom: Get.height * .1,
+            //       left: Get.width * .3,
+            //     )),
+            // _buildImage(
+            //     path: 'assets/images/Characters/ihihi.png',
+            //     height: Get.height * .3,
+            //     width: Get.width * .2,
+            //     padding: EdgeInsets.only(
+            //       bottom: Get.height * .1,
+            //       left: Get.width * .05,
+            //     )),
+            // _buildImage(
+            //     path: 'assets/images/Characters/pospos.png',
+            //     height: Get.height * .2,
+            //     width: Get.width * .1,
+            //     padding: EdgeInsets.only(
+            //       bottom: Get.height * .05,
+            //       right: Get.width * .05,
+            //     )),
+            // _buildImage(
+            //     path: 'assets/images/Characters/cat.png',
+            //     height: Get.height * .35,
+            //     width: Get.width * .15,
+            //     padding: EdgeInsets.only(
+            //       // bottom: Get.height * .01,
+            //       left: Get.width * .75,
+            //     )),
+            // _buildImage(
+            //     path: 'assets/images/Characters/radinJump.png',
+            //     height: Get.height * .5,
+            //     width: Get.width * .25,
+            //     padding: EdgeInsets.only(
+            //       bottom: Get.height * .05,
+            //       left: Get.width * .5,
+            //     )),
             // _buildImage(path: ''),
             // _buildImage(path: ''),
             // _buildImage(path: ''),
@@ -143,7 +162,7 @@ class SplashScreen extends StatelessWidget {
     required EdgeInsets padding,
   }) {
     return Obx(
-      () => (!controller.isStarted.isTrue)
+      () => (controller.isStarted.isTrue)
           ? Align(
               alignment: Alignment.bottomCenter,
               child: Padding(

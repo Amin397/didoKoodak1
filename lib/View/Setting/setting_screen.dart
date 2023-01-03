@@ -1,6 +1,7 @@
 import 'package:dido_koodak1/Const/measures.dart';
 import 'package:dido_koodak1/Utils/widget_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../Controller/Setting/setting_controller.dart';
@@ -69,12 +70,7 @@ class SettingScreen extends StatelessWidget {
         ),
         height: Get.height * .45,
         width: Get.width * .25,
-        child: Image(
-          image: AssetImage(
-            'assets/images/Characters/radin.png',
-          ),
-          fit: BoxFit.contain,
-        ),
+        child: SvgPicture.asset('assets/images/Characters/radin.svg'),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:chewie/chewie.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
@@ -37,6 +38,20 @@ class SingleMovieController extends GetxController {
     );
 
     isLoaded(true);
+
+
+
+    cController!.addListener(() {
+      if(cController!.isFullScreen){
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.landscapeLeft,
+          DeviceOrientation.landscapeRight,]);
+      }else{
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.landscapeLeft,
+          DeviceOrientation.landscapeRight,]);
+      }
+    });
   }
 
   @override
@@ -45,6 +60,7 @@ class SingleMovieController extends GetxController {
     cController!.dispose();
     super.dispose();
   }
+
   @override
   void onClose() {
     vController!.dispose();
@@ -53,11 +69,11 @@ class SingleMovieController extends GetxController {
     super.onClose();
   }
 
-  checkBgMusic()async{
-    StorageUtils.getBgMusic().then((value){
-      if(value){
+  checkBgMusic() async {
+    StorageUtils.getBgMusic().then((value) {
+      if (value) {
         Blocs.musicBloc.offMusic(setOff: false);
-      }else{
+      } else {
         Blocs.musicBloc.offMusic(setOff: true);
       }
     });

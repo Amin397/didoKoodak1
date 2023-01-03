@@ -1,5 +1,6 @@
 import 'package:dido_koodak1/Controller/SingleHome/single_home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 
@@ -34,11 +35,7 @@ class BuildTentWidget extends StatelessWidget {
         ),
         height: Get.height * .35,
         width: Get.width * .17,
-        child: Image(
-          image: AssetImage(
-            'assets/images/Characters/shosho.png',
-          ),
-        ),
+        child: SvgPicture.asset('assets/images/Characters/shosho.svg'),
       ),
     );
   }
@@ -53,12 +50,7 @@ class BuildTentWidget extends StatelessWidget {
         ),
         height: Get.height * .3,
         width: Get.width * .2,
-        child: Image(
-          image: AssetImage(
-            'assets/images/Characters/radinSit.png',
-          ),
-          fit: BoxFit.contain,
-        ),
+        child: SvgPicture.asset('assets/images/Characters/radinSit.svg'),
       ),
     );
   }

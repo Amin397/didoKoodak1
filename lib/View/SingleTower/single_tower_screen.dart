@@ -1,5 +1,6 @@
 import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../Const/measures.dart';
@@ -38,7 +39,7 @@ class SingleTowerScreen extends StatelessWidget {
                         ),
                         Align(
                           alignment: Alignment.bottomCenter,
-                          child: Container(
+                          child: SizedBox(
                             width: Get.width * .8,
                             height: Get.height * 1.2,
                             child: Column(
@@ -76,11 +77,7 @@ class SingleTowerScreen extends StatelessWidget {
         ),
         height: Get.height * .35,
         width: Get.width * .17,
-        child:const Image(
-          image: AssetImage(
-            'assets/images/Characters/sitCat.png',
-          ),
-        ),
+        child: SvgPicture.asset('assets/images/Characters/sitCat.svg'),
       ),
     );
   }

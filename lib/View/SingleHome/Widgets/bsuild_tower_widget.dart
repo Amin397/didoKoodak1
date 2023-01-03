@@ -1,5 +1,6 @@
 import 'package:dido_koodak1/Controller/SingleHome/single_home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
 
@@ -64,11 +65,7 @@ class BuildTowerWidget extends StatelessWidget {
         child: Transform(
           alignment: Alignment.center,
           transform: Matrix4.rotationY(math.pi),
-          child: Image(
-            image: AssetImage(
-              'assets/images/Characters/radin.png',
-            ),
-          ),
+          child: SvgPicture.asset('assets/images/Characters/radin.svg'),
         ),
       ),
     );

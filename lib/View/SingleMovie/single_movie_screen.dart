@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../Controller/SingleMovie/single_movie_controller.dart';
@@ -19,8 +21,9 @@ class SingleMovieScreen extends StatelessWidget {
           children: [
             _buildBg(),
             BuildMovieScreenWidget(
-              controller:controller,
+              controller: controller,
             ),
+            _buildChild(),
           ],
         ),
       ),
@@ -31,11 +34,23 @@ class SingleMovieScreen extends StatelessWidget {
     return SizedBox(
       height: Get.height,
       width: Get.width,
-      child:const Image(
+      child: const Image(
         image: AssetImage(
           'assets/images/Backgrounds/singleVideoBg.png',
         ),
         fit: BoxFit.fill,
+      ),
+    );
+  }
+
+  Widget _buildChild() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: SvgPicture.asset(
+        'assets/images/child.svg',
+        height: Get.height * .25,
+        width: Get.width * .8,
+        color: Colors.blueGrey.shade900,
       ),
     );
   }

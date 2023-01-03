@@ -43,34 +43,102 @@ class GamesListScreen extends StatelessWidget {
                 width: Get.width * 1.63,
                 child: Row(
                   children: [
-                    SizedBox(width: Get.width * .15,),
+                    SizedBox(
+                      width: Get.width * .15,
+                    ),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         controller.goToAnimalInfo();
                       },
                       child: SizedBox(
                         height: Get.height * .4,
                         width: Get.width * .18,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Transform.rotate(
+                                  angle: .3,
+                                  child: Text(
+                                    ' A',
+                                    style: TextStyle(
+                                      fontSize: 86.0,
+                                      color: Colors.red.shade900,
+                                      fontFamily: 'xKoodak',
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top:8.0),
+                                  child: Transform.rotate(
+                                    angle: -.3,
+                                    child: Text(
+                                      ' B',
+                                      style: TextStyle(
+                                        fontSize: 86.0,
+                                        color: Colors.red.shade900,
+                                        fontFamily: 'xKoodak',
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                    SizedBox(width: Get.width * .06,),
+                    SizedBox(
+                      width: Get.width * .06,
+                    ),
                     Transform.rotate(
                       angle: .1,
                       child: InkWell(
-                        onTap: (){
+                        onTap: () {
                           controller.goToAnimalGame();
                         },
                         child: SizedBox(
                           height: Get.height * .4,
                           width: Get.width * .18,
+                          child: Column(
+                            children: [
+                              const SizedBox(height: 18.0,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Transform.rotate(
+                                    angle: .2,
+                                    child: const Image(
+                                      image: AssetImage('assets/images/owl.png'),
+                                      height: 90.0,
+                                      width: 70.0,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top:8.0),
+                                    child: Transform.rotate(
+                                      angle: -.2,
+                                      child: const Image(
+                                        image: AssetImage('assets/images/tiger.png'),
+                                        height: 90.0,
+                                        width: 70.0,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    SizedBox(width: Get.width * .03,),
+                    SizedBox(
+                      width: Get.width * .03,
+                    ),
                     Transform.rotate(
                       angle: -.1,
                       child: InkWell(
-                        onTap: (){
+                        onTap: () {
                           controller.goToAlphabetGame();
                         },
                         child: SizedBox(
@@ -169,7 +237,6 @@ class GamesListScreen extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _buildBg() {
     return const Image(
