@@ -186,6 +186,7 @@ class BuildSingleAlphabetItemWidget extends StatelessWidget {
                       crossAxisCount: 5),
                   itemBuilder: (_, index) => _buildLetterItem(
                     gridLetter: controller.alphabetList[index],
+                    index: index,
                   ),
                   itemCount: controller.alphabetList.length,
                 ),
@@ -199,12 +200,14 @@ class BuildSingleAlphabetItemWidget extends StatelessWidget {
 
   Widget _buildLetterItem({
     required AlphabetModel gridLetter,
+    required int index,
   }) {
     return InkWell(
       onTap: (){
-        controller.playLetterSound(
-          path: gridLetter.letterVoice,
-        );
+        // controller.playLetterSound(
+        //   path: gridLetter.letterVoice,
+        // );
+        controller.goToThisLetter(index:index);
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 500),

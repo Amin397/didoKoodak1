@@ -1,4 +1,5 @@
 import 'package:dido_koodak1/Utils/rout_utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -20,6 +21,7 @@ class SingleTowerScreen extends StatelessWidget {
         child: Stack(
           children: [
             SingleChildScrollView(
+              controller: controller.scrollerController,
               child: Column(
                 children: [
                   SizedBox(

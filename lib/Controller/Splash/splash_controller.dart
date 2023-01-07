@@ -11,14 +11,11 @@ class SplashController extends GetxController {
     Future.delayed(const Duration(seconds: 1), () {
       isStarted(true);
     });
-    // initMusic();
-    super.onInit();
-  }
 
-  void goToHome() {
-    Get.offAndToNamed(
-      NameRouts.home,
-    );
+    Future.delayed(const Duration(seconds: 3) , (){
+      Get.offAllNamed(NameRouts.home);
+    });
+    super.onInit();
   }
 
   @override

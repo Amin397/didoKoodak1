@@ -42,7 +42,6 @@ class SingleFloreController extends GetxController {
 
 
   List<FloreTwoModel> floreThreeList = [
-
     FloreTwoModel(
       imagePath: 'assets/images/lastFloreRoomBg1.png',
       singleRoomVideos: [

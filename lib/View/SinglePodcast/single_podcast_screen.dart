@@ -42,8 +42,8 @@ class SinglePodcastScreen extends StatelessWidget {
         },
         child: Container(
           margin: paddingAll28,
-          height: Get.height * .1,
-          width: Get.height * .1,
+          height: Get.height * .12,
+          width: Get.height * .12,
           child: const Image(
             image: AssetImage(
               'assets/images/Buttons/settingButton.png',
@@ -63,8 +63,8 @@ class SinglePodcastScreen extends StatelessWidget {
         },
         child: Container(
           margin: paddingAll28,
-          height: Get.height * .1,
-          width: Get.height * .1,
+          height: Get.height * .12,
+          width: Get.height * .12,
           child: const Image(
             image: AssetImage(
               'assets/images/Buttons/homeButton.png',
@@ -120,9 +120,11 @@ class SinglePodcastScreen extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: controller.podcastsList.length,
         controller: controller.pageController,
-        physics: const NeverScrollableScrollPhysics(),
         onPageChanged: (page) {
           controller.currentPage(page);
+          for (var o in controller.podcastsList) {
+            o.player.pause();
+          }
           // controller.listener(podcast: controller.podcastsList[page]);
         },
         itemBuilder: (BuildContext context, int index) {

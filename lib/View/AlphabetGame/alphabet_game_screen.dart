@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:onboarding_animation/onboarding_animation.dart';
 
 import '../../Controller/AlphabetGame/alphabet_game_controller.dart';
+import '../../Globals/blocs.dart';
 import '../../Model/AlphabetGame/alphabet_model.dart';
 import 'Widgets/build_single_alphabet_item_widget.dart';
 
@@ -24,7 +25,6 @@ class AlphabetGameScreen extends StatelessWidget {
               height: Get.height,
               width: Get.width,
               child: PageView.builder(
-                physics: const BouncingScrollPhysics(),
                 itemCount: controller.alphabetList.length,
                 onPageChanged: (page){
                   controller.changePage(page:page);
@@ -64,7 +64,7 @@ class AlphabetGameScreen extends StatelessWidget {
             InkWell(
               onTap: (){
                 Get.back();
-                controller.checkBgMusic();
+                Blocs.musicBloc.checkBgMusic();
               },
               child: const Padding(
                 padding: EdgeInsets.all(8.0),

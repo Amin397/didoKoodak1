@@ -1,3 +1,4 @@
+import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../Const/measures.dart';
@@ -8,41 +9,45 @@ import 'Widgets/build_tent_widget.dart';
 
 class SingleHomeScreen extends StatelessWidget {
   SingleHomeScreen({Key? key}) : super(key: key);
-
   final SingleHomeController controller = Get.put(SingleHomeController());
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SizedBox(
-        height: Get.height,
-        width: Get.width,
-        child: Stack(
-          children: [
-            SizedBox(
-              height: Get.height,
-              width: Get.width,
-              child: PageView(
-                controller: controller.pageController,
-                onPageChanged: (page) {
-                  controller.changedPage(page: page);
-                },
-                children: [
-                  BuildTowerWidget(
-                    controller: controller,
-                  ),
-                  BuildCarouseWidget(
-                    controller: controller,
-                  ),
-                  BuildTentWidget(
-                    controller: controller,
-                  ),
-                ],
+    return WillPopScope(
+      onWillPop: () async{
+        Get.offAllNamed(NameRouts.home);
+        return true;
+      },
+      child: Scaffold(
+        body: SizedBox(
+          height: Get.height,
+          width: Get.width,
+          child: Stack(
+            children: [
+              SizedBox(
+                height: Get.height,
+                width: Get.width,
+                child: PageView(
+                  controller: controller.pageController,
+                  onPageChanged: (page) {
+                    controller.changedPage(page: page);
+                  },
+                  children: [
+                    BuildTowerWidget(
+                      controller: controller,
+                    ),
+                    BuildCarouseWidget(
+                      controller: controller,
+                    ),
+                    BuildTentWidget(
+                      controller: controller,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            _buildHomeButton(),
-            _buildSettingButton(),
-          ],
+              _buildHomeButton(),
+              _buildSettingButton(),
+            ],
+          ),
         ),
       ),
     );
@@ -53,8 +58,7 @@ class SingleHomeScreen extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: InkWell(
         onTap: () {
-          // controller.goToSetting();
-          controller.pageController.previousPage(duration: Duration(milliseconds: 1100), curve: Curves.easeInOutCubic);
+          controller.goToSetting();
         },
         child: Container(
           margin: paddingAll28,
@@ -75,8 +79,7 @@ class SingleHomeScreen extends StatelessWidget {
       alignment: Alignment.topRight,
       child: InkWell(
         onTap: () {
-          // Get.back();
-          controller.pageController.nextPage(duration: Duration(milliseconds: 1100), curve: Curves.easeInOutCubic);
+          Get.offAllNamed(NameRouts.home);
         },
         child: Container(
           margin: paddingAll28,

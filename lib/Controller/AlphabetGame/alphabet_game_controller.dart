@@ -1,20 +1,12 @@
-import 'package:dido_koodak1/Controller/SingleHome/single_home_controller.dart';
 import 'package:dido_koodak1/Model/AlphabetGame/alphabet_model.dart';
-import 'package:dido_koodak1/Utils/API/base_http_request_utils.dart';
 import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:just_audio/just_audio.dart';
-
 import '../../Globals/blocs.dart';
-import '../../Model/API/api_result.dart';
-import '../../Utils/API/project_requests_utils.dart';
 import '../../Utils/storage_utils.dart';
 
 class AlphabetGameController extends GetxController {
-
-
   AudioPlayer player = AudioPlayer()..setVolume(1.0);
 
   void playLetterSound({required String path}) async {
@@ -23,7 +15,6 @@ class AlphabetGameController extends GetxController {
     await player.setAsset(path);
     await player.play();
   }
-
 
   List<AlphabetModel> alphabetList = [
     AlphabetModel(
@@ -45,7 +36,6 @@ class AlphabetGameController extends GetxController {
           path: 'assets/images/Letters/alligator.png',
           text: 'Alligator',
           exampleVoice: 'assets/sounds/letters/alligator.mp3',
-
         ),
       ],
       id: 0,
@@ -648,31 +638,14 @@ class AlphabetGameController extends GetxController {
   }
 
   void goToHome() {
-    Get.offAndToNamed(NameRouts.home);
-    Get.delete<AlphabetGameController>();
-    Get.delete<SingleHomeController>();
+    Get.offAllNamed(NameRouts.home);
   }
 
   void changePage({required int page}) {
     currentPage(page);
   }
 
-
-
-
-  checkBgMusic()async{
-    StorageUtils.getBgMusic().then((value){
-
-      print(value);
-      if(value){
-        Blocs.musicBloc.offMusic(setOff: false);
-      }else{
-        Blocs.musicBloc.offMusic(setOff: true);
-      }
-    });
-  }
-
-@override
+  @override
   void onClose() {
     // TODO: implement onClose
     super.onClose();
@@ -680,7 +653,15 @@ class AlphabetGameController extends GetxController {
 
   @override
   void dispose() {
-    checkBgMusic();
+    Blocs.musicBloc.checkBgMusic();
     super.dispose();
+  }
+
+  void goToThisLetter({required int index}) {
+    pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 750),
+      curve: Curves.easeInOutCubic,
+    );
   }
 }

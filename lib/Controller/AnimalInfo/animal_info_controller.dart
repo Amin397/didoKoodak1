@@ -1,7 +1,9 @@
+import 'package:dido_koodak1/Globals/blocs.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 
 import '../../Model/AnimalGame/animal_model.dart';
+import '../../Utils/storage_utils.dart';
 
 class AnimalInfoController extends GetxController {
   List<AnimalsModel> animalsList = [
@@ -113,4 +115,33 @@ class AnimalInfoController extends GetxController {
 
     animal.isSelected(true);
   }
+
+
+  @override
+  void onInit() {
+    super.onInit();
+    Blocs.musicBloc.offMusic(setOff: true);
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    for (var o in animalsList) {
+      o.player.pause();
+    }
+    Blocs.musicBloc.checkBgMusic();
+    super.onClose();
+  }
+
+  @override
+  void dispose() {
+    for (var o in animalsList) {
+      o.player.pause();
+    }
+    Blocs.musicBloc.checkBgMusic();
+    super.dispose();
+  }
+
+
+
 }

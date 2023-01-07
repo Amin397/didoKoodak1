@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '../../../Utils/widget_util.dart';
+
 class LogicScreen extends StatelessWidget {
   LogicScreen({Key? key}) : super(key: key);
 
@@ -31,7 +33,7 @@ class LogicScreen extends StatelessWidget {
                 padding: paddingAll24,
                 height: Get.height * .78,
                 width: Get.width * .35,
-                child: Center(
+                child:const Center(
                   child: SingleChildScrollView(
                     child: Text(
                       '\nسیاست حفظ اطلاعات و محرمانگی اطلاعات کاربران در اپلیکیشن دیدوپارک'
@@ -57,7 +59,15 @@ class LogicScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // _buildBackButton(),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: paddingAll32,
+                child: WidgetUtil.backButton(function: () {
+                  Get.back();
+                }),
+              ),
+            ),
           ],
         ),
       ),

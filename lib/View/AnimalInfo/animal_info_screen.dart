@@ -2,6 +2,7 @@ import 'package:dido_koodak1/Const/measures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../Controller/AnimalInfo/animal_info_controller.dart';
+import '../../Globals/blocs.dart';
 import '../../Model/AnimalGame/animal_model.dart';
 
 class AnimalInfoScreen extends StatelessWidget {
@@ -11,31 +12,37 @@ class AnimalInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SizedBox(
-        height: Get.height,
-        width: Get.width,
-        child: Stack(
-          children: [
-            Image(
-              image: const AssetImage(
-                'assets/images/Backgrounds/gameBg.PNG',
+    return WillPopScope(
+      onWillPop: ()async{
+        Blocs.musicBloc.checkBgMusic();
+        return true;
+      },
+      child: Scaffold(
+        body: SizedBox(
+          height: Get.height,
+          width: Get.width,
+          child: Stack(
+            children: [
+              Image(
+                image: const AssetImage(
+                  'assets/images/Backgrounds/gameBg.PNG',
+                ),
+                height: Get.height,
+                width: Get.width,
+                fit: BoxFit.fill,
               ),
-              height: Get.height,
-              width: Get.width,
-              fit: BoxFit.fill,
-            ),
-            SizedBox(
-              height: double.maxFinite,
-              width: double.maxFinite,
-              child: Row(
-                children: [
-                  _buildAnimalsList(),
-                  _buildSingleAnimal(),
-                ],
+              SizedBox(
+                height: double.maxFinite,
+                width: double.maxFinite,
+                child: Row(
+                  children: [
+                    _buildAnimalsList(),
+                    _buildSingleAnimal(),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

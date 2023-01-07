@@ -94,19 +94,8 @@ class SinglePodcastController extends GetxController {
     for (var element in podcastsList) {
       element.player.dispose();
     }
-    checkBgMusic();
+    Blocs.musicBloc.checkBgMusic();
     super.dispose();
-  }
-
-
-  checkBgMusic()async{
-    StorageUtils.getBgMusic().then((value){
-      if(value){
-        Blocs.musicBloc.offMusic(setOff: false);
-      }else{
-        Blocs.musicBloc.offMusic(setOff: true);
-      }
-    });
   }
 
   @override
@@ -115,7 +104,7 @@ class SinglePodcastController extends GetxController {
     for (var element in podcastsList) {
       element.player.dispose();
     }
-    checkBgMusic();
+    Blocs.musicBloc.checkBgMusic();
     super.onClose();
   }
 
@@ -139,7 +128,7 @@ class SinglePodcastController extends GetxController {
   }
 
   void goToHome() {
-    Get.offAndToNamed(NameRouts.home);
+    Get.offAllNamed(NameRouts.home);
   }
 
   void changePage({required bool next}) async {

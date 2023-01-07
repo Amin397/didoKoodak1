@@ -12,57 +12,62 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SizedBox(
-        height: Get.height,
-        width: Get.width,
-        child: Stack(
-          children: [
-            // InteractiveViewer(
-            //   panEnabled: false,
-            //   boundaryMargin: paddingAll24,
-            //   minScale: 1.0,
-            //   maxScale: 4.0,
-            //   child: _buildBg(),
-            // ),
-            _buildBg(),
-            _buildSettingButton(),
-            _buildClickableTowerItem(),
-            _buildClickableCarouselItem(),
-            _buildClickableTrainItem(),
-            _buildClickableTentItem(),
-          ],
+    return WillPopScope(
+      onWillPop: () async{
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SizedBox(
+          height: Get.height,
+          width: Get.width,
+          child: Stack(
+            children: [
+              // InteractiveViewer(
+              //   panEnabled: false,
+              //   boundaryMargin: paddingAll24,
+              //   minScale: 1.0,
+              //   maxScale: 4.0,
+              //   child: _buildBg(),
+              // ),
+              _buildBg(),
+              _buildSettingButton(),
+              _buildClickableTowerItem(),
+              _buildClickableCarouselItem(),
+              _buildClickableTrainItem(),
+              _buildClickableTentItem(),
+            ],
+          ),
+          // child: Column(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     TextButton(
+          //       onPressed: () {
+          //         controller.goToAnimalInfo();
+          //       },
+          //       child: const Text(
+          //         'animals info',
+          //       ),
+          //     ),
+          //     TextButton(
+          //       onPressed: () {
+          //         controller.goToAnimalGame();
+          //       },
+          //       child: const Text(
+          //         'animals game',
+          //       ),
+          //     ),
+          //     TextButton(
+          //       onPressed: () {
+          //       },
+          //       child: const Text(
+          //         'settings',
+          //       ),
+          //     ),
+          //
+          //   ],
+          // ),
         ),
-        // child: Column(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     TextButton(
-        //       onPressed: () {
-        //         controller.goToAnimalInfo();
-        //       },
-        //       child: const Text(
-        //         'animals info',
-        //       ),
-        //     ),
-        //     TextButton(
-        //       onPressed: () {
-        //         controller.goToAnimalGame();
-        //       },
-        //       child: const Text(
-        //         'animals game',
-        //       ),
-        //     ),
-        //     TextButton(
-        //       onPressed: () {
-        //       },
-        //       child: const Text(
-        //         'settings',
-        //       ),
-        //     ),
-        //
-        //   ],
-        // ),
       ),
     );
   }

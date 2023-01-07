@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:just_audio/just_audio.dart';
 
+import '../Utils/storage_utils.dart';
+
 class MusicBloc {
   // ignore: close_sinks
   final streamController = StreamController.broadcast();
@@ -28,6 +30,17 @@ class MusicBloc {
     }else{
       await player.play();
     }
+  }
+
+
+  checkBgMusic()async{
+    StorageUtils.getBgMusic().then((value){
+      if(value){
+        offMusic(setOff: false);
+      }else{
+        offMusic(setOff: true);
+      }
+    });
   }
 
 

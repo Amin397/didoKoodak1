@@ -58,7 +58,7 @@ class BuildSingleRegisterWidget extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
               inputType: TextInputType.number,
-              textAlign: TextAlign.left,
+              textAlign: TextAlign.right,
               height: Get.height * .07,
               bgColor: Colors.white54,
               radius: radiusAll36,

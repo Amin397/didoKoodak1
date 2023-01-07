@@ -8,8 +8,6 @@ class SingleHomeController extends GetxController {
   RxInt currentPage = 0.obs;
   late PageController pageController;
 
-
-
   @override
   void onInit() {
     currentPage.value = Get.arguments['page'];
@@ -17,7 +15,9 @@ class SingleHomeController extends GetxController {
     super.onInit();
   }
 
-  void changedPage({required int page}) {}
+  void changedPage({required int page}) {
+    currentPage(page);
+  }
 
   void goToSetting() {
     Get.toNamed(NameRouts.setting);
@@ -33,5 +33,17 @@ class SingleHomeController extends GetxController {
 
   void goToSinglePodcast() {
     Get.toNamed(NameRouts.singlePodcast);
+  }
+
+  @override
+  void onClose() {
+    currentPage(0);
+    super.onClose();
+  }
+
+  @override
+  void dispose() {
+    currentPage(0);
+    super.dispose();
   }
 }

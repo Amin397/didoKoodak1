@@ -31,131 +31,134 @@ class GamesListScreen extends StatelessWidget {
                       width: double.maxFinite,
                       child: _buildBg(),
                     ),
-                  ],
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                margin: EdgeInsets.only(bottom: Get.height * .1),
-                height: Get.height * .5,
-                width: Get.width * 1.63,
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: Get.width * .15,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        controller.goToAnimalInfo();
-                      },
-                      child: SizedBox(
-                        height: Get.height * .4,
-                        width: Get.width * .18,
-                        child: Column(
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          bottom: Get.height * .1,
+                          right: Get.width * .2,
+                        ),
+                        height: Get.height * .5,
+                        width: Get.width * 1.2,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Row(
-                              children: [
-                                Transform.rotate(
-                                  angle: .3,
-                                  child: Text(
-                                    ' A',
-                                    style: TextStyle(
-                                      fontSize: 86.0,
-                                      color: Colors.red.shade900,
-                                      fontFamily: 'xKoodak',
-                                    ),
+                            SizedBox(
+                              width: Get.width * .15,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                controller.goToAlphabetGame();
+                              },
+                              child: Transform.rotate(
+                                angle: -.05,
+                                child: SizedBox(
+                                  height: Get.height * .4,
+                                  width: Get.width * .18,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Transform.rotate(
+                                            angle: .3,
+                                            child: Text(
+                                              ' A',
+                                              style: TextStyle(
+                                                fontSize: 86.0,
+                                                color: Colors.red.shade900,
+                                                fontFamily: 'xKoodak',
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 8.0),
+                                            child: Transform.rotate(
+                                              angle: -.3,
+                                              child: Text(
+                                                ' B',
+                                                style: TextStyle(
+                                                  fontSize: 86.0,
+                                                  color: Colors.red.shade900,
+                                                  fontFamily: 'xKoodak',
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top:8.0),
-                                  child: Transform.rotate(
-                                    angle: -.3,
-                                    child: Text(
-                                      ' B',
-                                      style: TextStyle(
-                                        fontSize: 86.0,
-                                        color: Colors.red.shade900,
-                                        fontFamily: 'xKoodak',
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * .045,
+                            ),
+                            Transform.rotate(
+                              angle: .07,
+                              child: InkWell(
+                                onTap: () {
+                                  controller.goToAnimalInfo();
+                                },
+                                child: SizedBox(
+                                  height: Get.height * .4,
+                                  width: Get.width * .18,
+                                  child: Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 18.0,
                                       ),
-                                    ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Transform.rotate(
+                                            angle: .2,
+                                            child: const Image(
+                                              image: AssetImage(
+                                                  'assets/images/owl.png'),
+                                              height: 90.0,
+                                              width: 70.0,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 8.0),
+                                            child: Transform.rotate(
+                                              angle: -.2,
+                                              child: const Image(
+                                                image: AssetImage(
+                                                    'assets/images/tiger.png'),
+                                                height: 90.0,
+                                                width: 70.0,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
                                   ),
                                 ),
-                              ],
-                            )
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * .08,
+                            ),
+                            // SizedBox(
+                            //   height: double.maxFinite,
+                            //   width: double.maxFinite,
+                            //   child: _buildBg(),
+                            // ),
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: Get.width * .06,
-                    ),
-                    Transform.rotate(
-                      angle: .1,
-                      child: InkWell(
-                        onTap: () {
-                          controller.goToAnimalGame();
-                        },
-                        child: SizedBox(
-                          height: Get.height * .4,
-                          width: Get.width * .18,
-                          child: Column(
-                            children: [
-                              const SizedBox(height: 18.0,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Transform.rotate(
-                                    angle: .2,
-                                    child: const Image(
-                                      image: AssetImage('assets/images/owl.png'),
-                                      height: 90.0,
-                                      width: 70.0,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top:8.0),
-                                    child: Transform.rotate(
-                                      angle: -.2,
-                                      child: const Image(
-                                        image: AssetImage('assets/images/tiger.png'),
-                                        height: 90.0,
-                                        width: 70.0,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: Get.width * .03,
-                    ),
-                    Transform.rotate(
-                      angle: -.1,
-                      child: InkWell(
-                        onTap: () {
-                          controller.goToAlphabetGame();
-                        },
-                        child: SizedBox(
-                          height: Get.height * .42,
-                          width: Get.width * .18,
-                        ),
-                      ),
-                    ),
-                    // SizedBox(
-                    //   height: double.maxFinite,
-                    //   width: double.maxFinite,
-                    //   child: _buildBg(),
-                    // ),
                   ],
                 ),
               ),
             ),
+
             _buildSettingButton(),
             _buildHomeButton(),
             // _buildBg(),

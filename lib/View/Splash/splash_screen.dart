@@ -28,21 +28,16 @@ class SplashScreen extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            InkWell(
-              onTap: () {
-                controller.goToHome();
-              },
-              child: Center(
-                child: SizedBox(
-                  width: Get.width * .5,
-                  height: Get.height * .8,
-                  child: SvgPicture.asset('assets/images/didoLogo.svg'),
-                  // child: const Image(
-                  //   image: AssetImage(
-                  //     'assets/images/didoLogo.png',
-                  //   ),
-                  // ),
-                ),
+            Center(
+              child: SizedBox(
+                width: Get.width * .5,
+                height: Get.height * .8,
+                child: SvgPicture.asset('assets/images/didoLogo.svg'),
+                // child: const Image(
+                //   image: AssetImage(
+                //     'assets/images/didoLogo.png',
+                //   ),
+                // ),
               ),
             ),
             // Obx(
@@ -167,13 +162,10 @@ class SplashScreen extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: padding,
-                child: Image(
-                  image: AssetImage(
-                    path,
-                  ),
+                child: SvgPicture.asset(
+                  path,
                   height: height,
                   width: width,
-                  fit: BoxFit.contain,
                 ),
               ),
             )

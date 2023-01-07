@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../../Model/Setting/setting_model.dart';
+import '../../Utils/rout_utils.dart';
 
 class SettingController extends GetxController {
   RxInt step = 0.obs;
@@ -38,10 +39,8 @@ class SettingController extends GetxController {
     required int id,
   }) {
     if (id == 0) {
-      Get.back();
-      dispose();
+      Get.offAllNamed(NameRouts.home);
     } else {
-      print('amin');
       semiStatus(1);
       step(step.value + 1);
     }

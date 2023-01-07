@@ -65,18 +65,8 @@ class SingleMovieController extends GetxController {
   void onClose() {
     vController!.dispose();
     cController!.dispose();
-    checkBgMusic();
+    Blocs.musicBloc.checkBgMusic();
     super.onClose();
-  }
-
-  checkBgMusic() async {
-    StorageUtils.getBgMusic().then((value) {
-      if (value) {
-        Blocs.musicBloc.offMusic(setOff: false);
-      } else {
-        Blocs.musicBloc.offMusic(setOff: true);
-      }
-    });
   }
 
   void zoom() async {

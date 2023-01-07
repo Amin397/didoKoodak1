@@ -66,9 +66,9 @@ class SettingScreen extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Container(
         margin: EdgeInsets.only(
-          left: Get.width * .7,
+          right: Get.width * .6,
         ),
-        height: Get.height * .45,
+        height: Get.height * .6,
         width: Get.width * .25,
         child: SvgPicture.asset('assets/images/Characters/radin.svg'),
       ),

@@ -86,7 +86,7 @@ class BuildMovieScreenWidget extends StatelessWidget {
           _buildButton(
             button: 'assets/images/Buttons/homeButton.png',
             func: () {
-              Get.offAndToNamed(
+              Get.offAllNamed(
                 NameRouts.home,
               );
             },
