@@ -57,7 +57,7 @@ class SingleRoomScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
-                  Get.offAndToNamed(NameRouts.home);
+                  Get.offAllNamed(NameRouts.home);
                 },
                 child: const Image(
                   image: AssetImage(

@@ -20,7 +20,7 @@ class GamesListController extends GetxController {
   }
 
   void goToAlphabetGame() {
-    Get.toNamed(NameRouts.alphabetGame);
+    Get.toNamed(NameRouts.selectAlphabetGame);
   }
 
   void goToAnimalInfo() {

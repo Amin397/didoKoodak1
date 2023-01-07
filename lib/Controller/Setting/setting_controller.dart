@@ -12,6 +12,7 @@ class SettingController extends GetxController {
   RxInt status = 0.obs;
   RxInt semiStatus = 0.obs;
   RxBool isLogin = true.obs;
+  RxBool isLogicAccepted = true.obs;
   List<SettingModel> settingList = [
     SettingModel(title: 'صدا', isSwitched: false.obs, id: 0),
     SettingModel(title: 'موسیقی', isSwitched: false.obs, id: 1),
@@ -22,8 +23,6 @@ class SettingController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController rePasswordController = TextEditingController();
 
-
-  RxString groupValue = "group value".obs;
 
   @override
   void onInit() {
@@ -92,10 +91,6 @@ class SettingController extends GetxController {
   }
 
   void logicChecked({required dynamic value}) {
-    if(groupValue.value == 'checked'){
-      groupValue('amin');
-    }else{
-      groupValue(value);
-    }
+    isLogicAccepted(value);
   }
 }

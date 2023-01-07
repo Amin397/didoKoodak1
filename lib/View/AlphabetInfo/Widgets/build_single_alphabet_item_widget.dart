@@ -1,18 +1,17 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dido_koodak1/Const/measures.dart';
-import 'package:dido_koodak1/Controller/AlphabetGame/alphabet_game_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-
-import '../../../Model/AlphabetGame/alphabet_model.dart';
+import '../../../Controller/AlphabetInfo/alphabet_info_controller.dart';
+import '../../../Model/AlphabetInfo/alphabet_model.dart';
 
 class BuildSingleAlphabetItemWidget extends StatelessWidget {
   const BuildSingleAlphabetItemWidget(
       {Key? key, required this.controller, required this.letter})
       : super(key: key);
 
-  final AlphabetGameController controller;
+  final AlphabetInfoController controller;
   final AlphabetModel letter;
 
   @override

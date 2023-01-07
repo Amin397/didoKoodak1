@@ -1,12 +1,11 @@
-import 'package:dido_koodak1/Const/measures.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:dido_koodak1/Model/AlphabetGame/alphabet_game_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding_animation/onboarding_animation.dart';
 
+import '../../Const/measures.dart';
 import '../../Controller/AlphabetGame/alphabet_game_controller.dart';
-import '../../Globals/blocs.dart';
-import '../../Model/AlphabetGame/alphabet_model.dart';
-import 'Widgets/build_single_alphabet_item_widget.dart';
+import '../../Utils/rout_utils.dart';
 
 class AlphabetGameScreen extends StatelessWidget {
   AlphabetGameScreen({Key? key}) : super(key: key);
@@ -21,67 +20,45 @@ class AlphabetGameScreen extends StatelessWidget {
         width: Get.width,
         child: Stack(
           children: [
-            SizedBox(
-              height: Get.height,
-              width: Get.width,
-              child: PageView.builder(
-                itemCount: controller.alphabetList.length,
-                onPageChanged: (page){
-                  controller.changePage(page:page);
-                },
-                itemBuilder: (BuildContext context, int index) =>
-                    BuildSingleAlphabetItemWidget(
-                  controller: controller,
-                  letter: controller.alphabetList[index],
-                ),
-                controller: controller.pageController,
-              ),
-            ),
-            _buildArrowLeft(),
-            _buildArrowRight(),
-            _buildBackButtonPart(),
+            _buildBg(),
+            _buildButtons(),
+            _buildMainLetter(),
+            _buildExamples()
           ],
         ),
       ),
     );
   }
 
-
-
-  Widget _buildBackButtonPart() {
+  Widget _buildButtons() {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: Get.width * .08,
-          vertical: Get.height * .11,
-        ),
-        height: Get.height * .17,
-        width: Get.width * .2,
+        margin: paddingAll32,
+        height: Get.height * .15,
+        width: Get.width * .18,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            InkWell(
-              onTap: (){
-                Get.back();
-                Blocs.musicBloc.checkBgMusic();
-              },
-              child: const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Image(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {
+                  Get.back();
+                },
+                child: const Image(
                   image: AssetImage(
                     'assets/images/Buttons/backButton.png',
                   ),
                 ),
               ),
             ),
-            InkWell(
-              onTap: (){
-                controller.goToHome();
-              },
-              child: const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Image(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {
+                  Get.offAllNamed(NameRouts.home);
+                },
+                child: const Image(
                   image: AssetImage(
                     'assets/images/Buttons/homeButton.png',
                   ),
@@ -94,50 +71,145 @@ class AlphabetGameScreen extends StatelessWidget {
     );
   }
 
+  Widget _buildBg() {
+    return Image(
+      image: const AssetImage(
+        'assets/images/Backgrounds/selectGameBg.png',
+      ),
+      height: Get.height,
+      width: Get.width,
+      fit: BoxFit.fill,
+    );
+  }
 
-
-
-  Widget _buildArrowLeft() {
+  Widget _buildMainLetter() {
     return Align(
-      alignment: Alignment.centerLeft,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Obx(
-          () => (controller.currentPage.value != 0)
-              ? IconButton(
-                  onPressed: () {
-                    controller.pageController.previousPage(duration:const Duration(seconds: 1), curve: Curves.easeInOutCubic);
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back_ios_rounded,
-                    size: 60.0,
-                    color: Color(0xff390000),
-                  ),
-                )
-              : const SizedBox(),
+      alignment: Alignment.topCenter,
+      child: Container(
+        margin: EdgeInsets.only(
+          top: Get.height * .08,
+        ),
+        height: Get.height * .55,
+        width: Get.width * .35,
+        decoration: BoxDecoration(
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black38,
+              blurRadius: 10.0,
+              spreadRadius: 3.0,
+              offset: Offset(3.0, 5.0),
+            )
+          ],
+          color: const Color(0XFFFBB03B),
+          borderRadius: radiusAll36,
+        ),
+        child: GetBuilder(
+          init: controller,
+          id: 'newQuestion',
+          builder: (ctx){
+            return Center(
+              child: AutoSizeText(
+                '${controller.mainModel.upperLetter} ${controller.mainModel.lowerLetter}',
+                maxLines: 1,
+                maxFontSize: 260.0,
+                minFontSize: 200.0,
+                style: const TextStyle(
+                  color: Color(0XFFA30000),
+                  fontSize: 220.0,
+                ),
+              ),
+            );
+          },
         ),
       ),
     );
   }
 
-  Widget _buildArrowRight() {
+  Widget _buildExamples() {
     return Align(
-      alignment: Alignment.centerRight,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Obx(
-          () => (controller.currentPage.value != controller.alphabetList.length)
-              ? IconButton(
-                  onPressed: () {
-                    controller.pageController.nextPage(duration:const Duration(seconds: 1), curve: Curves.easeInOutCubic);
-                  },
-                  icon: const Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 60.0,
-                    color: Color(0xff390000),
+      alignment: Alignment.bottomCenter,
+      child: SizedBox(
+        width: Get.width * .6,
+        height: Get.height * .35,
+        child: GetBuilder(
+          init: controller,
+          id: 'newQuestion',
+          builder: (ctx){
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildExamplesItem(
+                  example: controller.mainModel.examples.first,
+                ),
+                _buildExamplesItem(
+                  example: controller.mainModel.examples[1],
+                ),
+                _buildExamplesItem(
+                  example: controller.mainModel.examples.last,
+                ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildExamplesItem({required AlphabetGameExamples example}) {
+    return InkWell(
+      onTap: () {
+        controller.clickExample(
+          example: example,
+        );
+      },
+      child: Container(
+        height: double.maxFinite,
+        width: Get.width * .14,
+        margin: EdgeInsets.symmetric(
+          horizontal: Get.width * .03,
+          vertical: Get.height * .02,
+        ),
+        decoration: BoxDecoration(
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black38,
+              blurRadius: 10.0,
+              spreadRadius: 3.0,
+              offset: Offset(3.0, 5.0),
+            )
+          ],
+          color: const Color(0XFFFBB03B),
+          borderRadius: radiusAll36,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image(
+              image: AssetImage(
+                example.imagePath,
+              ),
+              height: Get.height * .2,
+              width: Get.width * .13,
+            ),
+            Expanded(
+              child: SizedBox(
+                height: double.maxFinite,
+                width: double.maxFinite,
+                child: Center(
+                  child: AutoSizeText(
+                    example.name,
+                    maxLines: 1,
+                    maxFontSize: 20.0,
+                    minFontSize: 16.0,
+                    style: const TextStyle(
+                      fontSize: 18.0,
+                      color: Color(0XFFA30000),
+                    ),
                   ),
-                )
-              : const SizedBox(),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

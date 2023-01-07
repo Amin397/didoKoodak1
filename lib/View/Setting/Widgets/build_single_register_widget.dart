@@ -107,7 +107,7 @@ class BuildSingleRegisterWidget extends StatelessWidget {
             SizedBox(
               width: double.maxFinite,
               height: Get.height * .06,
-              child: Row(
+              child: Row( 
                 children: [
                   // Obx(
                   //   () => Radio<bool>(
@@ -121,12 +121,12 @@ class BuildSingleRegisterWidget extends StatelessWidget {
                   //   ),
                   // ),
                   Obx(
-                    () => Radio(
-                        value: "checked",
-                        groupValue: controller.groupValue.value,
-                        onChanged: (value){
-                          controller.logicChecked(value: value);
-                        }
+                    () => Checkbox(
+                      value: controller.isLogicAccepted.value,
+                      onChanged: (value) {
+                        controller.logicChecked(value: value);
+                      },
+                      activeColor: Colors.red.shade800,
                     ),
                   ),
                   Expanded(
@@ -134,10 +134,10 @@ class BuildSingleRegisterWidget extends StatelessWidget {
                       height: double.maxFinite,
                       width: double.maxFinite,
                       child: InkWell(
-                        onTap: (){
+                        onTap: () {
                           Get.toNamed(NameRouts.logic);
                         },
-                        child:const Align(
+                        child: const Align(
                           alignment: Alignment.centerRight,
                           child: AutoSizeText(
                             'قوانین و مقررات را می پذیرم.',

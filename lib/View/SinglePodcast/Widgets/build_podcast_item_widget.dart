@@ -42,7 +42,7 @@ class BuildPodcastItemWidget extends StatelessWidget {
         ),
         height: Get.height * .35,
         width: Get.width * .17,
-        child: Image(
+        child: const Image(
           image: AssetImage(
             'assets/images/Characters/cat.png',
           ),

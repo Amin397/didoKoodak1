@@ -2,10 +2,12 @@ import 'package:dido_koodak1/View/SingleRoom/single_room_screen.dart';
 import 'package:get/get.dart';
 
 import '../View/AlphabetGame/alphabet_game_screen.dart';
+import '../View/AlphabetInfo/alphabet_info_screen.dart';
 import '../View/AnimalGame/animal_game_screen.dart';
 import '../View/AnimalInfo/animal_info_screen.dart';
 import '../View/GamesList/games_list_screen.dart';
 import '../View/Home/home_screen.dart';
+import '../View/SelectAlphabetGame/select_alphabet_game_screen.dart';
 import '../View/Setting/Widgets/logic_screen.dart';
 import '../View/Setting/setting_screen.dart';
 import '../View/SingleFlore/single_flore_screen.dart';
@@ -23,13 +25,15 @@ class NameRouts{
   static const String animalGame = '/animalGame';
   static const String setting = '/setting';
   static const String gamesList = '/gamesList';
-  static const String alphabetGame = '/alphabetGame';
+  static const String alphabetInfo = '/alphabetInfo';
   static const String singleTower = '/singleTower';
   static const String singleMovie = '/singleMovie';
   static const String singlePodcast = '/singlePodcast';
   static const String singleFlore = '/singleFlore';
   static const String singleRoom = '/singleRoom';
   static const String logic = '/logic';
+  static const String selectAlphabetGame = '/selectAlphabetGame';
+  static const String alphabetGame = '/alphabetGame';
 }
 
 class PageRout {
@@ -65,6 +69,11 @@ class PageRout {
       transition: Transition.fadeIn,
     ),
     GetPage(
+      name: NameRouts.alphabetInfo,
+      page: () => AlphabetInfoScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
       name: NameRouts.alphabetGame,
       page: () => AlphabetGameScreen(),
       transition: Transition.fadeIn,
@@ -87,6 +96,11 @@ class PageRout {
     GetPage(
       name: NameRouts.singleFlore,
       page: () => SingleFloreScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.selectAlphabetGame,
+      page: () => SelectAlphabetGameScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(
