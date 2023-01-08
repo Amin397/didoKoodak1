@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dido_koodak1/Model/AlphabetGame/alphabet_game_model.dart';
+import 'package:dido_koodak1/Utils/shakeAnimation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../Const/measures.dart';
@@ -23,12 +25,36 @@ class AlphabetGameScreen extends StatelessWidget {
             _buildBg(),
             _buildButtons(),
             _buildMainLetter(),
-            _buildExamples()
+            _buildExamples(),
+            _buildHeart(),
+            _buildCat(),
           ],
         ),
       ),
     );
+  }     
+
+
+  Widget _buildCat() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: Get.width * .8,
+        ),
+        height: Get.height * .35,
+        width: Get.width * .17,
+        child: const Image(
+          image: AssetImage(
+            'assets/images/Characters/cat.png',
+          ),
+        ),
+      ),
+    );
   }
+
+
+
 
   Widget _buildButtons() {
     return Align(
@@ -106,13 +132,13 @@ class AlphabetGameScreen extends StatelessWidget {
         child: GetBuilder(
           init: controller,
           id: 'newQuestion',
-          builder: (ctx){
+          builder: (ctx) {
             return Center(
               child: AutoSizeText(
-                '${controller.mainModel.upperLetter} ${controller.mainModel.lowerLetter}',
+                '${controller.mainModel.upperLetter}${controller.mainModel.lowerLetter}',
                 maxLines: 1,
                 maxFontSize: 260.0,
-                minFontSize: 200.0,
+                minFontSize: 180.0,
                 style: const TextStyle(
                   color: Color(0XFFA30000),
                   fontSize: 220.0,
@@ -134,7 +160,7 @@ class AlphabetGameScreen extends StatelessWidget {
         child: GetBuilder(
           init: controller,
           id: 'newQuestion',
-          builder: (ctx){
+          builder: (ctx) {
             return Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -165,6 +191,7 @@ class AlphabetGameScreen extends StatelessWidget {
       child: Container(
         height: double.maxFinite,
         width: Get.width * .14,
+        padding: paddingAll8,
         margin: EdgeInsets.symmetric(
           horizontal: Get.width * .03,
           vertical: Get.height * .02,
@@ -211,6 +238,66 @@ class AlphabetGameScreen extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildHeart() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: CustomShakeWidget(
+        duration:const Duration(milliseconds: 750),
+        shakeCount: 4,
+        shakeOffset: 4,
+        key: controller.heart,
+        child: Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: Get.width * .04,
+            vertical: Get.height * .1,
+          ),
+          width: Get.width * .2,
+          height: Get.height * .1,
+          child: Stack(
+            children: [
+              Center(
+                child: SvgPicture.asset('assets/images/heartBg.svg'),
+              ),
+              Center(
+                child: Container(
+                  padding: paddingSymmetricH12,
+                  width: Get.width * .2,
+                  height: Get.height * .1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _buildHeartItem(
+                        heartNumber: 3,
+                      ),
+                      _buildHeartItem(
+                        heartNumber: 2,
+                      ),
+                      _buildHeartItem(
+                        heartNumber: 1,
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeartItem({required int heartNumber}) {
+    return Obx(
+      () => SvgPicture.asset(
+        (controller.heartNumber.value >= heartNumber)
+            ? 'assets/images/fullHeart.svg'
+            : 'assets/images/emptyHeart.svg',
+        height: 25.0,
+        width: 25.0,
       ),
     );
   }

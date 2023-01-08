@@ -1,10 +1,16 @@
+import 'package:dido_koodak1/Utils/shakeAnimation.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:vector_math/vector_math.dart' as math;
 import '../../Model/AlphabetGame/alphabet_game_model.dart';
+import '../../View/AlphabetGame/Widgets/alphabet_game_over_alert_dialog.dart';
 
 class AlphabetGameController extends GetxController {
   RxInt heartNumber = 3.obs;
   late AlphabetGameModel mainModel;
+
+  late GlobalKey<CustomShakeWidgetState> heart;
 
   List<AlphabetGameModel> questionList = [
     AlphabetGameModel(
@@ -239,25 +245,81 @@ class AlphabetGameController extends GetxController {
     ),
   ];
 
-
-
-
   @override
   void onInit() {
+    heart = GlobalKey();
     mainModel = questionList.first;
     update(['newQuestion']);
     super.onInit();
   }
 
   void clickExample({required AlphabetGameExamples example}) {
-    if(example.name[0] == mainModel.lowerLetter){
 
-    }else{
+    if (example.name[0] == mainModel.lowerLetter) {
+      shuffleMethod();
+    } else {
+      heartNumber(heartNumber.value - 1);
 
+      if (heartNumber.value == 0) {
+        showGameOverAlert();
+      } else {
+        heart.currentState!.shake();
+      }
     }
   }
 
+  @override
+  void dispose() {
+    heart.currentState!.dispose();
+    super.dispose();
+  }
+
+  void shuffleMethod() {
+    if (questionList.any((element) => element.isShow.isFalse)) {
+      questionList.shuffle();
+      if (questionList.first.isShow.isTrue) {
+        shuffleMethod();
+        update(['newQuestion']);
+      } else {
+        questionList.first.isShow(true);
+        mainModel = questionList.first;
+        update(['newQuestion']);
+      }
+    } else {
+      Get.back();
+    }
+  }
+
+  void showGameOverAlert() async {
+    var replay = await showGeneralDialog(
+      context: Get.context!,
+      pageBuilder: (ctx, a1, a2) {
+        return Container();
+      },
+      transitionBuilder: (ctx, a1, a2, child) {
+        var curve = Curves.easeInOut.transform(a1.value);
+        return Transform.scale(
+          scale: curve,
+          child: const AlertDialog(
+            backgroundColor: Colors.transparent,
+            contentPadding: EdgeInsets.zero,
+            content: AlphabetGameOverAlertDialog(),
+          ),
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 370),
+    );
 
 
-
+    if(replay is bool && replay){
+      for (var o in questionList) {
+        o.isShow(false);
+      }
+      questionList.first.isShow(true);
+      mainModel = questionList.first;
+      heartNumber(3);
+    }else{
+      Get.back();
+    }
+  }
 }
