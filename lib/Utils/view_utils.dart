@@ -13,3 +13,4 @@ String formatTime(Duration duration) {
     if (duration.inHours > 0) {hours, minutes, seconds}
   ].join(':');
 }
+

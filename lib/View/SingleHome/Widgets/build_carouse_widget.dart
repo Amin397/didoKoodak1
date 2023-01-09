@@ -30,6 +30,21 @@ class BuildCarouseWidget extends StatelessWidget {
               width: Get.width * .4,
             ),
           ),
+          InkWell(
+            onTap: (){
+              controller.goToIceCreamGame();
+            },
+            child: Center(
+              child: Container(
+                margin: EdgeInsets.only(
+                  left: Get.width * .35,
+                  top: Get.height * .5
+                ),
+                height: Get.height * .25,
+                width: Get.width * .1,
+              ),
+            ),
+          ),
           _buildCat(),
         ],
       ),
@@ -45,7 +60,7 @@ class BuildCarouseWidget extends StatelessWidget {
         ),
         height: Get.height * .3,
         width: Get.width * .15,
-        child: Image(
+        child:const Image(
           image: AssetImage(
             'assets/images/Characters/cat.png',
           ),

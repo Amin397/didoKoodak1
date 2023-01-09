@@ -7,6 +7,7 @@ import '../View/AnimalGame/animal_game_screen.dart';
 import '../View/AnimalInfo/animal_info_screen.dart';
 import '../View/GamesList/games_list_screen.dart';
 import '../View/Home/home_screen.dart';
+import '../View/IceCreamGame/ice_cream_game_screen.dart';
 import '../View/SelectAlphabetGame/select_alphabet_game_screen.dart';
 import '../View/Setting/Widgets/logic_screen.dart';
 import '../View/Setting/setting_screen.dart';
@@ -34,6 +35,7 @@ class NameRouts{
   static const String logic = '/logic';
   static const String selectAlphabetGame = '/selectAlphabetGame';
   static const String alphabetGame = '/alphabetGame';
+  static const String iceCreamGame = '/iceCreamGame';
 }
 
 class PageRout {
@@ -86,6 +88,11 @@ class PageRout {
     GetPage(
       name: NameRouts.singleMovie,
       page: () => SingleMovieScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.iceCreamGame,
+      page: () => IceCreamGameScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(

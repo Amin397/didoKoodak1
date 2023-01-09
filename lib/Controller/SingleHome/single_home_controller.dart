@@ -46,4 +46,8 @@ class SingleHomeController extends GetxController {
     currentPage(0);
     super.dispose();
   }
+
+  void goToIceCreamGame() {
+    Get.toNamed(NameRouts.iceCreamGame);
+  }
 }
