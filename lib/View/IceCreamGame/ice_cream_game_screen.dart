@@ -9,6 +9,7 @@ import '../../Const/measures.dart';
 import '../../Controller/IceCreamGame/ice_cream_game_controller.dart';
 import '../../Utils/rout_utils.dart';
 import '../../Utils/shakeAnimation.dart';
+import 'Widget/build_random_customer_widget.dart';
 
 class IceCreamGameScreen extends StatelessWidget {
   IceCreamGameScreen({Key? key}) : super(key: key);
@@ -25,6 +26,16 @@ class IceCreamGameScreen extends StatelessWidget {
           children: [
             _buildBg(),
             _buildBlurFilter(),
+            _buildBanners(),
+            GetBuilder(
+              init: controller,
+              id: 'createCustomer',
+              builder: (ctx) {
+                return BuildRandomCustomerWidget(
+                  controller: controller,
+                );
+              },
+            ),
             _buildDesk(),
             _buildButtons(),
             _buildHeart(),
@@ -120,11 +131,14 @@ class IceCreamGameScreen extends StatelessWidget {
   }
 
   Widget _buildDesk() {
-    return SvgPicture.asset(
-      'assets/images/Backgrounds/iceCreamDesk.svg',
-      height: Get.height,
-      width: Get.width,
-      fit: BoxFit.fill,
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: SvgPicture.asset(
+        'assets/images/Backgrounds/iceCreamDesk.svg',
+        height: Get.height * .5,
+        width: Get.width,
+        fit: BoxFit.fill,
+      ),
     );
   }
 
@@ -170,13 +184,15 @@ class IceCreamGameScreen extends StatelessWidget {
   }
 
   Widget _buildIceCreamItems() {
-    return Center(
+    return Align(
+      alignment: Alignment.bottomCenter,
       child: Container(
         margin: EdgeInsets.only(
-          top: Get.height * .4,
+          bottom: Get.height * .05,
         ),
-        height: Get.height * .4,
+        height: Get.height * .5,
         width: Get.width,
+        // color: Colors.green.withOpacity(.8),
         child: Row(
           children: [
             Flexible(
@@ -185,6 +201,7 @@ class IceCreamGameScreen extends StatelessWidget {
                 height: double.maxFinite,
                 width: double.maxFinite,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     _buildItems(
                       angle: -.3,
@@ -218,6 +235,7 @@ class IceCreamGameScreen extends StatelessWidget {
                 height: double.maxFinite,
                 width: double.maxFinite,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     _buildItems(
                       angle: .3,
@@ -279,8 +297,9 @@ class IceCreamGameScreen extends StatelessWidget {
         },
         child: Container(
           margin: margin,
-          height: Get.height * .27,
+          height: Get.height * .4,
           width: Get.width * .06,
+          // color: Colors.red.withOpacity(.8),
         ),
       ),
     );
@@ -289,42 +308,102 @@ class IceCreamGameScreen extends StatelessWidget {
   Widget _buildMainIceCream() {
     return Flexible(
       flex: 3,
-      child: Container(
-        padding: const EdgeInsets.only(
-          bottom: 12.0,
-        ),
-        height: double.maxFinite,
-        width: double.maxFinite,
-        child: GetBuilder(
-          init: controller,
-          id: 'createOrder',
-          builder: (ctx) {
-            return Stack(
-              clipBehavior: Clip.none,
-              children: [
-                if (controller.orderList.isNotEmpty)
-                  _buildBread(
-                    breadPath: controller.orderList.first.path,
+      child: InkWell(
+        onTap: () {
+          controller.getBackItem();
+        },
+        child: Container(
+          padding: const EdgeInsets.only(
+            bottom: 12.0,
+          ),
+          height: double.maxFinite,
+          width: double.maxFinite,
+          child: GetBuilder(
+            init: controller,
+            id: 'createOrder',
+            builder: (ctx) {
+              return Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 370),
+                    transitionBuilder:
+                        (Widget child, Animation<double> animation) {
+                      return SizeTransition(
+                        sizeFactor: animation,
+                        child: child,
+                      );
+                    },
+                    child: (controller.iceCreamMaterialList.isNotEmpty)
+                        ? _buildBread(
+                            breadPath: controller.iceCreamMaterialList.first.path,
+                          )
+                        : const SizedBox(),
                   ),
-                if (controller.orderList.length >= 2)
-                  _buildFirstCream(
-                    firstCreamPath: controller.orderList[1].path,
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 370),
+                    transitionBuilder:
+                        (Widget child, Animation<double> animation) {
+                      return ScaleTransition(
+                        scale: animation,
+                        child: child,
+                      );
+                    },
+                    child: (controller.iceCreamMaterialList.length >= 2)
+                        ? _buildFirstCream(
+                            firstCreamPath: controller.iceCreamMaterialList[1].path,
+                          )
+                        : const SizedBox(),
                   ),
-                if (controller.orderList.length >= 3)
-                  _buildSecondCream(
-                    secondCreamPath: controller.orderList[2].path,
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 370),
+                    transitionBuilder:
+                        (Widget child, Animation<double> animation) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      );
+                    },
+                    child: (controller.iceCreamMaterialList.length >= 3)
+                        ? _buildSecondCream(
+                            secondCreamPath: controller.iceCreamMaterialList[2].path,
+                          )
+                        : const SizedBox(),
                   ),
-                if (controller.orderList.length >= 4)
-                  _buildThirdCream(
-                    thirdCreamPath: controller.orderList[3].path,
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 370),
+                    transitionBuilder:
+                        (Widget child, Animation<double> animation) {
+                      return RotationTransition(
+                        turns: animation,
+                        child: child,
+                      );
+                    },
+                    child: (controller.iceCreamMaterialList.length >= 4)
+                        ? _buildThirdCream(
+                            thirdCreamPath: controller.iceCreamMaterialList[3].path,
+                          )
+                        : const SizedBox(),
                   ),
-                if (controller.orderList.length >= 5)
-                  _buildMaterial(
-                    materialPath: controller.orderList.last.path,
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 450),
+                    transitionBuilder:
+                        (Widget child, Animation<double> animation) {
+                      return ScaleTransition(
+                        scale: animation,
+                        child: child,
+                      );
+                    },
+                    child: (controller.iceCreamMaterialList.length >= 5)
+                        ? _buildMaterial(
+                            materialPath: controller.iceCreamMaterialList.last.path,
+                          )
+                        : const SizedBox(),
                   ),
-              ],
-            );
-          },
+                ],
+              );
+            },
+          ),
         ),
       ),
     );
@@ -334,15 +413,22 @@ class IceCreamGameScreen extends StatelessWidget {
     required String breadPath,
   }) {
     return Center(
-      child: Container(
-        margin: EdgeInsets.only(
-          top: Get.height * .1,
-        ),
-        child: SvgPicture.asset(
-          breadPath,
-          height: Get.height * .18,
-          width: Get.width * .03,
-        ),
+      child: GetBuilder(
+        init: controller,
+        id: 'createOrder',
+        builder: (ctx) {
+          return Container(
+            margin: EdgeInsets.only(
+              top: Get.height * .2,
+              left: (controller.iceCreamMaterialList.first.id == 0) ? 2.0 : 12.0,
+            ),
+            child: SvgPicture.asset(
+              breadPath,
+              height: Get.height * .28,
+              width: Get.width * .04,
+            ),
+          );
+        },
       ),
     );
   }
@@ -351,16 +437,24 @@ class IceCreamGameScreen extends StatelessWidget {
     required String firstCreamPath,
   }) {
     return Center(
-      child: Container(
-        margin: EdgeInsets.only(
-          bottom: Get.height * .05,
-          right: Get.width * .008,
-        ),
-        child: SvgPicture.asset(
-          firstCreamPath,
-          height: Get.height * .095,
-          width: Get.width * .02,
-        ),
+      child: GetBuilder(
+        init: controller,
+        id: 'createOrder',
+        builder: (ctx) {
+          return Container(
+            margin: EdgeInsets.only(
+              // bottom: Get.height * .001,
+              right: Get.width * .008,
+            ),
+            child: SvgPicture.asset(
+              firstCreamPath,
+              height: (controller.iceCreamMaterialList[1].id == 3)
+                  ? Get.height * .15
+                  : Get.height * .135,
+              width: Get.width * .03,
+            ),
+          );
+        },
       ),
     );
   }
@@ -371,13 +465,13 @@ class IceCreamGameScreen extends StatelessWidget {
     return Center(
       child: Container(
         margin: EdgeInsets.only(
-          bottom: Get.height * .13,
+          bottom: Get.height * .08,
           right: Get.width * .008,
         ),
         child: SvgPicture.asset(
           secondCreamPath,
-          height: Get.height * .095,
-          width: Get.width * .02,
+          height: Get.height * .13,
+          width: Get.width * .03,
         ),
       ),
     );
@@ -389,19 +483,21 @@ class IceCreamGameScreen extends StatelessWidget {
     return Center(
       child: Container(
         margin: EdgeInsets.only(
-          bottom: Get.height * .18,
+          bottom: Get.height * .15,
           right: Get.width * .008,
         ),
         child: SvgPicture.asset(
           thirdCreamPath,
-          height: Get.height * .11,
-          width: Get.width * .02,
+          height: Get.height * .13,
+          width: Get.width * .03,
         ),
       ),
     );
   }
 
-  Widget _buildMaterial({required String materialPath}) {
+  Widget _buildMaterial({
+    required String materialPath,
+  }) {
     return Center(
       child: Container(
         margin: EdgeInsets.only(
@@ -410,9 +506,20 @@ class IceCreamGameScreen extends StatelessWidget {
         ),
         child: SvgPicture.asset(
           materialPath,
-          height: Get.height * .08,
+          height: Get.height * .05,
           width: Get.width * .02,
         ),
+      ),
+    );
+  }
+
+  Widget _buildBanners() {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: SvgPicture.asset(
+        'assets/images/Backgrounds/iceCreamTopBanners.svg',
+        width: Get.width,
+        // height: Get.height * .15,
       ),
     );
   }
