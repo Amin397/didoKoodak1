@@ -47,46 +47,55 @@ class BuildRandomCustomerWidget extends StatelessWidget {
       {required IceCreamOrderModel item,
       required int index,
       required Animation<double> animation}) {
-    return FadeTransition(
-      opacity: animation,
-      child: InkWell(
-        onTap: () {
-          controller.removeCustomer(
-            index: index,
-          );
-        },
-        child: Container(
-          height: double.maxFinite,
-          width: Get.width * .25,
-          margin: paddingSymmetricH8,
-          child: Row(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildIceCream(
-                item:item,
-              ),
-              Expanded(
-                child: SizedBox(
-                  height: double.maxFinite,
-                  width: double.maxFinite,
-                  child: SvgPicture.asset(
-                    controller.customerOrderedList[index].customer.imgPath,
-                    width: Get.width * .2,
-                    height: Get.height * .5,
+    return DragTarget(
+      onWillAccept: (value) => true,
+      onAccept: (value) {
+        controller.checkIceCream(
+          item: item,
+          index: index,
+          animation: animation,
+        );
+      },
+      builder: (context, canditates, rejected) {
+        return FadeTransition(
+          opacity: animation,
+          child: InkWell(
+            onTap: () {
+              controller.removeCustomer(
+                index: index,
+              );
+            },
+            child: Container(
+              height: double.maxFinite,
+              width: Get.width * .25,
+              margin: paddingSymmetricH8,
+              child: Row(
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildIceCream(
+                    item: item,
                   ),
-                ),
-              )
-            ],
+                  Expanded(
+                    child: SizedBox(
+                      height: double.maxFinite,
+                      width: double.maxFinite,
+                      child: SvgPicture.asset(
+                        controller.customerOrderedList[index].customer.imgPath,
+                        width: Get.width * .2,
+                        height: Get.height * .5,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
   Widget _buildIceCream({required IceCreamOrderModel item}) {
-
-
-
     return Container(
       width: Get.width * .09,
       height: Get.width * .12,
@@ -103,26 +112,34 @@ class BuildRandomCustomerWidget extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           _buildBread(
-            breadPath: controller.iceCreamMaterial.singleWhere((element) => element.id == item.order.first).path,
+            breadPath: controller.iceCreamMaterial
+                .singleWhere((element) => element.id == item.order.first)
+                .path,
           ),
           _buildFirstCream(
-            firstCreamPath: controller.iceCreamMaterial.singleWhere((element) => element.id == item.order[1]).path,
+            firstCreamPath: controller.iceCreamMaterial
+                .singleWhere((element) => element.id == item.order[1])
+                .path,
           ),
           _buildSecondCream(
-            secondCreamPath: controller.iceCreamMaterial.singleWhere((element) => element.id == item.order[2]).path,
+            secondCreamPath: controller.iceCreamMaterial
+                .singleWhere((element) => element.id == item.order[2])
+                .path,
           ),
           _buildThirdCream(
-            thirdCreamPath: controller.iceCreamMaterial.singleWhere((element) => element.id == item.order[3]).path,
+            thirdCreamPath: controller.iceCreamMaterial
+                .singleWhere((element) => element.id == item.order[3])
+                .path,
           ),
           _buildMaterial(
-            materialPath: controller.iceCreamMaterial.singleWhere((element) => element.id == item.order.last).path,
+            materialPath: controller.iceCreamMaterial
+                .singleWhere((element) => element.id == item.order.last)
+                .path,
           ),
         ],
       ),
     );
   }
-
-
 
   Widget _buildBread({
     required String breadPath,
@@ -210,7 +227,4 @@ class BuildRandomCustomerWidget extends StatelessWidget {
       ),
     );
   }
-
-
-
 }

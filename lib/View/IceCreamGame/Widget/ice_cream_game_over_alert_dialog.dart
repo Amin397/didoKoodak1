@@ -1,12 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:dido_koodak1/Const/measures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class AlphabetGameOverAlertDialog extends StatelessWidget {
-  const AlphabetGameOverAlertDialog({Key? key}) : super(key: key);
+import '../../../Const/measures.dart';
 
+
+
+class IceCreamGameOverAlertDialog extends StatelessWidget {
+  const IceCreamGameOverAlertDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +26,12 @@ class AlphabetGameOverAlertDialog extends StatelessWidget {
     );
   }
 
+
   Widget _buildBg() {
     return Center(
       child: Image(
         image: const AssetImage(
-          'assets/images/Backgrounds/alertBg.png',
+          'assets/images/Backgrounds/pinkAlertBg.png',
         ),
         height: Get.height * .75,
         width: Get.width * .45,
@@ -107,7 +110,6 @@ class AlphabetGameOverAlertDialog extends StatelessWidget {
     );
   }
 
-// Widget _buildCat() {
-//   return
-// }
+
+
 }

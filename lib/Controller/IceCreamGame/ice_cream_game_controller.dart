@@ -2,11 +2,14 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:dido_koodak1/Utils/shakeAnimation.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Model/IceCreamGame/ice_cream_customer_model.dart';
 import '../../Model/IceCreamGame/ice_cream_material_model.dart';
+import '../../View/AlphabetGame/Widgets/alphabet_game_over_alert_dialog.dart';
+import '../../View/IceCreamGame/Widget/ice_cream_game_over_alert_dialog.dart';
 
 class IceCreamGameController extends GetxController {
   RxInt heartNumber = 3.obs;
@@ -201,7 +204,6 @@ class IceCreamGameController extends GetxController {
   }
 
   void createRandomCustomer() async {
-
     customerList.shuffle();
 
     IceCreamOrderModel model = IceCreamOrderModel(
@@ -237,8 +239,6 @@ class IceCreamGameController extends GetxController {
 
   void firstInit() {
     Future.delayed(const Duration(seconds: 3), () {
-
-
       IceCreamOrderModel model = IceCreamOrderModel(
         customer: customerList.first,
         order: [
@@ -259,4 +259,68 @@ class IceCreamGameController extends GetxController {
       update(['createCustomer']);
     });
   }
+
+  void checkIceCream(
+      {required IceCreamOrderModel item,
+      required int index,
+      required Animation<double> animation}) {
+    if (listEquals(
+        item.order, iceCreamMaterialList.map((e) => e.id).toList())) {
+      removeCustomer(
+        index: index,
+      );
+
+      iceCreamMaterialList = [];
+      update(['createOrder']);
+    } else {
+      heartNumber(heartNumber.value - 1);
+      if (heartNumber.value == 0) {
+        showGameOverAlert();
+      } else {
+        heart.currentState!.shake();
+      }
+    }
+  }
+
+
+  void showGameOverAlert() async {
+    randomCustomerRandomTimer!.cancel();
+    var replay = await showGeneralDialog(
+      context: Get.context!,
+      pageBuilder: (ctx, a1, a2) {
+        return Container();
+      },
+      transitionBuilder: (ctx, a1, a2, child) {
+        var curve = Curves.easeInOut.transform(a1.value);
+        return Transform.scale(
+          scale: curve,
+          child: const AlertDialog(
+            backgroundColor: Colors.transparent,
+            contentPadding: EdgeInsets.zero,
+            content: IceCreamGameOverAlertDialog(),
+          ),
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 370),
+    );
+
+    if(replay is bool && replay){
+
+      iceCreamMaterialList = [];
+      customerOrderedList = [];
+      update(['createCustomer']);
+      update(['createOrder']);
+      heartNumber(3);
+      firstInit();
+      randomCustomerRandomTimer =
+          Timer.periodic(const Duration(seconds: 20), (timer) {
+            createRandomCustomer();
+          });
+    }else{
+      Get.back();
+    }
+  }
+
+
+
 }

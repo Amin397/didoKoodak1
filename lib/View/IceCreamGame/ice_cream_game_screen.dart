@@ -318,91 +318,101 @@ class IceCreamGameScreen extends StatelessWidget {
           ),
           height: double.maxFinite,
           width: double.maxFinite,
-          child: GetBuilder(
-            init: controller,
-            id: 'createOrder',
-            builder: (ctx) {
-              return Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 370),
-                    transitionBuilder:
-                        (Widget child, Animation<double> animation) {
-                      return SizeTransition(
-                        sizeFactor: animation,
-                        child: child,
-                      );
-                    },
-                    child: (controller.iceCreamMaterialList.isNotEmpty)
-                        ? _buildBread(
-                            breadPath: controller.iceCreamMaterialList.first.path,
-                          )
-                        : const SizedBox(),
-                  ),
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 370),
-                    transitionBuilder:
-                        (Widget child, Animation<double> animation) {
-                      return ScaleTransition(
-                        scale: animation,
-                        child: child,
-                      );
-                    },
-                    child: (controller.iceCreamMaterialList.length >= 2)
-                        ? _buildFirstCream(
-                            firstCreamPath: controller.iceCreamMaterialList[1].path,
-                          )
-                        : const SizedBox(),
-                  ),
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 370),
-                    transitionBuilder:
-                        (Widget child, Animation<double> animation) {
-                      return FadeTransition(
-                        opacity: animation,
-                        child: child,
-                      );
-                    },
-                    child: (controller.iceCreamMaterialList.length >= 3)
-                        ? _buildSecondCream(
-                            secondCreamPath: controller.iceCreamMaterialList[2].path,
-                          )
-                        : const SizedBox(),
-                  ),
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 370),
-                    transitionBuilder:
-                        (Widget child, Animation<double> animation) {
-                      return RotationTransition(
-                        turns: animation,
-                        child: child,
-                      );
-                    },
-                    child: (controller.iceCreamMaterialList.length >= 4)
-                        ? _buildThirdCream(
-                            thirdCreamPath: controller.iceCreamMaterialList[3].path,
-                          )
-                        : const SizedBox(),
-                  ),
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 450),
-                    transitionBuilder:
-                        (Widget child, Animation<double> animation) {
-                      return ScaleTransition(
-                        scale: animation,
-                        child: child,
-                      );
-                    },
-                    child: (controller.iceCreamMaterialList.length >= 5)
-                        ? _buildMaterial(
-                            materialPath: controller.iceCreamMaterialList.last.path,
-                          )
-                        : const SizedBox(),
-                  ),
-                ],
-              );
-            },
+          child: Draggable(
+            data: 'iceCream',
+            feedback: _buildFeedbackDragChild(),
+            childWhenDragging: SizedBox(),
+            child: GetBuilder(
+              init: controller,
+              id: 'createOrder',
+              builder: (ctx) {
+                return Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 370),
+                      transitionBuilder:
+                          (Widget child, Animation<double> animation) {
+                        return SizeTransition(
+                          sizeFactor: animation,
+                          child: child,
+                        );
+                      },
+                      child: (controller.iceCreamMaterialList.isNotEmpty)
+                          ? _buildBread(
+                              breadPath:
+                                  controller.iceCreamMaterialList.first.path,
+                            )
+                          : const SizedBox(),
+                    ),
+                    AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 370),
+                      transitionBuilder:
+                          (Widget child, Animation<double> animation) {
+                        return ScaleTransition(
+                          scale: animation,
+                          child: child,
+                        );
+                      },
+                      child: (controller.iceCreamMaterialList.length >= 2)
+                          ? _buildFirstCream(
+                              firstCreamPath:
+                                  controller.iceCreamMaterialList[1].path,
+                            )
+                          : const SizedBox(),
+                    ),
+                    AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 370),
+                      transitionBuilder:
+                          (Widget child, Animation<double> animation) {
+                        return FadeTransition(
+                          opacity: animation,
+                          child: child,
+                        );
+                      },
+                      child: (controller.iceCreamMaterialList.length >= 3)
+                          ? _buildSecondCream(
+                              secondCreamPath:
+                                  controller.iceCreamMaterialList[2].path,
+                            )
+                          : const SizedBox(),
+                    ),
+                    AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 370),
+                      transitionBuilder:
+                          (Widget child, Animation<double> animation) {
+                        return RotationTransition(
+                          turns: animation,
+                          child: child,
+                        );
+                      },
+                      child: (controller.iceCreamMaterialList.length >= 4)
+                          ? _buildThirdCream(
+                              thirdCreamPath:
+                                  controller.iceCreamMaterialList[3].path,
+                            )
+                          : const SizedBox(),
+                    ),
+                    AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 450),
+                      transitionBuilder:
+                          (Widget child, Animation<double> animation) {
+                        return ScaleTransition(
+                          scale: animation,
+                          child: child,
+                        );
+                      },
+                      child: (controller.iceCreamMaterialList.length >= 5)
+                          ? _buildMaterial(
+                              materialPath:
+                                  controller.iceCreamMaterialList.last.path,
+                            )
+                          : const SizedBox(),
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),
@@ -420,7 +430,8 @@ class IceCreamGameScreen extends StatelessWidget {
           return Container(
             margin: EdgeInsets.only(
               top: Get.height * .2,
-              left: (controller.iceCreamMaterialList.first.id == 0) ? 2.0 : 12.0,
+              left:
+                  (controller.iceCreamMaterialList.first.id == 0) ? 2.0 : 12.0,
             ),
             child: SvgPicture.asset(
               breadPath,
@@ -448,7 +459,7 @@ class IceCreamGameScreen extends StatelessWidget {
             ),
             child: SvgPicture.asset(
               firstCreamPath,
-              height: (controller.iceCreamMaterialList[1].id == 3)
+              height: (controller.iceCreamMaterialList.isNotEmpty && controller.iceCreamMaterialList[1].id == 3)
                   ? Get.height * .15
                   : Get.height * .135,
               width: Get.width * .03,
@@ -488,7 +499,7 @@ class IceCreamGameScreen extends StatelessWidget {
         ),
         child: SvgPicture.asset(
           thirdCreamPath,
-          height: Get.height * .13,
+          height: Get.height * .1,
           width: Get.width * .03,
         ),
       ),
@@ -521,6 +532,59 @@ class IceCreamGameScreen extends StatelessWidget {
         width: Get.width,
         // height: Get.height * .15,
       ),
+    );
+  }
+
+  Widget _buildFeedbackDragChild() {
+    return GetBuilder(
+      init: controller,
+      id: 'createOrder',
+      builder: (ctx) {
+        return SizedBox(
+          height: Get.height * .45,
+          width: Get.width * .2,
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  margin: const EdgeInsets.only(
+                    left: 8.0,
+                  ),
+                  child: SvgPicture.asset(
+                    controller.iceCreamMaterialList.first.path,
+                    height: Get.height * .25,
+                    width: Get.width * .03,
+                  ),
+                ),
+              ),
+              _buildFirstCream(
+                firstCreamPath: controller.iceCreamMaterialList[1].path,
+              ),
+              _buildSecondCream(
+                secondCreamPath: controller.iceCreamMaterialList[2].path,
+              ),
+              Center(
+                child: Container(
+                  margin: EdgeInsets.only(
+                    bottom: Get.height * .15,
+                    right: Get.width * .008,
+                  ),
+                  child: SvgPicture.asset(
+                    controller.iceCreamMaterialList[3].path,
+                    height: Get.height * .1,
+                    width: Get.width * .03,
+                  ),
+                ),
+              ),
+              _buildMaterial(
+                materialPath: controller.iceCreamMaterialList.last.path,
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

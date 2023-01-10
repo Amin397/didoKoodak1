@@ -259,7 +259,6 @@ class AlphabetGameController extends GetxController {
       shuffleMethod();
     } else {
       heartNumber(heartNumber.value - 1);
-
       if (heartNumber.value == 0) {
         showGameOverAlert();
       } else {
