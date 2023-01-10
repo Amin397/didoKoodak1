@@ -34,7 +34,7 @@ class SingleTowerScreen extends StatelessWidget {
                           width: double.maxFinite,
                           child: Image(
                             image: AssetImage(
-                              'assets/images/Backgrounds/single_tower_bg.PNG',
+                              'assets/images/Backgrounds/singleTowerBg.png',
                             ),
                             fit: BoxFit.fill,
                           ),
@@ -57,13 +57,11 @@ class SingleTowerScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-
                 ],
               ),
             ),
             _buildSettingButton(),
             _buildHomeButton(),
-
           ],
         ),
       ),
@@ -75,7 +73,7 @@ class SingleTowerScreen extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Container(
         margin: EdgeInsets.only(
-            right: Get.width * .8,
+          right: Get.width * .8,
         ),
         height: Get.height * .35,
         width: Get.width * .17,
@@ -84,15 +82,12 @@ class SingleTowerScreen extends StatelessWidget {
     );
   }
 
-
-
   Widget _buildSettingButton() {
     return Align(
       alignment: Alignment.topLeft,
       child: InkWell(
         onTap: () {
           controller.goToSetting();
-          // controller.pageController.previousPage(duration: Duration(milliseconds: 1100), curve: Curves.easeInOutCubic);
         },
         child: Container(
           margin: paddingAll28,
@@ -114,7 +109,6 @@ class SingleTowerScreen extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Get.offAndToNamed(NameRouts.home);
-          // controller.pageController.nextPage(duration: Duration(milliseconds: 1100), curve: Curves.easeInOutCubic);
         },
         child: Container(
           margin: paddingAll28,
@@ -143,107 +137,9 @@ class SingleTowerScreen extends StatelessWidget {
         child: Container(
           width: Get.width * .65,
           height: Get.height * .25,
-          // margin: EdgeInsets.symmetric(
-          //   vertical: Get.height * .1,
-          // ),
           margin: EdgeInsets.only(
             top: Get.height * .08,
           ),
-          // color: Colors.red,
-          // child: Row(
-          //   children: [
-          //     Flexible(
-          //       flex: 6,
-          //       child: SizedBox(
-          //         height: double.maxFinite,
-          //         width: double.maxFinite,
-          //         child: Row(
-          //           children: [
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //             SizedBox(
-          //               width: Get.width * .01,
-          //             ),
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       width: Get.width * .01,
-          //     ),
-          //     Flexible(
-          //       flex: 6,
-          //       child: SizedBox(
-          //         height: double.maxFinite,
-          //         width: double.maxFinite,
-          //         child: Row(
-          //           children: [
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //             SizedBox(
-          //               width: Get.width * .02,
-          //             ),
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       width: Get.width * .01,
-          //     ),
-          //     Flexible(
-          //       flex: 5,
-          //       child: SizedBox(
-          //         height: double.maxFinite,
-          //         width: double.maxFinite,
-          //         child: Row(
-          //           children: [
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //             SizedBox(
-          //               width: Get.width * .015,
-          //             ),
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
         ),
       ),
     );
@@ -265,104 +161,6 @@ class SingleTowerScreen extends StatelessWidget {
           margin: EdgeInsets.only(
             top: Get.height * .15,
           ),
-          // margin: EdgeInsets.symmetric(
-          //   vertical: Get.height * .44,
-          // ),
-          // color: Colors.red,
-          // child: Row(
-          //   children: [
-          //     Flexible(
-          //       flex: 6,
-          //       child: SizedBox(
-          //         height: double.maxFinite,
-          //         width: double.maxFinite,
-          //         child: Row(
-          //           children: [
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //             SizedBox(
-          //               width: Get.width * .01,
-          //             ),
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       width: Get.width * .005,
-          //     ),
-          //     Flexible(
-          //       flex: 6,
-          //       child: SizedBox(
-          //         height: double.maxFinite,
-          //         width: double.maxFinite,
-          //         child: Row(
-          //           children: [
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //             SizedBox(
-          //               width: Get.width * .01,
-          //             ),
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       width: Get.width * .005,
-          //     ),
-          //     Flexible(
-          //       flex: 5,
-          //       child: SizedBox(
-          //         height: double.maxFinite,
-          //         width: double.maxFinite,
-          //         child: Row(
-          //           children: [
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //             SizedBox(
-          //               width: Get.width * .015,
-          //             ),
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
         ),
       ),
     );
@@ -384,125 +182,6 @@ class SingleTowerScreen extends StatelessWidget {
           margin: EdgeInsets.only(
             top: Get.height * .18,
           ),
-          // color: Colors.red,
-          // child: Row(
-          //   children: [
-          //     Flexible(
-          //       flex: 6,
-          //       child: SizedBox(
-          //         height: double.maxFinite,
-          //         width: double.maxFinite,
-          //         child: Row(
-          //           children: [
-          //             Flexible(
-          //               flex: 1,
-          //               child: InkWell(
-          //                 onTap: () {
-          //                   controller.goToSingleMovie(
-          //                     videoPath:
-          //                         'http://192.168.88.221:8096/Items/5594b295a9a22a17daffd66fe5b05170/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
-          //                   );
-          //                 },
-          //                 child: const SizedBox(
-          //                   height: double.maxFinite,
-          //                   width: double.maxFinite,
-          //                 ),
-          //               ),
-          //             ),
-          //             SizedBox(
-          //               width: Get.width * .01,
-          //             ),
-          //             Flexible(
-          //               flex: 1,
-          //               child: InkWell(
-          //                 onTap: (){
-          //                   controller.goToSingleMovie(
-          //                     videoPath:
-          //                     'http://192.168.88.221:8096/Items/5232ae8b56df326b8f9f39417593f560/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
-          //                   );
-          //                 },
-          //                 child: const SizedBox(
-          //                   height: double.maxFinite,
-          //                   width: double.maxFinite,
-          //                 ),
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       width: Get.width * .005,
-          //     ),
-          //     Flexible(
-          //       flex: 6,
-          //       child: SizedBox(
-          //         height: double.maxFinite,
-          //         width: double.maxFinite,
-          //         child: Row(
-          //           children: [
-          //             Flexible(
-          //               flex: 1,
-          //               child: InkWell(
-          //                 onTap: (){
-          //                   controller.goToSingleMovie(
-          //                     videoPath:
-          //                     'http://192.168.88.221:8096/Items/f02a22f7b3452ff8093eafa189cd8b1d/Download?api_key=48476b9221b94645b2f5dcab18a1497e',
-          //                   );
-          //                 },
-          //                 child: SizedBox(
-          //                   height: double.maxFinite,
-          //                   width: double.maxFinite,
-          //                 ),
-          //               ),
-          //             ),
-          //             SizedBox(
-          //               width: Get.width * .01,
-          //             ),
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       width: Get.width * .005,
-          //     ),
-          //     Flexible(
-          //       flex: 5,
-          //       child: SizedBox(
-          //         height: double.maxFinite,
-          //         width: double.maxFinite,
-          //         child: Row(
-          //           children: [
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //             SizedBox(
-          //               width: Get.width * .015,
-          //             ),
-          //             const Flexible(
-          //               flex: 1,
-          //               child: SizedBox(
-          //                 height: double.maxFinite,
-          //                 width: double.maxFinite,
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
         ),
       ),
     );

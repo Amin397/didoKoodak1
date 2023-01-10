@@ -174,6 +174,14 @@ class IceCreamGameController extends GetxController {
     super.dispose();
   }
 
+  @override
+  void onClose() {
+    heart.currentState!.dispose();
+    keys.currentState!.dispose();
+    randomCustomerRandomTimer!.cancel();
+    super.onClose();
+  }
+
   void createOrder({required IceCreamMaterialModel item}) {
     print(item.id);
     if (iceCreamMaterialList.isEmpty) {

@@ -16,4 +16,16 @@ class ProjectRequestsUtils extends BaseHttpRequest {
       type: 'get',
     );
   }
+
+  // Future<ApiResult> getVideos() async {
+  //   return await makeHttpRequest(
+  //     webMethod: WebMethods.alphabets,
+  //     webController: WebController.games,
+  //     type: 'get',
+  //
+  //   );
+  // }
+
+
+
 }

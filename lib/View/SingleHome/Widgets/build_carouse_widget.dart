@@ -30,7 +30,7 @@ class BuildCarouseWidget extends StatelessWidget {
               width: Get.width * .4,
             ),
           ),
-          InkWell(
+          GestureDetector(
             onTap: (){
               controller.goToIceCreamGame();
             },
@@ -42,6 +42,7 @@ class BuildCarouseWidget extends StatelessWidget {
                 ),
                 height: Get.height * .25,
                 width: Get.width * .1,
+                color: Colors.transparent,
               ),
             ),
           ),

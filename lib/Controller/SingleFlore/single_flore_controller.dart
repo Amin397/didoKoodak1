@@ -1,3 +1,4 @@
+import 'package:dido_koodak1/Utils/API/project_requests_utils.dart';
 import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -8,9 +9,7 @@ import '../../Model/FloreModel/room_model.dart';
 class SingleFloreController extends GetxController {
   int flore = 0;
   int listLength = 0;
-
   RxInt currentPage = 0.obs;
-
   late PageController pageController;
 
   List<RoomModel> roomList = [
