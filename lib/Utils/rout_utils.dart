@@ -1,6 +1,5 @@
 import 'package:dido_koodak1/View/SingleRoom/single_room_screen.dart';
 import 'package:get/get.dart';
-
 import '../View/AlphabetGame/alphabet_game_screen.dart';
 import '../View/AlphabetInfo/alphabet_info_screen.dart';
 import '../View/AnimalGame/animal_game_screen.dart';
@@ -8,6 +7,8 @@ import '../View/AnimalInfo/animal_info_screen.dart';
 import '../View/GamesList/games_list_screen.dart';
 import '../View/Home/home_screen.dart';
 import '../View/IceCreamGame/ice_cream_game_screen.dart';
+import '../View/ParentPanel/parent_panel_screen.dart';
+import '../View/Report/report_screen.dart';
 import '../View/SelectAlphabetGame/select_alphabet_game_screen.dart';
 import '../View/Setting/Widgets/logic_screen.dart';
 import '../View/Setting/setting_screen.dart';
@@ -36,6 +37,8 @@ class NameRouts{
   static const String selectAlphabetGame = '/selectAlphabetGame';
   static const String alphabetGame = '/alphabetGame';
   static const String iceCreamGame = '/iceCreamGame';
+  static const String parentPanel = '/parentPanel';
+  static const String report = '/report';
 }
 
 class PageRout {
@@ -81,6 +84,11 @@ class PageRout {
       transition: Transition.fadeIn,
     ),
     GetPage(
+      name: NameRouts.report,
+      page: () => ReportScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
       name: NameRouts.singleTower,
       page: () => SingleTowerScreen(),
       transition: Transition.fadeIn,
@@ -93,6 +101,11 @@ class PageRout {
     GetPage(
       name: NameRouts.iceCreamGame,
       page: () => IceCreamGameScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.parentPanel,
+      page: () => ParentPanelScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(

@@ -83,7 +83,9 @@ class BuildLoginRegisterWidget extends StatelessWidget {
 
   Widget _buildSingleButton() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        controller.loginButton();
+      },
       child: SizedBox(
         height: Get.height * .1,
         width: Get.width * .2,

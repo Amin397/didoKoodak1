@@ -2,7 +2,6 @@ import 'package:dido_koodak1/Globals/blocs.dart';
 import 'package:dido_koodak1/Utils/storage_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 import '../../Model/Setting/setting_model.dart';
 import '../../Utils/rout_utils.dart';
@@ -22,7 +21,6 @@ class SettingController extends GetxController {
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController rePasswordController = TextEditingController();
-
 
   @override
   void onInit() {
@@ -92,5 +90,11 @@ class SettingController extends GetxController {
 
   void logicChecked({required dynamic value}) {
     isLogicAccepted(value);
+  }
+
+  void loginButton() {
+    Get.toNamed(
+      NameRouts.parentPanel,
+    );
   }
 }
