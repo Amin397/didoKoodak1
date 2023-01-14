@@ -1,10 +1,11 @@
 import 'package:dido_koodak1/Globals/blocs.dart';
 import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:dido_koodak1/Utils/storage_utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 
-class HomeController extends GetxController {
+class HomeController extends GetxController with WidgetsBindingObserver{
   void goToAnimalInfo() {
     Get.toNamed(NameRouts.animalInfo);
   }
@@ -24,10 +25,22 @@ class HomeController extends GetxController {
     });
   }
 
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if(state == AppLifecycleState.paused){
+      Blocs.musicBloc.offMusic(setOff: true);
+    }else{
+      Blocs.musicBloc.offMusic(setOff: false);
+    }
+    super.didChangeAppLifecycleState(state);
+  }
+
   @override
   void onInit() {
     setInitBgMusic();
     super.onInit();
+    WidgetsBinding.instance.addObserver(this);
   }
 
   void setInitBgMusic() async {
@@ -56,4 +69,7 @@ class HomeController extends GetxController {
     //   });
     // }
   }
+
+
+
 }

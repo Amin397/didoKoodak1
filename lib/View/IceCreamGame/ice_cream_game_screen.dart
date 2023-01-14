@@ -18,29 +18,37 @@ class IceCreamGameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SizedBox(
-        height: Get.height,
-        width: Get.width,
-        child: Stack(
-          children: [
-            _buildBg(),
-            _buildBlurFilter(),
-            _buildBanners(),
-            GetBuilder(
-              init: controller,
-              id: 'createCustomer',
-              builder: (ctx) {
-                return BuildRandomCustomerWidget(
-                  controller: controller,
-                );
-              },
-            ),
-            _buildDesk(),
-            _buildButtons(),
-            _buildHeart(),
-            _buildIceCreamItems(),
-          ],
+    return WillPopScope(
+      onWillPop: ()async{
+        Get.offAllNamed(NameRouts.singleHome, arguments: {
+          'page': 1,
+        });
+        return true;
+      },
+      child: Scaffold(
+        body: SizedBox(
+          height: Get.height,
+          width: Get.width,
+          child: Stack(
+            children: [
+              _buildBg(),
+              _buildBlurFilter(),
+              _buildBanners(),
+              GetBuilder(
+                init: controller,
+                id: 'createCustomer',
+                builder: (ctx) {
+                  return BuildRandomCustomerWidget(
+                    controller: controller,
+                  );
+                },
+              ),
+              _buildDesk(),
+              _buildButtons(),
+              _buildHeart(),
+              _buildIceCreamItems(),
+            ],
+          ),
         ),
       ),
     );
@@ -155,7 +163,9 @@ class IceCreamGameScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
-                  Get.back();
+                  Get.offAllNamed(NameRouts.singleHome, arguments: {
+                    'page': 1,
+                  });
                 },
                 child: const Image(
                   image: AssetImage(

@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../../Controller/Report/report_controller.dart';
 import 'Widgets/build_report_chart_widget.dart';
 
-
 class ReportScreen extends StatelessWidget {
   ReportScreen({Key? key}) : super(key: key);
   final ReportController controller = Get.put(ReportController());
@@ -26,7 +25,6 @@ class ReportScreen extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _buildBg() {
     return Image(
@@ -88,12 +86,23 @@ class ReportScreen extends StatelessWidget {
               BuildReportChartWidget(
                 controller: controller,
               ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Get.width * .03,
+                ),
+                child:const  Text(
+                  'فرزند شما در یک ماه گذشته، ۷\nهزار دقیقه در اپ ما وقت گذرانده است. از این مدت، ۱۰۲۴ دقیقه را صرف بازی کرده است. ۱۶۰۰ دقیقه آموزش دیده است. ۲۲۷۳ دقیقه پادکست گوش داده است و ۲۶۵۴ دقیقه را صرف یادگرفتن مهارت کرده است.',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Color(0XFFAC3F44),
+                  ),
+                ),
+              )
             ],
           ),
         ),
       ),
     );
   }
-
-
 }

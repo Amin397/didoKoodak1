@@ -13,9 +13,9 @@ import '../../View/IceCreamGame/Widget/ice_cream_game_over_alert_dialog.dart';
 
 class IceCreamGameController extends GetxController {
   RxInt heartNumber = 3.obs;
-  late GlobalKey<CustomShakeWidgetState> heart;
+  late final GlobalKey<CustomShakeWidgetState> heart;
 
-  late GlobalKey<AnimatedListState> keys;
+  late final GlobalKey<AnimatedListState> keys;
 
   Timer? randomCustomerRandomTimer;
   List<IceCreamOrderModel> customerOrderedList = [];
@@ -166,22 +166,6 @@ class IceCreamGameController extends GetxController {
     });
   }
 
-  @override
-  void dispose() {
-    heart.currentState!.dispose();
-    keys.currentState!.dispose();
-    randomCustomerRandomTimer!.cancel();
-    super.dispose();
-  }
-
-  @override
-  void onClose() {
-    heart.currentState!.dispose();
-    keys.currentState!.dispose();
-    randomCustomerRandomTimer!.cancel();
-    super.onClose();
-  }
-
   void createOrder({required IceCreamMaterialModel item}) {
     print(item.id);
     if (iceCreamMaterialList.isEmpty) {
@@ -327,6 +311,15 @@ class IceCreamGameController extends GetxController {
     }else{
       Get.back();
     }
+  }
+
+
+
+  @override
+  void onClose() {
+    print(keys.currentState);
+    // heart.currentState!.dispose();
+    super.onClose();
   }
 
 
