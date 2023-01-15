@@ -24,15 +24,13 @@ class BuildRandomCustomerWidget extends StatelessWidget {
             init: controller,
             id: 'createCustomer',
             builder: (ctx) {
-              return AnimatedList(
-                key: controller.keys,
+              return ListView.builder(
                 scrollDirection: Axis.horizontal,
-                initialItemCount: controller.customerOrderedList.length,
-                itemBuilder: (BuildContext context, int index, animation) {
+                itemCount: controller.customerOrderedList.length,
+                itemBuilder: (BuildContext context, int index) {
                   return _buildCustomerItem(
                     item: controller.customerOrderedList[index],
                     index: index,
-                    animation: animation,
                   );
                 },
               );
@@ -43,51 +41,48 @@ class BuildRandomCustomerWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildCustomerItem(
-      {required IceCreamOrderModel item,
-      required int index,
-      required Animation<double> animation}) {
+  Widget _buildCustomerItem({
+    required IceCreamOrderModel item,
+    required int index,
+  }) {
     return DragTarget(
       onWillAccept: (value) => true,
       onAccept: (value) {
         controller.checkIceCream(
           item: item,
           index: index,
-          animation: animation,
         );
       },
       builder: (context, canditates, rejected) {
-        return FadeTransition(
-          opacity: animation,
-          child: InkWell(
-            onTap: () {
-              controller.removeCustomer(
-                index: index,
-              );
-            },
-            child: Container(
-              height: double.maxFinite,
-              width: Get.width * .25,
-              margin: paddingSymmetricH8,
-              child: Row(
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildIceCream(
-                    item: item,
-                  ),
-                  Expanded(
-                    child: SizedBox(
-                      height: double.maxFinite,
-                      width: double.maxFinite,
-                      child: SvgPicture.asset(
-                        controller.customerOrderedList[index].customer.imgPath,
-                        width: Get.width * .2,
-                        height: Get.height * .5,
-                      ),
+        return Obx(
+          () => AnimatedContainer(
+            duration: const Duration(milliseconds: 750),
+            constraints: BoxConstraints(
+              minWidth: 70.0,
+              minHeight: 0.0
+            ),
+            curve: Curves.easeInBack,
+            height: double.maxFinite,
+            width: (item.isCatch.isTrue) ? 0.0 : Get.width * .25,
+            margin: paddingSymmetricH8,
+            child: Row(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildIceCream(
+                  item: item,
+                ),
+                Expanded(
+                  child: SizedBox(
+                    height: double.maxFinite,
+                    width: double.maxFinite,
+                    child: SvgPicture.asset(
+                      controller.customerOrderedList[index].customer.imgPath,
+                      width: Get.width * .2,
+                      height: Get.height * .5,
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
         );
@@ -96,47 +91,50 @@ class BuildRandomCustomerWidget extends StatelessWidget {
   }
 
   Widget _buildIceCream({required IceCreamOrderModel item}) {
-    return Container(
-      width: Get.width * .09,
-      height: Get.width * .12,
-      decoration: BoxDecoration(
-        boxShadow: shadow(),
-        borderRadius: radiusAll16,
-        color: Color(item.color).withOpacity(1).withAlpha(200),
-      ),
-      margin: EdgeInsets.only(
-        bottom: Get.height * .26,
-        right: 8.0,
-      ),
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          _buildBread(
-            breadPath: controller.iceCreamMaterial
-                .singleWhere((element) => element.id == item.order.first)
-                .path,
-          ),
-          _buildFirstCream(
-            firstCreamPath: controller.iceCreamMaterial
-                .singleWhere((element) => element.id == item.order[1])
-                .path,
-          ),
-          _buildSecondCream(
-            secondCreamPath: controller.iceCreamMaterial
-                .singleWhere((element) => element.id == item.order[2])
-                .path,
-          ),
-          _buildThirdCream(
-            thirdCreamPath: controller.iceCreamMaterial
-                .singleWhere((element) => element.id == item.order[3])
-                .path,
-          ),
-          _buildMaterial(
-            materialPath: controller.iceCreamMaterial
-                .singleWhere((element) => element.id == item.order.last)
-                .path,
-          ),
-        ],
+    return Obx(
+      () => AnimatedContainer(
+        duration: const Duration(milliseconds: 750),
+        width: (item.isCatch.isTrue) ? 0.0 : Get.width * .09,
+        height: Get.width * .12,
+        decoration: BoxDecoration(
+          boxShadow: shadow(),
+          borderRadius: radiusAll16,
+          color: Color(item.color).withOpacity(1).withAlpha(200),
+        ),
+        margin: EdgeInsets.only(
+          bottom: Get.height * .26,
+          right: 8.0,
+        ),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            _buildBread(
+              breadPath: controller.iceCreamMaterial
+                  .singleWhere((element) => element.id == item.order.first)
+                  .path,
+            ),
+            _buildFirstCream(
+              firstCreamPath: controller.iceCreamMaterial
+                  .singleWhere((element) => element.id == item.order[1])
+                  .path,
+            ),
+            _buildSecondCream(
+              secondCreamPath: controller.iceCreamMaterial
+                  .singleWhere((element) => element.id == item.order[2])
+                  .path,
+            ),
+            _buildThirdCream(
+              thirdCreamPath: controller.iceCreamMaterial
+                  .singleWhere((element) => element.id == item.order[3])
+                  .path,
+            ),
+            _buildMaterial(
+              materialPath: controller.iceCreamMaterial
+                  .singleWhere((element) => element.id == item.order.last)
+                  .path,
+            ),
+          ],
+        ),
       ),
     );
   }

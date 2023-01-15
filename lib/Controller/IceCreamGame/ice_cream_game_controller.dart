@@ -8,14 +8,11 @@ import 'package:get/get.dart';
 
 import '../../Model/IceCreamGame/ice_cream_customer_model.dart';
 import '../../Model/IceCreamGame/ice_cream_material_model.dart';
-import '../../View/AlphabetGame/Widgets/alphabet_game_over_alert_dialog.dart';
 import '../../View/IceCreamGame/Widget/ice_cream_game_over_alert_dialog.dart';
 
 class IceCreamGameController extends GetxController {
   RxInt heartNumber = 3.obs;
   late final GlobalKey<CustomShakeWidgetState> heart;
-
-  late final GlobalKey<AnimatedListState> keys;
 
   Timer? randomCustomerRandomTimer;
   List<IceCreamOrderModel> customerOrderedList = [];
@@ -157,8 +154,6 @@ class IceCreamGameController extends GetxController {
   void onInit() {
     super.onInit();
     heart = GlobalKey();
-    keys = GlobalKey();
-
     firstInit();
     randomCustomerRandomTimer =
         Timer.periodic(const Duration(seconds: 20), (timer) {
@@ -191,7 +186,9 @@ class IceCreamGameController extends GetxController {
   void getBackItem() {
     if (iceCreamMaterialList.isNotEmpty) {
       iceCreamMaterialList.removeLast();
-      update(['createOrder']);
+      Future.delayed(const Duration(milliseconds: 300) , (){
+        update(['createOrder']);
+      });
     }
   }
 
@@ -208,25 +205,14 @@ class IceCreamGameController extends GetxController {
         6 + Random().nextInt(4),
       ],
       color: (Random().nextDouble() * 0xFFFFFF).toInt(),
+      isCatch: true.obs,
     );
 
-    customerOrderedList.insert(
-      0,
-      model,
-    );
-
-    keys.currentState!.insertItem(0, duration: const Duration(seconds: 1));
+    customerOrderedList.add(model);
     update(['createCustomer']);
-  }
 
-  void removeCustomer({required int index}) {
-    customerOrderedList.removeAt(index);
-    keys.currentState!.removeItem(
-      index,
-      (context, animation) => SizedBox(),
-      duration: const Duration(seconds: 1),
-    );
-    update(['createCustomer']);
+    model.isCatch(false);
+
   }
 
   void firstInit() {
@@ -241,27 +227,28 @@ class IceCreamGameController extends GetxController {
           6 + Random().nextInt(4),
         ],
         color: (Random().nextDouble() * 0xFFFFFF).toInt(),
+        isCatch: true.obs,
       );
 
-      customerOrderedList.insert(
-        0,
-        model,
-      );
-      keys.currentState!.insertItem(0, duration: const Duration(seconds: 1));
+      customerOrderedList.add(model);
       update(['createCustomer']);
+
+      model.isCatch(false);
+
     });
   }
 
-  void checkIceCream(
-      {required IceCreamOrderModel item,
-      required int index,
-      required Animation<double> animation}) {
+  void checkIceCream({
+    required IceCreamOrderModel item,
+    required int index,
+  }) {
     if (listEquals(
         item.order, iceCreamMaterialList.map((e) => e.id).toList())) {
-      removeCustomer(
-        index: index,
-      );
-
+      item.isCatch(true);
+      Future.delayed(const Duration(seconds: 1), () {
+        customerOrderedList.remove(item);
+        update(['createCustomer']);
+      });
       iceCreamMaterialList = [];
       update(['createOrder']);
     } else {
@@ -273,7 +260,6 @@ class IceCreamGameController extends GetxController {
       }
     }
   }
-
 
   void showGameOverAlert() async {
     randomCustomerRandomTimer!.cancel();
@@ -296,8 +282,7 @@ class IceCreamGameController extends GetxController {
       transitionDuration: const Duration(milliseconds: 370),
     );
 
-    if(replay is bool && replay){
-
+    if (replay is bool && replay) {
       iceCreamMaterialList = [];
       customerOrderedList = [];
       update(['createCustomer']);
@@ -306,22 +291,16 @@ class IceCreamGameController extends GetxController {
       firstInit();
       randomCustomerRandomTimer =
           Timer.periodic(const Duration(seconds: 20), (timer) {
-            createRandomCustomer();
-          });
-    }else{
+        createRandomCustomer();
+      });
+    } else {
       Get.back();
     }
   }
 
-
-
   @override
   void onClose() {
-    print(keys.currentState);
     // heart.currentState!.dispose();
     super.onClose();
   }
-
-
-
 }

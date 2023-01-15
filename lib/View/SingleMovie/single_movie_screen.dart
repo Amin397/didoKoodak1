@@ -14,6 +14,7 @@ class SingleMovieScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SizedBox(
         height: Get.height,
         width: Get.width,

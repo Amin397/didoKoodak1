@@ -364,7 +364,7 @@ class IceCreamGameScreen extends StatelessWidget {
                           child: child,
                         );
                       },
-                      child: (controller.iceCreamMaterialList.length >= 2)
+                      child: (controller.iceCreamMaterialList.length > 1)
                           ? _buildFirstCream(
                               firstCreamPath:
                                   controller.iceCreamMaterialList[1].path,
@@ -441,7 +441,7 @@ class IceCreamGameScreen extends StatelessWidget {
             margin: EdgeInsets.only(
               top: Get.height * .2,
               left:
-                  (controller.iceCreamMaterialList.first.id == 0) ? 2.0 : 12.0,
+                  (controller.iceCreamMaterialList.isNotEmpty && controller.iceCreamMaterialList.first.id == 0) ? 2.0 : 12.0,
             ),
             child: SvgPicture.asset(
               breadPath,
