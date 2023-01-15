@@ -13,7 +13,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{
+      onWillPop: () async {
+        controller.showExitAlert();
         return false;
       },
       child: Scaffold(
@@ -23,50 +24,15 @@ class HomeScreen extends StatelessWidget {
           width: Get.width,
           child: Stack(
             children: [
-              // InteractiveViewer(
-              //   panEnabled: false,
-              //   boundaryMargin: paddingAll24,
-              //   minScale: 1.0,
-              //   maxScale: 4.0,
-              //   child: _buildBg(),
-              // ),
               _buildBg(),
               _buildSettingButton(),
+              _buildExitButton(),
               _buildClickableTowerItem(),
               _buildClickableCarouselItem(),
               _buildClickableTrainItem(),
               _buildClickableTentItem(),
             ],
           ),
-          // child: Column(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     TextButton(
-          //       onPressed: () {
-          //         controller.goToAnimalInfo();
-          //       },
-          //       child: const Text(
-          //         'animals info',
-          //       ),
-          //     ),
-          //     TextButton(
-          //       onPressed: () {
-          //         controller.goToAnimalGame();
-          //       },
-          //       child: const Text(
-          //         'animals game',
-          //       ),
-          //     ),
-          //     TextButton(
-          //       onPressed: () {
-          //       },
-          //       child: const Text(
-          //         'settings',
-          //       ),
-          //     ),
-          //
-          //   ],
-          // ),
         ),
       ),
     );
@@ -99,6 +65,30 @@ class HomeScreen extends StatelessWidget {
           child: const Image(
             image: AssetImage(
               'assets/images/Buttons/settingButton.png',
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildExitButton() {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: InkWell(
+        onTap: () {
+          controller.showExitAlert();
+        },
+        child: Container(
+          margin: EdgeInsets.only(
+            left: 28.0,
+            top: Get.height * .2,
+          ),
+          height: Get.height * .12,
+          width: Get.height * .12,
+          child: const Image(
+            image: AssetImage(
+              'assets/images/Buttons/exitButton.png',
             ),
           ),
         ),

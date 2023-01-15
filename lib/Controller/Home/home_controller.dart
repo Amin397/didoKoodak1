@@ -2,10 +2,13 @@ import 'package:dido_koodak1/Globals/blocs.dart';
 import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:dido_koodak1/Utils/storage_utils.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:just_audio/just_audio.dart';
 
-class HomeController extends GetxController with WidgetsBindingObserver{
+import '../../View/Home/Widgets/exit_alert.dart';
+
+class HomeController extends GetxController with WidgetsBindingObserver {
   void goToAnimalInfo() {
     Get.toNamed(NameRouts.animalInfo);
   }
@@ -25,12 +28,11 @@ class HomeController extends GetxController with WidgetsBindingObserver{
     });
   }
 
-
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if(state == AppLifecycleState.paused){
+    if (state == AppLifecycleState.paused) {
       Blocs.musicBloc.offMusic(setOff: true);
-    }else{
+    } else {
       Blocs.musicBloc.offMusic(setOff: false);
     }
     super.didChangeAppLifecycleState(state);
@@ -70,6 +72,22 @@ class HomeController extends GetxController with WidgetsBindingObserver{
     // }
   }
 
+  void showExitAlert() async {
+    bool exit = await showDialog(
+      context: Get.context!,
+      barrierDismissible: false,
+      builder: (BuildContext context){
+        return const AlertDialog(
+          contentPadding: EdgeInsets.zero,
+          backgroundColor: Colors.transparent,
+          content: ExitAlert(),
+        );
+      },
+    );
 
-
+    if(exit){
+      // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+      SystemNavigator.pop();
+    }
+  }
 }
