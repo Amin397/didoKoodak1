@@ -67,7 +67,7 @@ class BuildLoginRegisterWidget extends StatelessWidget {
   Widget _buildButtons() {
     return Align(
       alignment: Alignment.bottomCenter,
-      child: Container(
+      child: SizedBox(
         // margin: EdgeInsets.only(),
         height: Get.height * .2,
         width: Get.width * .25,

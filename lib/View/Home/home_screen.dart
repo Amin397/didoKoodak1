@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
   Widget _buildExitButton() {
     return Align(
       alignment: Alignment.topLeft,
-      child: InkWell(
+      child: GestureDetector(
         onTap: () {
           controller.showExitAlert();
         },

@@ -55,6 +55,7 @@ class WidgetUtil {
         textAlign: textAlign,
         keyboardType: inputType,
         autofocus: autoFocus,
+        textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: hint,

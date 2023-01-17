@@ -93,8 +93,16 @@ class SettingController extends GetxController {
   }
 
   void loginButton() {
-    Get.toNamed(
-      NameRouts.parentPanel,
-    );
+
+    if(isLogin.isTrue){
+      Get.toNamed(
+        NameRouts.parentPanel,
+      );
+    }else{
+      Get.toNamed(
+        NameRouts.kidsProfile,
+      );
+    }
+
   }
 }

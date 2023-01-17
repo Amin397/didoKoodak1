@@ -7,6 +7,7 @@ import '../View/AnimalInfo/animal_info_screen.dart';
 import '../View/GamesList/games_list_screen.dart';
 import '../View/Home/home_screen.dart';
 import '../View/IceCreamGame/ice_cream_game_screen.dart';
+import '../View/KidsProfile/kids_profile_screen.dart';
 import '../View/ParentPanel/parent_panel_screen.dart';
 import '../View/Report/report_screen.dart';
 import '../View/SelectAlphabetGame/select_alphabet_game_screen.dart';
@@ -39,6 +40,7 @@ class NameRouts{
   static const String iceCreamGame = '/iceCreamGame';
   static const String parentPanel = '/parentPanel';
   static const String report = '/report';
+  static const String kidsProfile = '/kidsProfile';
 }
 
 class PageRout {
@@ -71,6 +73,11 @@ class PageRout {
     GetPage(
       name: NameRouts.gamesList,
       page: () => GamesListScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.kidsProfile,
+      page: () => KidsProfileScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(
