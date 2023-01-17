@@ -155,7 +155,7 @@ class IceCreamGameScreen extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: Container(
         margin: paddingAll32,
-        height: Get.height * .15,
+        height: Get.height * .17,
         width: Get.width * .18,
         child: Row(
           children: [
@@ -322,108 +322,204 @@ class IceCreamGameScreen extends StatelessWidget {
         onTap: () {
           controller.getBackItem();
         },
-        child: Container(
-          padding: const EdgeInsets.only(
-            bottom: 12.0,
-          ),
-          height: double.maxFinite,
-          width: double.maxFinite,
-          child: Draggable(
-            data: 'iceCream',
-            feedback: _buildFeedbackDragChild(),
-            childWhenDragging: SizedBox(),
-            child: GetBuilder(
-              init: controller,
-              id: 'createOrder',
-              builder: (ctx) {
-                return Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 370),
-                      transitionBuilder:
-                          (Widget child, Animation<double> animation) {
-                        return SizeTransition(
-                          sizeFactor: animation,
-                          child: child,
-                        );
-                      },
-                      child: (controller.iceCreamMaterialList.isNotEmpty)
-                          ? _buildBread(
-                              breadPath:
-                                  controller.iceCreamMaterialList.first.path,
-                            )
-                          : const SizedBox(),
-                    ),
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 370),
-                      transitionBuilder:
-                          (Widget child, Animation<double> animation) {
-                        return ScaleTransition(
-                          scale: animation,
-                          child: child,
-                        );
-                      },
-                      child: (controller.iceCreamMaterialList.length > 1)
-                          ? _buildFirstCream(
-                              firstCreamPath:
-                                  controller.iceCreamMaterialList[1].path,
-                            )
-                          : const SizedBox(),
-                    ),
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 370),
-                      transitionBuilder:
-                          (Widget child, Animation<double> animation) {
-                        return FadeTransition(
-                          opacity: animation,
-                          child: child,
-                        );
-                      },
-                      child: (controller.iceCreamMaterialList.length >= 3)
-                          ? _buildSecondCream(
-                              secondCreamPath:
-                                  controller.iceCreamMaterialList[2].path,
-                            )
-                          : const SizedBox(),
-                    ),
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 370),
-                      transitionBuilder:
-                          (Widget child, Animation<double> animation) {
-                        return RotationTransition(
-                          turns: animation,
-                          child: child,
-                        );
-                      },
-                      child: (controller.iceCreamMaterialList.length >= 4)
-                          ? _buildThirdCream(
-                              thirdCreamPath:
-                                  controller.iceCreamMaterialList[3].path,
-                            )
-                          : const SizedBox(),
-                    ),
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 450),
-                      transitionBuilder:
-                          (Widget child, Animation<double> animation) {
-                        return ScaleTransition(
-                          scale: animation,
-                          child: child,
-                        );
-                      },
-                      child: (controller.iceCreamMaterialList.length >= 5)
-                          ? _buildMaterial(
-                              materialPath:
-                                  controller.iceCreamMaterialList.last.path,
-                            )
-                          : const SizedBox(),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
+        child: GetBuilder(
+          init: controller,
+          id: 'createOrder',
+          builder: (ctx){
+            return Container(
+              padding: const EdgeInsets.only(
+                bottom: 12.0,
+              ),
+              height: double.maxFinite,
+              width: double.maxFinite,
+              child: (controller.iceCreamMaterialList.length == 5)?Draggable(
+                data: 'iceCream',
+                feedback: _buildFeedbackDragChild(),
+                childWhenDragging: SizedBox(),
+                child: GetBuilder(
+                  init: controller,
+                  id: 'createOrder',
+                  builder: (ctx) {
+                    return Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 370),
+                          transitionBuilder:
+                              (Widget child, Animation<double> animation) {
+                            return SizeTransition(
+                              sizeFactor: animation,
+                              child: child,
+                            );
+                          },
+                          child: (controller.iceCreamMaterialList.isNotEmpty)
+                              ? _buildBread(
+                            breadPath:
+                            controller.iceCreamMaterialList.first.path,
+                          )
+                              : const SizedBox(),
+                        ),
+                        AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 370),
+                          transitionBuilder:
+                              (Widget child, Animation<double> animation) {
+                            return ScaleTransition(
+                              scale: animation,
+                              child: child,
+                            );
+                          },
+                          child: (controller.iceCreamMaterialList.length > 1)
+                              ? _buildFirstCream(
+                            firstCreamPath:
+                            controller.iceCreamMaterialList[1].path,
+                          )
+                              : const SizedBox(),
+                        ),
+                        AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 370),
+                          transitionBuilder:
+                              (Widget child, Animation<double> animation) {
+                            return FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            );
+                          },
+                          child: (controller.iceCreamMaterialList.length >= 3)
+                              ? _buildSecondCream(
+                            secondCreamPath:
+                            controller.iceCreamMaterialList[2].path,
+                          )
+                              : const SizedBox(),
+                        ),
+                        AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 370),
+                          transitionBuilder:
+                              (Widget child, Animation<double> animation) {
+                            return RotationTransition(
+                              turns: animation,
+                              child: child,
+                            );
+                          },
+                          child: (controller.iceCreamMaterialList.length >= 4)
+                              ? _buildThirdCream(
+                            thirdCreamPath:
+                            controller.iceCreamMaterialList[3].path,
+                          )
+                              : const SizedBox(),
+                        ),
+                        AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 450),
+                          transitionBuilder:
+                              (Widget child, Animation<double> animation) {
+                            return ScaleTransition(
+                              scale: animation,
+                              child: child,
+                            );
+                          },
+                          child: (controller.iceCreamMaterialList.length >= 5)
+                              ? _buildMaterial(
+                            materialPath:
+                            controller.iceCreamMaterialList.last.path,
+                          )
+                              : const SizedBox(),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ):GetBuilder(
+                init: controller,
+                id: 'createOrder',
+                builder: (ctx) {
+                  return Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 370),
+                        transitionBuilder:
+                            (Widget child, Animation<double> animation) {
+                          return SizeTransition(
+                            sizeFactor: animation,
+                            child: child,
+                          );
+                        },
+                        child: (controller.iceCreamMaterialList.isNotEmpty)
+                            ? _buildBread(
+                          breadPath:
+                          controller.iceCreamMaterialList.first.path,
+                        )
+                            : const SizedBox(),
+                      ),
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 370),
+                        transitionBuilder:
+                            (Widget child, Animation<double> animation) {
+                          return ScaleTransition(
+                            scale: animation,
+                            child: child,
+                          );
+                        },
+                        child: (controller.iceCreamMaterialList.length > 1)
+                            ? _buildFirstCream(
+                          firstCreamPath:
+                          controller.iceCreamMaterialList[1].path,
+                        )
+                            : const SizedBox(),
+                      ),
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 370),
+                        transitionBuilder:
+                            (Widget child, Animation<double> animation) {
+                          return FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          );
+                        },
+                        child: (controller.iceCreamMaterialList.length >= 3)
+                            ? _buildSecondCream(
+                          secondCreamPath:
+                          controller.iceCreamMaterialList[2].path,
+                        )
+                            : const SizedBox(),
+                      ),
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 370),
+                        transitionBuilder:
+                            (Widget child, Animation<double> animation) {
+                          return RotationTransition(
+                            turns: animation,
+                            child: child,
+                          );
+                        },
+                        child: (controller.iceCreamMaterialList.length >= 4)
+                            ? _buildThirdCream(
+                          thirdCreamPath:
+                          controller.iceCreamMaterialList[3].path,
+                        )
+                            : const SizedBox(),
+                      ),
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 450),
+                        transitionBuilder:
+                            (Widget child, Animation<double> animation) {
+                          return ScaleTransition(
+                            scale: animation,
+                            child: child,
+                          );
+                        },
+                        child: (controller.iceCreamMaterialList.length >= 5)
+                            ? _buildMaterial(
+                          materialPath:
+                          controller.iceCreamMaterialList.last.path,
+                        )
+                            : const SizedBox(),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            );
+          },
         ),
       ),
     );

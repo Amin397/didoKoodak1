@@ -14,8 +14,8 @@ class WidgetUtil {
         image: const AssetImage(
           'assets/images/Buttons/backButton.png',
         ),
-        height: Get.height * .1,
-        width: Get.height * .1,
+        height: Get.height * .13,
+        width: Get.height * .13,
       ),
     );
   }

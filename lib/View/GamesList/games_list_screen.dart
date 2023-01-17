@@ -99,6 +99,7 @@ class GamesListScreen extends StatelessWidget {
 
             _buildSettingButton(),
             _buildHomeButton(),
+            _buildBackButton(),
           ],
         ),
       ),
@@ -114,8 +115,8 @@ class GamesListScreen extends StatelessWidget {
         },
         child: Container(
           margin: paddingAll28,
-          height: Get.height * .12,
-          width: Get.height * .12,
+          height: Get.height * .14,
+          width: Get.height * .14,
           child: const Image(
             image: AssetImage(
               'assets/images/Buttons/settingButton.png',
@@ -135,11 +136,35 @@ class GamesListScreen extends StatelessWidget {
         },
         child: Container(
           margin: paddingAll28,
-          height: Get.height * .12,
-          width: Get.height * .12,
+          height: Get.height * .14,
+          width: Get.height * .14,
           child: const Image(
             image: AssetImage(
               'assets/images/Buttons/homeButton.png',
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBackButton() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: InkWell(
+        onTap: () {
+          Get.back();
+        },
+        child: Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: 28.0,
+            vertical: Get.height * .22,
+          ),
+          height: Get.height * .14,
+          width: Get.height * .14,
+          child: const Image(
+            image: AssetImage(
+              'assets/images/Buttons/backButton.png',
             ),
           ),
         ),

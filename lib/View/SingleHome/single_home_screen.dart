@@ -62,8 +62,8 @@ class SingleHomeScreen extends StatelessWidget {
         },
         child: Container(
           margin: paddingAll28,
-          height: Get.height * .12,
-          width: Get.height * .12,
+          height: Get.height * .14,
+          width: Get.height * .14,
           child: const Image(
             image: AssetImage(
               'assets/images/Buttons/settingButton.png',
@@ -83,8 +83,8 @@ class SingleHomeScreen extends StatelessWidget {
         },
         child: Container(
           margin: paddingAll28,
-          height: Get.height * .12,
-          width: Get.height * .12,
+          height: Get.height * .14,
+          width: Get.height * .14,
           child: const Image(
             image: AssetImage(
               'assets/images/Buttons/homeButton.png',

@@ -35,11 +35,19 @@ class SettingController extends GetxController {
   void buttonsAction({
     required int id,
   }) {
-    if (id == 0) {
-      Get.offAllNamed(NameRouts.home);
-    } else {
-      semiStatus(1);
-      step(step.value + 1);
+    switch(id){
+      case 0:{
+        Get.offAllNamed(NameRouts.home);
+        break;
+      }
+      case 1:{
+        semiStatus(1);
+        step(step.value + 1);
+        break;
+      }
+      default:{
+        Get.back();
+      }
     }
   }
 

@@ -66,8 +66,8 @@ class ReportScreen extends StatelessWidget {
             image: const AssetImage(
               'assets/images/Buttons/backButton.png',
             ),
-            height: Get.height * .11,
-            width: Get.height * .11,
+            height: Get.height * .13,
+            width: Get.height * .13,
           ),
         ),
       ),

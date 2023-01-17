@@ -168,8 +168,8 @@ class BuildMovieScreenWidget extends StatelessWidget {
         image: AssetImage(
           button,
         ),
-        height: Get.height * .1,
-        width: Get.height * .1,
+        height: Get.height * .12,
+        width: Get.height * .12,
       ),
     );
   }

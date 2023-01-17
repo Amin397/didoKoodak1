@@ -164,8 +164,8 @@ class ParentPanelScreen extends StatelessWidget {
             image: const AssetImage(
               'assets/images/Buttons/homeButton.png',
             ),
-            height: Get.height * .11,
-            width: Get.height * .11,
+            height: Get.height * .13,
+            width: Get.height * .13,
           ),
         ),
       ),

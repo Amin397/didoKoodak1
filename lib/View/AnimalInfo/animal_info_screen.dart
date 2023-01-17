@@ -1,6 +1,7 @@
 import 'package:dido_koodak1/Const/measures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../Controller/AnimalInfo/animal_info_controller.dart';
 import '../../Globals/blocs.dart';
 import '../../Model/AnimalGame/animal_model.dart';
@@ -13,7 +14,7 @@ class AnimalInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: ()async{
+      onWillPop: () async {
         Blocs.musicBloc.checkBgMusic();
         return true;
       },
@@ -41,6 +42,7 @@ class AnimalInfoScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              _buildBackButton(),
             ],
           ),
         ),
@@ -136,7 +138,7 @@ class AnimalInfoScreen extends StatelessWidget {
             Align(
               alignment: Alignment.topCenter,
               child: InkWell(
-                onTap: (){
+                onTap: () {
                   controller.playAnimalSound(
                     animal: controller.animalsList
                         .singleWhere((element) => element.isSelected.isTrue),
@@ -148,28 +150,41 @@ class AnimalInfoScreen extends StatelessWidget {
                     right: Get.width * .1,
                   ),
                   child: Image(
-                    image:const AssetImage(
+                    image: const AssetImage(
                       'assets/images/Buttons/unmuteButton.png',
                     ),
-                    height: Get.height * .08,
-                    width: Get.height * .08,
+                    height: Get.height * .14,
+                    width: Get.height * .14,
                     fit: BoxFit.fill,
                   ),
                 ),
               ),
             )
-            // IconButton(
-            //   onPressed: () {
-            //     controller.playAnimalSound(
-            //       animal: controller.animalsList
-            //           .singleWhere((element) => element.isSelected.isTrue),
-            //     );
-            //   },
-            //   icon: const Icon(
-            //     Icons.surround_sound,
-            //   ),
-            // )
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBackButton() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: InkWell(
+        onTap: () {
+          Get.back();
+        },
+        child: Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: 28.0,
+            vertical: Get.height * .05,
+          ),
+          height: Get.height * .14,
+          width: Get.height * .14,
+          child: const Image(
+            image: AssetImage(
+              'assets/images/Buttons/backButton.png',
+            ),
+          ),
         ),
       ),
     );

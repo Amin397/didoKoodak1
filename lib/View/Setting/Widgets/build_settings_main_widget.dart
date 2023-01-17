@@ -52,18 +52,24 @@ class BuildSettingsMainWidget extends StatelessWidget {
       child: Container(
         margin: paddingSymmetricV16,
         height: Get.height * .15,
-        width: Get.width * .2,
+        width: Get.width * .3,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _buildSingleButton(
-              id: 0,
+              id: 2,
             ),
             SizedBox(
               width: Get.width * .01,
             ),
             _buildSingleButton(
               id: 1,
+            ),
+            SizedBox(
+              width: Get.width * .01,
+            ),
+            _buildSingleButton(
+              id: 0,
             ),
           ],
         ),
@@ -74,6 +80,26 @@ class BuildSettingsMainWidget extends StatelessWidget {
   Widget _buildSingleButton({
     required int id,
   }) {
+
+
+
+    String buttonPath = '';
+
+
+    switch(id){
+      case 0 :{
+        buttonPath = 'assets/images/Buttons/homeButton.png';
+        break;
+      }
+      case 1:{
+        buttonPath = 'assets/images/Buttons/infoButton.png';
+        break;
+      }
+      default:{
+        buttonPath = 'assets/images/Buttons/backButton.png';
+        break;
+      }
+    }
     return InkWell(
       onTap: () {
         controller.buttonsAction(
@@ -82,12 +108,10 @@ class BuildSettingsMainWidget extends StatelessWidget {
       },
       child: Image(
         image: AssetImage(
-          (id == 0)
-              ? 'assets/images/Buttons/homeButton.png'
-              : 'assets/images/Buttons/infoButton.png',
+          buttonPath
         ),
-        height: Get.height * .1,
-        width: Get.height * .1,
+        height: Get.height * .13,
+        width: Get.height * .13,
         fit: BoxFit.contain,
       ),
     );
