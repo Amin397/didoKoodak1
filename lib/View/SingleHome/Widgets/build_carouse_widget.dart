@@ -23,11 +23,11 @@ class BuildCarouseWidget extends StatelessWidget {
             },
             child: Container(
               margin: EdgeInsets.only(
-                left: Get.width * .2,
-                top: Get.height * .2
+                left: Get.width * .15,
+                top: Get.height * .1
               ),
-              height: Get.height * .55,
-              width: Get.width * .4,
+              height: Get.height * .65,
+              width: Get.width * .3,
             ),
           ),
           GestureDetector(
@@ -37,11 +37,11 @@ class BuildCarouseWidget extends StatelessWidget {
             child: Center(
               child: Container(
                 margin: EdgeInsets.only(
-                  left: Get.width * .35,
-                  top: Get.height * .5
+                  left: Get.width * .08,
+                  top: Get.height * .3
                 ),
-                height: Get.height * .25,
-                width: Get.width * .1,
+                height: Get.height * .4,
+                width: Get.width * .15,
                 color: Colors.transparent,
               ),
             ),
@@ -78,7 +78,7 @@ class BuildCarouseWidget extends StatelessWidget {
       width: Get.width,
       child: const Image(
         image: AssetImage(
-          'assets/images/Backgrounds/carouseBg.PNG',
+          'assets/images/Backgrounds/carouseBg.png',
         ),
         fit: BoxFit.fill,
       ),

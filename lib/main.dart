@@ -9,6 +9,7 @@ import 'Utils/rout_utils.dart';
 void main() async {
   await GetStorage.init();
 
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,

@@ -43,52 +43,30 @@ class GamesListScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            SizedBox(
-                              width: Get.width * .15,
-                            ),
+                            // Transform.rotate(
+                            //   angle: -.07,
+                            //   child: InkWell(
+                            //     onTap: () {
+                            //       controller.goToAnimalGame();
+                            //     },
+                            //     child: Container(
+                            //       height: Get.height * .45,
+                            //       width: Get.width * .18,
+                            //     ),
+                            //   ),
+                            // ),
+                            // SizedBox(
+                            //   width: Get.width * .05,
+                            // ),
                             InkWell(
                               onTap: () {
-                                controller.goToAlphabetGame();
+                                controller.goToAnimalInfo();
                               },
                               child: Transform.rotate(
                                 angle: -.05,
                                 child: SizedBox(
                                   height: Get.height * .4,
                                   width: Get.width * .18,
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Transform.rotate(
-                                            angle: .3,
-                                            child: Text(
-                                              ' A',
-                                              style: TextStyle(
-                                                fontSize: 86.0,
-                                                color: Colors.red.shade900,
-                                                fontFamily: 'xKoodak',
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 8.0),
-                                            child: Transform.rotate(
-                                              angle: -.3,
-                                              child: Text(
-                                                ' B',
-                                                style: TextStyle(
-                                                  fontSize: 86.0,
-                                                  color: Colors.red.shade900,
-                                                  fontFamily: 'xKoodak',
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
                                 ),
                               ),
                             ),
@@ -99,57 +77,17 @@ class GamesListScreen extends StatelessWidget {
                               angle: .07,
                               child: InkWell(
                                 onTap: () {
-                                  controller.goToAnimalInfo();
+                                  controller.goToAlphabetGame();
                                 },
                                 child: SizedBox(
                                   height: Get.height * .4,
                                   width: Get.width * .18,
-                                  child: Column(
-                                    children: [
-                                      const SizedBox(
-                                        height: 18.0,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Transform.rotate(
-                                            angle: .2,
-                                            child: const Image(
-                                              image: AssetImage(
-                                                  'assets/images/owl.png'),
-                                              height: 90.0,
-                                              width: 70.0,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 8.0),
-                                            child: Transform.rotate(
-                                              angle: -.2,
-                                              child: const Image(
-                                                image: AssetImage(
-                                                    'assets/images/tiger.png'),
-                                                height: 90.0,
-                                                width: 70.0,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
                                 ),
                               ),
                             ),
                             SizedBox(
                               width: Get.width * .08,
                             ),
-                            // SizedBox(
-                            //   height: double.maxFinite,
-                            //   width: double.maxFinite,
-                            //   child: _buildBg(),
-                            // ),
                           ],
                         ),
                       ),
@@ -161,36 +99,6 @@ class GamesListScreen extends StatelessWidget {
 
             _buildSettingButton(),
             _buildHomeButton(),
-            // _buildBg(),
-            // Column(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     TextButton(
-            //       onPressed: () {
-            //         controller.goToAlphabetGame();
-            //       },
-            //       child: const Text(
-            //         'alphabet',
-            //       ),
-            //     ),
-            //     TextButton(
-            //       onPressed: () {
-            //         controller.goToAnimalInfo();
-            //       },
-            //       child: const Text(
-            //         'animal info ',
-            //       ),
-            //     ),
-            //     TextButton(
-            //       onPressed: () {
-            //         controller.goToAnimalGame();
-            //       },
-            //       child: const Text(
-            //         'animal Game',
-            //       ),
-            //     ),
-            //   ],
-            // ),
           ],
         ),
       ),
@@ -203,7 +111,6 @@ class GamesListScreen extends StatelessWidget {
       child: InkWell(
         onTap: () {
           controller.goToSetting();
-          // controller.pageController.previousPage(duration: Duration(milliseconds: 1100), curve: Curves.easeInOutCubic);
         },
         child: Container(
           margin: paddingAll28,
@@ -225,7 +132,6 @@ class GamesListScreen extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Get.offAndToNamed(NameRouts.home);
-          // controller.pageController.nextPage(duration: Duration(milliseconds: 1100), curve: Curves.easeInOutCubic);
         },
         child: Container(
           margin: paddingAll28,
