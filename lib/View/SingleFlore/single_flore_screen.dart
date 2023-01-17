@@ -1,11 +1,12 @@
+import 'dart:math' as math;
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dido_koodak1/Const/measures.dart';
-import 'package:dido_koodak1/Model/FloreModel/flore_two_model.dart';
-import 'package:dido_koodak1/Model/FloreModel/room_model.dart';
+import 'package:dido_koodak1/Model/FloreModel/flore_model.dart';
 import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:math' as math;
+
 import '../../Controller/SingleFlore/single_flore_controller.dart';
 
 class SingleFloreScreen extends StatelessWidget {
@@ -31,15 +32,9 @@ class SingleFloreScreen extends StatelessWidget {
                 },
                 itemCount: controller.listLength,
                 itemBuilder: (BuildContext context, int index) {
-                  if (controller.flore == 0) {
-                    return _buildRoomItem(
-                      room: controller.roomList[index],
-                    );
-                  } else {
-                    return _buildRoomItem2(
-                      room: controller.floreTwoModel[index],
-                    );
-                  }
+                  return _buildRoomItem(
+                    room: controller.showList[index],
+                  );
                 },
               ),
             ),
@@ -65,7 +60,7 @@ class SingleFloreScreen extends StatelessWidget {
         child: Transform(
           alignment: Alignment.center,
           transform: Matrix4.rotationY(math.pi),
-          child: Image(
+          child:const Image(
             image: AssetImage(
               'assets/images/Characters/cat.png',
             ),
@@ -126,51 +121,15 @@ class SingleFloreScreen extends StatelessWidget {
   }
 
   Widget _buildBg() {
-    String bgPath;
 
-    switch (controller.flore) {
-      case 0:
-        {
-          bgPath = 'assets/images/Backgrounds/singleFloreOneBg.png';
-          break;
-        }
-      case 1:
-        {
-          bgPath = 'assets/images/Backgrounds/singleFloreTwoBg.png';
-          break;
-        }
-      default:
-        {
-          bgPath = 'assets/images/Backgrounds/singleFloreTwoBg.png';
-          break;
-        }
-    }
     return SizedBox(
       height: Get.height,
       width: Get.width,
-      child: Image(
+      child: const Image(
         image: AssetImage(
-          bgPath,
+          'assets/images/Backgrounds/singleFloreTwoBg.png',
         ),
         fit: BoxFit.fill,
-      ),
-    );
-  }
-
-  Widget _buildRoomItem({required RoomModel room}) {
-    return SizedBox(
-      height: Get.height,
-      width: Get.width,
-      child: Stack(
-        children: [
-          _buildBg(),
-          _buildTitle(
-            title: room.title,
-          ),
-          _buildDoor(
-            room: room,
-          ),
-        ],
       ),
     );
   }
@@ -202,28 +161,9 @@ class SingleFloreScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDoor({required RoomModel room}) {
-    return Center(
-      child: InkWell(
-        onTap: () {
-          controller.doorClick(
-            room: room,
-          );
-        },
-        child: Container(
-          margin: EdgeInsets.only(
-            right: Get.width * .4,
-          ),
-          width: Get.width * .2,
-          height: Get.height * .65,
-        ),
-      ),
-    );
-  }
-
   Widget _buildButtons() {
     return Align(
-      alignment: Alignment.topRight,
+      alignment: Alignment.topLeft,
       child: Container(
         margin: paddingAll32,
         height: Get.height * .15,
@@ -247,7 +187,9 @@ class SingleFloreScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
-                  Get.offAllNamed(NameRouts.home);
+                  Get.offAllNamed(
+                    NameRouts.home,
+                  );
                 },
                 child: const Image(
                   image: AssetImage(
@@ -262,7 +204,7 @@ class SingleFloreScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildRoomItem2({required FloreTwoModel room}) {
+  Widget _buildRoomItem({required FloreModel room}) {
     return SizedBox(
       height: Get.height,
       width: Get.width,
@@ -272,7 +214,7 @@ class SingleFloreScreen extends StatelessWidget {
           _buildTitleImage(
             title: room.imagePath,
           ),
-          _buildDoor2(
+          _buildDoor(
             room: room,
           ),
         ],
@@ -299,7 +241,7 @@ class SingleFloreScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDoor2({required FloreTwoModel room}) {
+  Widget _buildDoor({required FloreModel room}) {
     return Center(
       child: InkWell(
         onTap: () {

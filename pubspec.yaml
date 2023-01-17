@@ -83,6 +83,7 @@ flutter:
     - assets/sounds/letters/
     - assets/images/Characters/
     - assets/images/IceCream/
+    - assets/images/Videos/
     -
   #   - images/a_dot_ham.jpeg
 

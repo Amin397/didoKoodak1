@@ -35,6 +35,7 @@ class SingleMovieController extends GetxController {
       showOptions: true,
       showControls: true,
       allowMuting: true,
+      systemOverlaysAfterFullScreen: SystemUiOverlay.values,
       deviceOrientationsAfterFullScreen: [
         DeviceOrientation.landscapeLeft,
         DeviceOrientation.landscapeRight,

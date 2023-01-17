@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../Model/FloreModel/flore_two_model.dart';
+import '../../Model/FloreModel/flore_model.dart';
 import '../../Utils/rout_utils.dart';
 
 class SingleRoomController extends GetxController{

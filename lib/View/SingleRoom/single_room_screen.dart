@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dido_koodak1/Const/measures.dart';
-import 'package:dido_koodak1/Model/FloreModel/flore_two_model.dart';
+import 'package:dido_koodak1/Model/FloreModel/flore_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

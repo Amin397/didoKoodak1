@@ -1,6 +1,6 @@
 
-class FloreTwoModel {
-  FloreTwoModel({required this.imagePath, required this.singleRoomVideos});
+class FloreModel {
+  FloreModel({required this.imagePath, required this.singleRoomVideos});
 
   String imagePath;
 
