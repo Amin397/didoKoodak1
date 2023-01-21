@@ -26,7 +26,7 @@ class BuildPodcastItemWidget extends StatelessWidget {
             controller: controller,
             podcast:podcast,
           ),
-          buildCat(),
+          // buildCat(),
         ],
       ),
     );
@@ -57,9 +57,9 @@ class BuildPodcastItemWidget extends StatelessWidget {
     return SizedBox(
       height: Get.height,
       width: Get.width,
-      child: const Image(
+      child: Image(
         image: AssetImage(
-          'assets/images/Backgrounds/singlePodcastBg.png',
+          podcast.bg,
         ),
         fit: BoxFit.fill,
       ),

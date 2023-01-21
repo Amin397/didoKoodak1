@@ -94,7 +94,7 @@ flutter:
     - assets/images/Characters/
     - assets/images/IceCream/
     - assets/images/Videos/
-    -
+    - assets/images/Podcasts/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

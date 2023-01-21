@@ -21,6 +21,7 @@ class SinglePodcastController extends GetxController {
           'http://192.168.88.221:8096/Items/3e65cd1fa54b3d351971ac4ee13ad038/Download?api_key=7f6ee9183ae243e492bca7faf426e6f7',
       player: AudioPlayer(),
       position: Duration.zero.obs,
+      bg: 'assets/images/Podcasts/pod1.png',
     ),
     PodcastModel(
       duration: Duration.zero.obs,
@@ -30,6 +31,7 @@ class SinglePodcastController extends GetxController {
           'http://192.168.88.221:8096/Items/fb3c5264cb620528a3cd57156c025ecd/Download?api_key=7f6ee9183ae243e492bca7faf426e6f7',
       player: AudioPlayer(),
       position: Duration.zero.obs,
+      bg: 'assets/images/Podcasts/pod2.png',
     ),
     PodcastModel(
       duration: Duration.zero.obs,
@@ -39,6 +41,7 @@ class SinglePodcastController extends GetxController {
           'http://192.168.88.221:8096/Items/3907887956646f52ff41b64fd42709ac/Download?api_key=7f6ee9183ae243e492bca7faf426e6f7',
       player: AudioPlayer(),
       position: Duration.zero.obs,
+      bg: 'assets/images/Podcasts/pod3.png',
     ),
     PodcastModel(
       duration: Duration.zero.obs,
@@ -48,6 +51,7 @@ class SinglePodcastController extends GetxController {
           'http://192.168.88.221:8096/Items/6f19a0d3d2af98f0ae337b80dcedda6a/Download?api_key=7f6ee9183ae243e492bca7faf426e6f7',
       player: AudioPlayer(),
       position: Duration.zero.obs,
+      bg: 'assets/images/Podcasts/pod4.png',
     ),
     PodcastModel(
       duration: Duration.zero.obs,
@@ -57,6 +61,7 @@ class SinglePodcastController extends GetxController {
           'http://192.168.88.221:8096/Items/ab5aaa616cf5df2aa5973fbd21abacc3/Download?api_key=7f6ee9183ae243e492bca7faf426e6f7',
       player: AudioPlayer(),
       position: Duration.zero.obs,
+      bg: 'assets/images/Podcasts/pod5.png',
     ),
   ];
 
