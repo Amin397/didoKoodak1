@@ -54,37 +54,41 @@ class BuildRandomCustomerWidget extends StatelessWidget {
         );
       },
       builder: (context, canditates, rejected) {
-        return Obx(
-          () => AnimatedContainer(
-            duration: const Duration(milliseconds: 750),
-            constraints: BoxConstraints(
-              minWidth: 70.0,
-              minHeight: 0.0
-            ),
-            curve: Curves.easeInBack,
-            height: double.maxFinite,
-            width: (item.isCatch.isTrue) ? 0.0 : Get.width * .25,
-            margin: paddingSymmetricH8,
-            child: Row(
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildIceCream(
-                  item: item,
-                ),
-                Expanded(
-                  child: SizedBox(
-                    height: double.maxFinite,
-                    width: double.maxFinite,
-                    child: SvgPicture.asset(
-                      controller.customerOrderedList[index].customer.imgPath,
-                      width: Get.width * .2,
-                      height: Get.height * .5,
+        return GetBuilder(
+          init: controller,
+          id: 'sad',
+          builder: (ctx) {
+            return Obx(
+              () => AnimatedContainer(
+                duration: const Duration(milliseconds: 750),
+                constraints:
+                    const BoxConstraints(minWidth: 70.0, minHeight: 0.0),
+                curve: Curves.easeInBack,
+                height: double.maxFinite,
+                width: (item.isCatch.isTrue) ? 0.0 : Get.width * .25,
+                margin: paddingSymmetricH8,
+                child: Row(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildIceCream(
+                      item: item,
                     ),
-                  ),
-                )
-              ],
-            ),
-          ),
+                    Expanded(
+                      child: SizedBox(
+                        height: double.maxFinite,
+                        width: double.maxFinite,
+                        child: SvgPicture.asset(
+                          controller.customerOrderedList[index].mainImage!,
+                          width: Get.width * .2,
+                          height: Get.height * .5,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          },
         );
       },
     );

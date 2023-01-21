@@ -127,7 +127,7 @@ class SingleTowerScreen extends StatelessWidget {
 
   Widget _buildBackButton() {
     return Align(
-      alignment: Alignment.topRight,
+      alignment: Alignment.topLeft,
       child: InkWell(
         onTap: () {
           Get.back();

@@ -20,19 +20,23 @@ class IceCreamGameController extends GetxController {
   List<IceCreamCustomerModel> customerList = [
     IceCreamCustomerModel(
       id: 0,
-      imgPath: 'assets/images/IceCream/boy1.svg',
+      happyImgPath: 'assets/images/IceCream/boy1.svg',
+      sadImgPath: 'assets/images/IceCream/boy1Sad.svg',
     ),
     IceCreamCustomerModel(
       id: 1,
-      imgPath: 'assets/images/IceCream/boy2.svg',
+      happyImgPath: 'assets/images/IceCream/boy2.svg',
+      sadImgPath: 'assets/images/IceCream/boy2Sad.svg'
     ),
     IceCreamCustomerModel(
       id: 2,
-      imgPath: 'assets/images/IceCream/girl1.svg',
+      happyImgPath: 'assets/images/IceCream/girl1.svg',
+      sadImgPath: 'assets/images/IceCream/girl1Sad.svg'
     ),
     IceCreamCustomerModel(
       id: 3,
-      imgPath: 'assets/images/IceCream/girl2.svg',
+      happyImgPath: 'assets/images/IceCream/girl2.svg',
+      sadImgPath: 'assets/images/IceCream/girl2Sad.svg'
     ),
   ];
 
@@ -206,10 +210,34 @@ class IceCreamGameController extends GetxController {
       ],
       color: (Random().nextDouble() * 0xFFFFFF).toInt(),
       isCatch: true.obs,
+      duration: 60,
     );
 
+    model.mainImage = model.customer.happyImgPath;
     customerOrderedList.add(model);
+
+    model.timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      model.duration -- ;
+      print(model.duration);
+      if(model.duration <= 30){
+        if(model.duration == 0){
+          timer.cancel();
+          model.isCatch(true);
+          heartNumber(heartNumber.value - 1);
+          if (heartNumber.value == 0) {
+            showGameOverAlert();
+          } else {
+            heart.currentState!.shake();
+          }
+        }else{
+          model.mainImage = model.customer.sadImgPath;
+          update(['sad']);
+        }
+      }
+    });
+
     update(['createCustomer']);
+    update(['createOrder']);
 
     model.isCatch(false);
 
@@ -228,11 +256,33 @@ class IceCreamGameController extends GetxController {
         ],
         color: (Random().nextDouble() * 0xFFFFFF).toInt(),
         isCatch: true.obs,
+        duration: 60,
       );
+      model.mainImage = model.customer.happyImgPath;
 
       customerOrderedList.add(model);
-      update(['createCustomer']);
 
+      model.timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        model.duration -- ;
+        print(model.duration);
+        if(model.duration <= 30){
+          if(model.duration == 0){
+            timer.cancel();
+            model.isCatch(true);
+            heartNumber(heartNumber.value - 1);
+            if (heartNumber.value == 0) {
+              showGameOverAlert();
+            } else {
+              heart.currentState!.shake();
+            }
+          }else{
+            model.mainImage = model.customer.sadImgPath;
+            update(['sad']);
+          }
+        }
+      });
+      update(['createCustomer']);
+      update(['createOrder']);
       model.isCatch(false);
 
     });
@@ -245,6 +295,7 @@ class IceCreamGameController extends GetxController {
     if (listEquals(
         item.order, iceCreamMaterialList.map((e) => e.id).toList())) {
       item.isCatch(true);
+      item.timer!.cancel();
       Future.delayed(const Duration(seconds: 1), () {
         customerOrderedList.remove(item);
         update(['createCustomer']);
@@ -263,6 +314,9 @@ class IceCreamGameController extends GetxController {
 
   void showGameOverAlert() async {
     randomCustomerRandomTimer!.cancel();
+    for (var o in customerOrderedList) {
+      o.timer!.cancel();
+    }
     var replay = await showGeneralDialog(
       context: Get.context!,
       pageBuilder: (ctx, a1, a2) {
@@ -285,6 +339,10 @@ class IceCreamGameController extends GetxController {
     if (replay is bool && replay) {
       iceCreamMaterialList = [];
       customerOrderedList = [];
+
+      for (var o in customerOrderedList) {
+        o.timer!.cancel();
+      }
       update(['createCustomer']);
       update(['createOrder']);
       heartNumber(3);
@@ -293,6 +351,7 @@ class IceCreamGameController extends GetxController {
           Timer.periodic(const Duration(seconds: 20), (timer) {
         createRandomCustomer();
       });
+
     } else {
       Get.back();
     }
@@ -301,6 +360,9 @@ class IceCreamGameController extends GetxController {
   @override
   void onClose() {
     // heart.currentState!.dispose();
+    for (var o in customerOrderedList) {
+      o.timer!.cancel();
+    }
     super.onClose();
   }
 }

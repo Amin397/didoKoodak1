@@ -77,7 +77,7 @@ class SettingController extends GetxController {
       } else {
         Blocs.musicBloc.offMusic(setOff: false);
         StorageUtils.setBgMusic(play: true);
-        Blocs.musicBloc.init();
+        // Blocs.musicBloc.init();
       }
     }
     setting.isSwitched(!setting.isSwitched.value);

@@ -20,6 +20,9 @@ class IceCreamGameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: ()async{
+        for (var o in controller.customerOrderedList) {
+          o.timer!.cancel();
+        }
         Get.offAllNamed(NameRouts.singleHome, arguments: {
           'page': 1,
         });
@@ -163,6 +166,9 @@ class IceCreamGameScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
+                  for (var o in controller.customerOrderedList) {
+                    o.timer!.cancel();
+                  }
                   Get.offAllNamed(NameRouts.singleHome, arguments: {
                     'page': 1,
                   });

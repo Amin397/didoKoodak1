@@ -13,14 +13,21 @@ void main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
-  ]).then((value) {
-    runApp(
-      GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        getPages: PageRout.pages,
-        initialRoute: NameRouts.splash,
-        home: SplashScreen(),
-      ),
-    );
-  });
+  ]).then(
+    (value) {
+      Future.delayed(
+        const Duration(seconds: 1),
+        () {
+          runApp(
+            GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              getPages: PageRout.pages,
+              initialRoute: NameRouts.splash,
+              home: SplashScreen(),
+            ),
+          );
+        },
+      );
+    },
+  );
 }
