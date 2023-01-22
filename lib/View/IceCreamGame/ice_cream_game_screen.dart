@@ -184,6 +184,9 @@ class IceCreamGameScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
+                  for (var o in controller.customerOrderedList) {
+                    o.timer!.cancel();
+                  }
                   Get.offAllNamed(NameRouts.home);
                 },
                 child: const Image(
@@ -208,7 +211,6 @@ class IceCreamGameScreen extends StatelessWidget {
         ),
         height: Get.height * .5,
         width: Get.width,
-        // color: Colors.green.withOpacity(.8),
         child: Row(
           children: [
             Flexible(
