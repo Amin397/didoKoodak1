@@ -32,7 +32,7 @@ class BuildSingleLoginWidget extends StatelessWidget {
               hint: 'نام کاربری',
               padding: paddingSymmetricH12,
               textStyle: TextStyle(
-                fontSize: 22.0,
+                fontSize: 18.0,
                 color: textRedColor,
                 fontWeight: FontWeight.bold,
               ),
@@ -51,7 +51,7 @@ class BuildSingleLoginWidget extends StatelessWidget {
               hint: 'رمز عبور',
               padding: paddingSymmetricH12,
               textStyle: TextStyle(
-                fontSize: 22.0,
+                fontSize: 18.0,
                 color: textRedColor,
                 fontWeight: FontWeight.bold,
               ),

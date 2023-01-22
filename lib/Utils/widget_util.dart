@@ -47,7 +47,7 @@ class WidgetUtil {
         color: bgColor,
         borderRadius: radius,
       ),
-      child: TextField(
+      child: TextFormField(
         obscureText: obscureText,
         controller: controller,
         style: textStyle,

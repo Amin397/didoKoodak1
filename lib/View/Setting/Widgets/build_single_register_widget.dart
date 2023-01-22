@@ -35,7 +35,7 @@ class BuildSingleRegisterWidget extends StatelessWidget {
               hint: 'نام کاربری',
               padding: paddingSymmetricH12,
               textStyle: TextStyle(
-                fontSize: 22.0,
+                fontSize: 18.0,
                 color: textRedColor,
                 fontWeight: FontWeight.bold,
               ),
@@ -53,7 +53,7 @@ class BuildSingleRegisterWidget extends StatelessWidget {
               hint: 'شماره تماس',
               padding: paddingSymmetricH12,
               textStyle: TextStyle(
-                fontSize: 22.0,
+                fontSize: 18.0,
                 color: textRedColor,
                 fontWeight: FontWeight.bold,
               ),
@@ -74,7 +74,7 @@ class BuildSingleRegisterWidget extends StatelessWidget {
               hint: 'رمز عبور',
               padding: paddingSymmetricH12,
               textStyle: TextStyle(
-                fontSize: 22.0,
+                fontSize: 18.0,
                 color: textRedColor,
                 fontWeight: FontWeight.bold,
               ),
@@ -93,7 +93,7 @@ class BuildSingleRegisterWidget extends StatelessWidget {
               hint: 'تکرار رمز عبور',
               padding: paddingSymmetricH12,
               textStyle: TextStyle(
-                fontSize: 22.0,
+                fontSize: 18.0,
                 color: textRedColor,
                 fontWeight: FontWeight.bold,
               ),

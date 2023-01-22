@@ -11,10 +11,7 @@ class SplashController extends GetxController {
     Future.delayed(const Duration(seconds: 1), () {
       isStarted(true);
     });
-
-    Future.delayed(const Duration(seconds: 3) , (){
-      Get.offAllNamed(NameRouts.home);
-    });
+    getData();
     super.onInit();
   }
 
@@ -27,5 +24,17 @@ class SplashController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void getData() async{
+
+
+
+    Blocs.userBloc.init().then((value){
+      print(value);
+    });
+    Future.delayed(const Duration(seconds: 3) , (){
+      Get.offAllNamed(NameRouts.home);
+    });
   }
 }

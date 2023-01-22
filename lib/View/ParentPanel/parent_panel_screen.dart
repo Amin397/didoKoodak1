@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../Const/measures.dart';
 import '../../Controller/ParentPanel/parent_panel_controller.dart';
+import '../../Globals/blocs.dart';
 
 class ParentPanelScreen extends StatelessWidget {
   ParentPanelScreen({Key? key}) : super(key: key);
@@ -133,14 +134,19 @@ class ParentPanelScreen extends StatelessWidget {
               width: Get.width * .15,
               fit: BoxFit.fill,
             ),
-            const Center(
-              child: Text(
-                '...عزیز ',
-                style: TextStyle(
-                  color: Color(0XFFAC3F44),
-                  fontFamily: 'gohar',
-                ),
-              ),
+            StreamBuilder(
+              stream: Blocs.userBloc.getStream,
+              builder: (c,t){
+                return Center(
+                  child: Text(
+                    '${Blocs.userBloc.user!.userName} عزیز',
+                    style:const TextStyle(
+                      color: Color(0XFFAC3F44),
+                      fontFamily: 'gohar',
+                    ),
+                  ),
+                );
+              },
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:dido_koodak1/Globals/blocs.dart';
+import 'package:dido_koodak1/Model/User/user_model.dart';
 import 'package:dido_koodak1/Utils/storage_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -35,19 +36,22 @@ class SettingController extends GetxController {
   void buttonsAction({
     required int id,
   }) {
-    switch(id){
-      case 0:{
-        Get.offAllNamed(NameRouts.home);
-        break;
-      }
-      case 1:{
-        semiStatus(1);
-        step(step.value + 1);
-        break;
-      }
-      default:{
-        Get.back();
-      }
+    switch (id) {
+      case 0:
+        {
+          Get.offAllNamed(NameRouts.home);
+          break;
+        }
+      case 1:
+        {
+          semiStatus(1);
+          step(step.value + 1);
+          break;
+        }
+      default:
+        {
+          Get.back();
+        }
     }
   }
 
@@ -83,9 +87,19 @@ class SettingController extends GetxController {
     setting.isSwitched(!setting.isSwitched.value);
   }
 
-  void goToLoginRegister() {
-    status(1);
-    step(step.value + 1);
+  void goToLoginRegister() async{
+
+
+
+
+    if(Blocs.userBloc.user is UserModel){
+      Get.offAndToNamed(
+        NameRouts.parentPanel,
+      );
+    }else{
+      status(1);
+      step(step.value + 1);
+    }
   }
 
   void switchToRegister() {
@@ -101,16 +115,23 @@ class SettingController extends GetxController {
   }
 
   void loginButton() {
-
-    if(isLogin.isTrue){
+    if (isLogin.isTrue) {
       Get.toNamed(
         NameRouts.parentPanel,
       );
-    }else{
+    } else {
+      UserModel userModel = UserModel(
+        userName: userNameController.text.trim(),
+        mobile: phoneNumberController.text.trim(),
+        password: passwordController.text,
+      );
+
       Get.toNamed(
         NameRouts.kidsProfile,
+        arguments: {
+          'data':userModel,
+        }
       );
     }
-
   }
 }
