@@ -8,7 +8,6 @@ import '../../Controller/KidsProfile/kids_profile_controller.dart';
 import '../../Utils/widget_util.dart';
 import 'Widgets/build_kids_profile_main_widget.dart';
 
-
 class KidsProfileScreen extends StatelessWidget {
   KidsProfileScreen({Key? key}) : super(key: key);
 
@@ -21,35 +20,52 @@ class KidsProfileScreen extends StatelessWidget {
       body: SizedBox(
         height: Get.height,
         width: Get.width,
-        child: Stack(
-          children: [
-            const SizedBox(
-              height: double.maxFinite,
-              width: double.maxFinite,
-              child: Image(
-                image: AssetImage(
-                  'assets/images/Backgrounds/splashBg.PNG',
+        child: WidgetUtil.bg(
+          bgPath: 'assets/images/Backgrounds/splashBg.PNG',
+          body: Stack(
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: paddingAll32,
+                  child: WidgetUtil.backButton(function: () {
+                    controller.backMethod();
+                  }),
                 ),
-                fit: BoxFit.fill,
               ),
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: paddingAll32,
-                child: WidgetUtil.backButton(function: () {
-                  controller.backMethod();
-                }),
+              BuildKidsProfileMainWidget(
+                controller: controller,
               ),
-            ),
-            BuildKidsProfileMainWidget(controller: controller,),
-            _buildShosho(),
-            _buildSingleButton(),
-          ],
+              _buildShosho(),
+              _buildSingleButton(),
+            ],
+          ),
         ),
       ),
     );
   }
+
+
+
+
+  // Stack(
+  // children: [
+  // const SizedBox(
+  // height: double.maxFinite,
+  // width: double.maxFinite,
+  // child: Image(
+  // image: AssetImage(
+  // '',
+  // ),
+  // fit: BoxFit.fill,
+  // ),
+  // ),
+  //
+  // ],
+  // )
+
+
+
 
   Widget _buildSingleButton() {
     return GestureDetector(
@@ -81,8 +97,7 @@ class KidsProfileScreen extends StatelessWidget {
                       fontSize: 16.0,
                       color: textRedColor,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'gohar'
-                  ),
+                      fontFamily: 'gohar'),
                 ),
               ),
             ],
@@ -91,8 +106,6 @@ class KidsProfileScreen extends StatelessWidget {
       ),
     );
   }
-
-
 
   Widget _buildShosho() {
     return Align(

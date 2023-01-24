@@ -71,4 +71,26 @@ class WidgetUtil {
       ),
     );
   }
+
+
+
+
+
+  static Widget bg({required String bgPath , required Widget body}){
+    return Stack(
+      children: [
+        SizedBox(
+          height: double.maxFinite,
+          width: double.maxFinite,
+          child: Image(
+            image: AssetImage(
+              bgPath,
+            ),
+            fit: BoxFit.fill,
+          ),
+        ),
+        body,
+      ],
+    );
+  }
 }

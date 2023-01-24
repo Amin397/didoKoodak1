@@ -52,7 +52,7 @@ List<BoxShadow> shadow({
 }) {
   return [
     BoxShadow(
-      color: (Get.isDarkMode) ? Colors.black26 : Colors.grey.withOpacity(.3),
+      color: Colors.black26 ,
       blurRadius: 5.0,
       spreadRadius: 3.0,
       offset: offset,

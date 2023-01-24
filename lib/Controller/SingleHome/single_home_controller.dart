@@ -50,4 +50,8 @@ class SingleHomeController extends GetxController {
   void goToIceCreamGame() {
     Get.toNamed(NameRouts.iceCreamGame);
   }
+
+  void goToShop() {
+    Get.toNamed(NameRouts.shop);
+  }
 }

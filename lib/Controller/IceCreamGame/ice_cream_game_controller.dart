@@ -357,6 +357,15 @@ class IceCreamGameController extends GetxController {
     }
   }
 
+
+  @override
+  void dispose() {
+    for (var o in customerOrderedList) {
+      o.timer!.cancel();
+    }
+    super.dispose();
+  }
+
   @override
   void onClose() {
     // heart.currentState!.dispose();

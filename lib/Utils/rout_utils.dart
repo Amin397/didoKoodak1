@@ -1,3 +1,4 @@
+import 'package:dido_koodak1/View/ProductList/product_list_screen.dart';
 import 'package:dido_koodak1/View/SingleRoom/single_room_screen.dart';
 import 'package:get/get.dart';
 import '../View/AlphabetGame/alphabet_game_screen.dart';
@@ -13,6 +14,7 @@ import '../View/Report/report_screen.dart';
 import '../View/SelectAlphabetGame/select_alphabet_game_screen.dart';
 import '../View/Setting/Widgets/logic_screen.dart';
 import '../View/Setting/setting_screen.dart';
+import '../View/Shop/shop_screen.dart';
 import '../View/SingleFlore/single_flore_screen.dart';
 import '../View/SingleHome/single_home_screen.dart';
 import '../View/SingleMovie/single_movie_screen.dart';
@@ -41,6 +43,8 @@ class NameRouts{
   static const String parentPanel = '/parentPanel';
   static const String report = '/report';
   static const String kidsProfile = '/kidsProfile';
+  static const String shop = '/shop';
+  static const String productList = '/productList';
 }
 
 class PageRout {
@@ -58,6 +62,11 @@ class PageRout {
     GetPage(
       name: NameRouts.home,
       page: () => HomeScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.productList,
+      page: () => ProductListScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -98,6 +107,11 @@ class PageRout {
     GetPage(
       name: NameRouts.singleTower,
       page: () => SingleTowerScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.shop,
+      page: () => ShopScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(

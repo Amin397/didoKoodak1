@@ -14,3 +14,7 @@ String formatTime(Duration duration) {
   ].join(':');
 }
 
+
+ String moneyFormat(double price) {
+return MoneyFormatter(amount: price).output.withoutFractionDigits;
+}

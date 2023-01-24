@@ -1,7 +1,6 @@
 import 'package:dido_koodak1/Controller/SingleHome/single_home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:math' as math;
 
 class BuildCarouseWidget extends StatelessWidget {
   const BuildCarouseWidget({Key? key, required this.controller})
@@ -18,30 +17,43 @@ class BuildCarouseWidget extends StatelessWidget {
         children: [
           _buildBg(),
           InkWell(
-            onTap: (){
+            onTap: () {
               controller.goToSinglePodcast();
             },
             child: Container(
-              margin: EdgeInsets.only(
-                left: Get.width * .15,
-                top: Get.height * .1
-              ),
+              margin:
+                  EdgeInsets.only(left: Get.width * .15, top: Get.height * .1),
               height: Get.height * .65,
               width: Get.width * .3,
             ),
           ),
           GestureDetector(
-            onTap: (){
+            onTap: () {
               controller.goToIceCreamGame();
             },
             child: Center(
               child: Container(
                 margin: EdgeInsets.only(
-                  left: Get.width * .08,
-                  top: Get.height * .3
-                ),
+                    left: Get.width * .08, top: Get.height * .3),
                 height: Get.height * .4,
                 width: Get.width * .15,
+                color: Colors.transparent,
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              controller.goToShop();
+            },
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Container(
+                margin: EdgeInsets.only(
+                  right: Get.width * .08,
+                  top: Get.height * .3,
+                ),
+                height: Get.height * .5,
+                width: Get.width * .2,
                 color: Colors.transparent,
               ),
             ),
@@ -61,7 +73,7 @@ class BuildCarouseWidget extends StatelessWidget {
         ),
         height: Get.height * .3,
         width: Get.width * .15,
-        child:const Image(
+        child: const Image(
           image: AssetImage(
             'assets/images/Characters/cat.png',
           ),
@@ -69,8 +81,6 @@ class BuildCarouseWidget extends StatelessWidget {
       ),
     );
   }
-
-
 
   Widget _buildBg() {
     return SizedBox(
