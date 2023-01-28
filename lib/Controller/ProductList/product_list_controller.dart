@@ -678,4 +678,10 @@ class ProductListController extends GetxController {
       'index': index,
     });
   }
+
+  void goToBasket() {
+    Get.toNamed(NameRouts.basket);
+  }
+
+
 }

@@ -1,4 +1,5 @@
 import 'package:dido_koodak1/Model/Shop/product_gallery_model.dart';
+import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -45,5 +46,6 @@ class SingleProductController extends GetxController {
   }
 
   void goToBasket() {
+    Get.toNamed(NameRouts.basket);
   }
 }

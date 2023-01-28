@@ -5,6 +5,7 @@ import '../View/AlphabetGame/alphabet_game_screen.dart';
 import '../View/AlphabetInfo/alphabet_info_screen.dart';
 import '../View/AnimalGame/animal_game_screen.dart';
 import '../View/AnimalInfo/animal_info_screen.dart';
+import '../View/Basket/basket_screen.dart';
 import '../View/GamesList/games_list_screen.dart';
 import '../View/Home/home_screen.dart';
 import '../View/IceCreamGame/ice_cream_game_screen.dart';
@@ -47,6 +48,7 @@ class NameRouts{
   static const String shop = '/shop';
   static const String productList = '/productList';
   static const String singleProduct = '/singleProduct';
+  static const String basket = '/basket';
 }
 
 class PageRout {
@@ -69,6 +71,11 @@ class PageRout {
     GetPage(
       name: NameRouts.productList,
       page: () => ProductListScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.basket,
+      page: () => BasketScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(

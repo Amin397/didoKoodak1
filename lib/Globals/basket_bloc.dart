@@ -6,6 +6,8 @@ class BasketBloc {
   // ignore: close_sinks
   final streamController = StreamController.broadcast();
 
+  double sumPrice = 0.0;
+
   /// The [getStream] getter would be used to expose our stream to other classes
   Stream get getStream => streamController.stream;
 
@@ -25,6 +27,7 @@ class BasketBloc {
       product.count.value ++ ;
       basketList.add(product);
     }
+    sumPrice = sumPrice + double.parse(product.price);
     sumCount ++ ;
     sync();
   }
@@ -41,6 +44,7 @@ class BasketBloc {
       product.count.value -- ;
       basketList.remove(product);
     }
+    sumPrice = sumPrice - double.parse(product.price);
     sumCount -- ;
     sync();
   }
@@ -48,5 +52,6 @@ class BasketBloc {
   sync() {
     streamController.sink.add(basketList);
     streamController.sink.add(sumCount);
+    streamController.sink.add(sumPrice);
   }
 }

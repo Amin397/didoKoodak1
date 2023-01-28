@@ -105,6 +105,7 @@ class ProductListScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(
                         onTap: () {
+                          controller.goToBasket();
                           // Get.offAllNamed(NameRouts.basket);
                         },
                         child: const Image(
