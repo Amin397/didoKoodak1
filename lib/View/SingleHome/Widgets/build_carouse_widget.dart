@@ -88,9 +88,9 @@ class BuildCarouseWidget extends StatelessWidget {
       width: Get.width,
       child: const Image(
         image: AssetImage(
-          'assets/images/Backgrounds/carouseBg.png',
+          'assets/images/Backgrounds/testBg.PNG',
         ),
-        fit: BoxFit.fill,
+        fit: BoxFit.contain,
       ),
     );
   }

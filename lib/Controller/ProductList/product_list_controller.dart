@@ -1,5 +1,6 @@
 import 'package:dido_koodak1/Model/Shop/product_comment_model.dart';
 import 'package:dido_koodak1/Model/Shop/product_gallery_model.dart';
+import 'package:dido_koodak1/Utils/rout_utils.dart';
 import 'package:get/get.dart';
 
 import '../../Model/Shop/product_model.dart';
@@ -77,7 +78,7 @@ class ProductListController extends GetxController {
         ),
       ],
     ),
-    ProductModel (
+    ProductModel(
       color: 'سبز',
       id: 1,
       title: 'اسباب بازی مدل عروسک کاکتوس',
@@ -649,10 +650,27 @@ class ProductListController extends GetxController {
 
   String categoryText = '';
 
-
   @override
   void onInit() {
     categoryText = Get.arguments['title'];
     super.onInit();
+  }
+
+  void addProduct({required ProductModel product}) {
+    product.count.value++;
+  }
+
+  void removeProduct({required ProductModel product}) {
+    product.count.value--;
+  }
+
+  void goToSingleProduct({
+    required ProductModel product,
+    required int index,
+  }) {
+    Get.toNamed(NameRouts.singleProduct, arguments: {
+      'product': product,
+      'index': index,
+    });
   }
 }

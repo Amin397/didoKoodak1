@@ -19,6 +19,7 @@ import '../View/SingleFlore/single_flore_screen.dart';
 import '../View/SingleHome/single_home_screen.dart';
 import '../View/SingleMovie/single_movie_screen.dart';
 import '../View/SinglePodcast/single_podcast_screen.dart';
+import '../View/SingleProduct/single_product_screen.dart';
 import '../View/SingleTower/single_tower_screen.dart';
 import '../View/Splash/splash_screen.dart';
 
@@ -45,6 +46,7 @@ class NameRouts{
   static const String kidsProfile = '/kidsProfile';
   static const String shop = '/shop';
   static const String productList = '/productList';
+  static const String singleProduct = '/singleProduct';
 }
 
 class PageRout {
@@ -77,6 +79,11 @@ class PageRout {
     GetPage(
       name: NameRouts.setting,
       page: () => SettingScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.singleProduct,
+      page: () => SingleProductScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(
