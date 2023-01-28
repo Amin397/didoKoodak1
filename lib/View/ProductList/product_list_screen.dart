@@ -1,7 +1,10 @@
 import 'dart:math' as math;
 
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:dido_koodak1/Globals/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../Const/colors.dart';
 import '../../Const/measures.dart';
@@ -92,19 +95,57 @@ class ProductListScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {
-                  // Get.offAllNamed(NameRouts.basket);
-                },
-                child: const Image(
-                  image: AssetImage(
-                    'assets/images/Buttons/homeButton.png',
-                  ),
-                ),
-              ),
-            ),
+            StreamBuilder(
+              stream: Blocs.basketBloc.getStream,
+              builder: (c,x){
+                return Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                        onTap: () {
+                          // Get.offAllNamed(NameRouts.basket);
+                        },
+                        child: const Image(
+                          image: AssetImage(
+                            'assets/images/Buttons/homeButton.png',
+                          ),
+                        ),
+                      ),
+                    ),
+                    if (Blocs.basketBloc.basketList.isNotEmpty)
+                      Positioned(
+                        top: -4.0,
+                        right: -4.0,
+                        child: Container(
+                          height: Get.height * .07,
+                          width: Get.height * .07,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                            boxShadow: shadow(),
+                          ),
+                          child: Center(
+                            child: AutoSizeText(
+                              Blocs.basketBloc.sumCount.toString(),
+
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12.0,
+                                fontFamily: 'xKoodak'
+                              ),
+                              maxLines: 1,
+                              maxFontSize: 14.0,
+                              minFontSize: 10.0,
+                            ),
+                          ),
+                        ),
+                      )
+                  ],
+                );
+              },
+            )
           ],
         ),
       ),

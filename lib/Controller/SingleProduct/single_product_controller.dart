@@ -2,6 +2,7 @@ import 'package:dido_koodak1/Model/Shop/product_gallery_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../Globals/blocs.dart';
 import '../../Model/Shop/product_model.dart';
 
 class SingleProductController extends GetxController {
@@ -32,10 +33,17 @@ class SingleProductController extends GetxController {
   }
 
   void addProduct({required ProductModel product}) {
-    product.count.value++;
+    Blocs.basketBloc.addProductToBasket(
+      product: product,
+    );
   }
 
   void removeProduct({required ProductModel product}) {
-    product.count.value--;
+    Blocs.basketBloc.removeProductFromBasket(
+      product: product,
+    );
+  }
+
+  void goToBasket() {
   }
 }

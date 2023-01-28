@@ -1,3 +1,4 @@
+import 'package:dido_koodak1/Globals/blocs.dart';
 import 'package:dido_koodak1/Model/Shop/product_comment_model.dart';
 import 'package:dido_koodak1/Model/Shop/product_gallery_model.dart';
 import 'package:dido_koodak1/Utils/rout_utils.dart';
@@ -657,11 +658,15 @@ class ProductListController extends GetxController {
   }
 
   void addProduct({required ProductModel product}) {
-    product.count.value++;
+    Blocs.basketBloc.addProductToBasket(
+      product: product,
+    );
   }
 
   void removeProduct({required ProductModel product}) {
-    product.count.value--;
+    Blocs.basketBloc.removeProductFromBasket(
+      product: product,
+    );
   }
 
   void goToSingleProduct({
