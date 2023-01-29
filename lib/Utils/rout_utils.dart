@@ -12,6 +12,7 @@ import '../View/IceCreamGame/ice_cream_game_screen.dart';
 import '../View/KidsProfile/kids_profile_screen.dart';
 import '../View/ParentPanel/parent_panel_screen.dart';
 import '../View/Report/report_screen.dart';
+import '../View/SelectAddress/select_address_screen.dart';
 import '../View/SelectAlphabetGame/select_alphabet_game_screen.dart';
 import '../View/Setting/Widgets/logic_screen.dart';
 import '../View/Setting/setting_screen.dart';
@@ -49,6 +50,7 @@ class NameRouts{
   static const String productList = '/productList';
   static const String singleProduct = '/singleProduct';
   static const String basket = '/basket';
+  static const String selectAddress = '/selectAddress';
 }
 
 class PageRout {
@@ -86,6 +88,11 @@ class PageRout {
     GetPage(
       name: NameRouts.setting,
       page: () => SettingScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.selectAddress,
+      page: () => SelectAddressScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(

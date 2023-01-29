@@ -1,6 +1,7 @@
 import 'package:dido_koodak1/Controller/SingleHome/single_home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 class BuildCarouseWidget extends StatelessWidget {
   const BuildCarouseWidget({Key? key, required this.controller})
@@ -34,7 +35,9 @@ class BuildCarouseWidget extends StatelessWidget {
             child: Center(
               child: Container(
                 margin: EdgeInsets.only(
-                    left: Get.width * .08, top: Get.height * .3),
+                  left: Get.width * .08,
+                  top: Get.height * .3,
+                ),
                 height: Get.height * .4,
                 width: Get.width * .15,
                 color: Colors.transparent,
@@ -88,9 +91,9 @@ class BuildCarouseWidget extends StatelessWidget {
       width: Get.width,
       child: const Image(
         image: AssetImage(
-          'assets/images/Backgrounds/testBg.PNG',
+          'assets/images/Backgrounds/carouseBg.png',
         ),
-        fit: BoxFit.contain,
+        fit: BoxFit.fill,
       ),
     );
   }

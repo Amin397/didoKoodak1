@@ -90,7 +90,7 @@ class SingleProductScreen extends StatelessWidget {
                         },
                         child: const Image(
                           image: AssetImage(
-                            'assets/images/Buttons/homeButton.png',
+                            'assets/images/Buttons/cartButton.png',
                           ),
                         ),
                       ),

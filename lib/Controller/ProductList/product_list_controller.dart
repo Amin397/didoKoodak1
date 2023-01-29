@@ -683,5 +683,10 @@ class ProductListController extends GetxController {
     Get.toNamed(NameRouts.basket);
   }
 
+  void cleanBasketAndBack() {
+    Blocs.basketBloc.cleanBasket();
+    Get.back();
+  }
+
 
 }

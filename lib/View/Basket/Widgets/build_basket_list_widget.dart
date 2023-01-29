@@ -25,7 +25,9 @@ class BuildBasketListWidget extends StatelessWidget {
         width: Get.width * .8,
         child: Column(
           children: [
-            BuildBasketListItemWidget(controller:controller),
+            BuildBasketListItemWidget(
+              controller: controller,
+            ),
             _buildBasketResult(),
           ],
         ),
@@ -71,25 +73,30 @@ class BuildBasketListWidget extends StatelessWidget {
                 )
               ],
             ),
-            Container(
-              width: Get.width * .15,
-              height: double.maxFinite,
-              margin: paddingSymmetricV4,
-              decoration: BoxDecoration(
-                color: const Color(0XFF41B774),
-                border: Border.all(
-                  color: const Color(0XFF2F8986),
-                  width: 2.0,
+            InkWell(
+              onTap: (){
+                controller.showLoginAlert();
+              },
+              child: Container(
+                width: Get.width * .15,
+                height: double.maxFinite,
+                margin: paddingSymmetricV4,
+                decoration: BoxDecoration(
+                  color: const Color(0XFF41B774),
+                  border: Border.all(
+                    color: const Color(0XFF2F8986),
+                    width: 2.0,
+                  ),
+                  borderRadius: radiusAll32,
                 ),
-                borderRadius: radiusAll32,
-              ),
-              child:const Center(
-                child: Text(
-                  'ادامه ',
-                  style: TextStyle(
-                    fontFamily: 'xKoodak',
-                    fontSize: 16.0,
-                    color: Colors.white,
+                child: const Center(
+                  child: Text(
+                    'ادامه ',
+                    style: TextStyle(
+                      fontFamily: 'xKoodak',
+                      fontSize: 16.0,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

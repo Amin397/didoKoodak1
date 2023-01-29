@@ -54,4 +54,10 @@ class BasketBloc {
     streamController.sink.add(sumCount);
     streamController.sink.add(sumPrice);
   }
+
+  void cleanBasket() {
+    basketList.clear();
+    sumCount = 0;
+    sumPrice = 0.0;
+  }
 }

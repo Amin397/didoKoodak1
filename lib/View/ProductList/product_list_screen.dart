@@ -86,7 +86,8 @@ class ProductListScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
                 onTap: () {
-                  Get.back();
+                  controller.cleanBasketAndBack();
+
                 },
                 child: const Image(
                   image: AssetImage(
@@ -110,7 +111,7 @@ class ProductListScreen extends StatelessWidget {
                         },
                         child: const Image(
                           image: AssetImage(
-                            'assets/images/Buttons/homeButton.png',
+                            'assets/images/Buttons/cartButton.png',
                           ),
                         ),
                       ),
