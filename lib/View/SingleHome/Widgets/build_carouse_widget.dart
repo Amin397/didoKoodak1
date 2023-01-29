@@ -1,7 +1,6 @@
 import 'package:dido_koodak1/Controller/SingleHome/single_home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sizer/sizer.dart';
 
 class BuildCarouseWidget extends StatelessWidget {
   const BuildCarouseWidget({Key? key, required this.controller})

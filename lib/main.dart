@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:sizer/sizer.dart';
-
 import 'Utils/rout_utils.dart';
 
 void main() async {
@@ -20,15 +18,11 @@ void main() async {
         const Duration(seconds: 1),
         () {
           runApp(
-            Sizer(
-              builder: (context , orientation , deviceType){
-                return GetMaterialApp(
-                  debugShowCheckedModeBanner: false,
-                  getPages: PageRout.pages,
-                  initialRoute: NameRouts.splash,
-                  home: SplashScreen(),
-                );
-              },
+            GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              getPages: PageRout.pages,
+              initialRoute: NameRouts.splash,
+              home: SplashScreen(),
             ),
           );
         },
