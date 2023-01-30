@@ -49,8 +49,13 @@ class SplashScreen extends StatelessWidget {
   Widget _buildLoading() {
     return Align(
       alignment: Alignment.bottomCenter,
+      // child: Image(
+      //   image: AssetImage(
+      //     'assets/images/Gifs/catSitAnimation.gif',
+      //   ),
+      // ),
       child: Lottie.asset(
-        'assets/anims/loading.json',
+        'assets/anims/catAnimation.json',
         height: Get.height * .25,
         width: Get.height * .25,
       ),

@@ -10,58 +10,62 @@ class BuildCarouseWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: Get.height,
-      width: Get.width,
-      child: Stack(
-        children: [
-          _buildBg(),
-          InkWell(
-            onTap: () {
-              controller.goToSinglePodcast();
-            },
-            child: Container(
-              margin:
-                  EdgeInsets.only(left: Get.width * .15, top: Get.height * .1),
-              height: Get.height * .65,
-              width: Get.width * .3,
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              controller.goToIceCreamGame();
-            },
-            child: Center(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SizedBox(
+        height: Get.height,
+        width: Get.width,
+        child: Stack(
+          children: [
+            _buildBg(),
+            // _buildBg2(),
+            InkWell(
+              onTap: () {
+                controller.goToSinglePodcast();
+              },
               child: Container(
-                margin: EdgeInsets.only(
-                  left: Get.width * .08,
-                  top: Get.height * .3,
-                ),
-                height: Get.height * .4,
-                width: Get.width * .15,
-                color: Colors.transparent,
+                margin:
+                    EdgeInsets.only(left: Get.width * .15, top: Get.height * .1),
+                height: Get.height * .65,
+                width: Get.width * .3,
               ),
             ),
-          ),
-          GestureDetector(
-            onTap: () {
-              controller.goToShop();
-            },
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Container(
-                margin: EdgeInsets.only(
-                  right: Get.width * .08,
-                  top: Get.height * .3,
+            GestureDetector(
+              onTap: () {
+                controller.goToIceCreamGame();
+              },
+              child: Center(
+                child: Container(
+                  margin: EdgeInsets.only(
+                    left: Get.width * .08,
+                    top: Get.height * .3,
+                  ),
+                  height: Get.height * .4,
+                  width: Get.width * .15,
+                  color: Colors.transparent,
                 ),
-                height: Get.height * .5,
-                width: Get.width * .2,
-                color: Colors.transparent,
               ),
             ),
-          ),
-          _buildCat(),
-        ],
+            GestureDetector(
+              onTap: () {
+                controller.goToShop();
+              },
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  margin: EdgeInsets.only(
+                    right: Get.width * .08,
+                    top: Get.height * .3,
+                  ),
+                  height: Get.height * .5,
+                  width: Get.width * .2,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            _buildCat(),
+          ],
+        ),
       ),
     );
   }
@@ -85,14 +89,15 @@ class BuildCarouseWidget extends StatelessWidget {
   }
 
   Widget _buildBg() {
-    return SizedBox(
-      height: Get.height,
-      width: Get.width,
-      child: const Image(
-        image: AssetImage(
-          'assets/images/Backgrounds/carouseBg.png',
+    return Center(
+      child: SizedBox(
+        height: double.maxFinite,
+        width: double.maxFinite,
+        child: const Image(
+          image: AssetImage(
+            'assets/images/Backgrounds/testBg2.PNG',
+          ),
         ),
-        fit: BoxFit.fill,
       ),
     );
   }
