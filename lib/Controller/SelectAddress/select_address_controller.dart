@@ -11,6 +11,11 @@ import '../../View/SelectAddress/Widgets/select_address_alert_widget.dart';
 
 class SelectAddressController extends GetxController {
   RxInt selectAddressGroupValue = 1.obs;
+
+  TextEditingController fullAddressController = TextEditingController();
+  TextEditingController getterNameController = TextEditingController();
+  TextEditingController getterMobileController = TextEditingController();
+
   List<SendDateModel> sendTimeList = [
     SendDateModel(
       day: 'شنبه',
@@ -20,15 +25,15 @@ class SelectAddressController extends GetxController {
       timeOfDay: [
         TimeOfDayModel(
           value: 1,
-          title: 'شاعت 9 تا 12',
+          title: 'ساعت 9 تا 12',
         ),
         TimeOfDayModel(
           value: 2,
-          title: 'شاعت 12 تا 14',
+          title: 'ساعت 12 تا 14',
         ),
         TimeOfDayModel(
           value: 3,
-          title: 'شاعت 14 تا 18',
+          title: 'ساعت 14 تا 18',
         ),
       ],
     ),
@@ -40,15 +45,15 @@ class SelectAddressController extends GetxController {
       timeOfDay: [
         TimeOfDayModel(
           value: 1,
-          title: 'شاعت 9 تا 12',
+          title: 'ساعت 9 تا 12',
         ),
         TimeOfDayModel(
           value: 2,
-          title: 'شاعت 12 تا 14',
+          title: 'ساعت 12 تا 14',
         ),
         TimeOfDayModel(
           value: 3,
-          title: 'شاعت 14 تا 18',
+          title: 'ساعت 14 تا 18',
         ),
       ],
     ),
@@ -60,15 +65,15 @@ class SelectAddressController extends GetxController {
       timeOfDay: [
         TimeOfDayModel(
           value: 1,
-          title: 'شاعت 9 تا 12',
+          title: 'ساعت 9 تا 12',
         ),
         TimeOfDayModel(
           value: 2,
-          title: 'شاعت 12 تا 14',
+          title: 'ساعت 12 تا 14',
         ),
         TimeOfDayModel(
           value: 3,
-          title: 'شاعت 14 تا 18',
+          title: 'ساعت 14 تا 18',
         ),
       ],
     ),
@@ -80,15 +85,15 @@ class SelectAddressController extends GetxController {
       timeOfDay: [
         TimeOfDayModel(
           value: 1,
-          title: 'شاعت 9 تا 12',
+          title: 'ساعت 9 تا 12',
         ),
         TimeOfDayModel(
           value: 2,
-          title: 'شاعت 12 تا 14',
+          title: 'ساعت 12 تا 14',
         ),
         TimeOfDayModel(
           value: 3,
-          title: 'شاعت 14 تا 18',
+          title: 'ساعت 14 تا 18',
         ),
       ],
     ),
@@ -177,8 +182,15 @@ class SelectAddressController extends GetxController {
     selectAddressGroupValue(value);
   }
 
-  void goToAddNewAddress() async{
+  void goToAddNewAddress() async {
+
+
     Get.back();
+
+
+    fullAddressController = TextEditingController();
+    getterNameController = TextEditingController();
+    getterMobileController = TextEditingController();
     var addNewAddress = await showGeneralDialog(
       context: Get.context!,
       pageBuilder: (ctx, a1, a2) {
@@ -206,5 +218,29 @@ class SelectAddressController extends GetxController {
       },
       transitionDuration: const Duration(milliseconds: 370),
     );
+
+    if (addNewAddress is bool && addNewAddress) {
+      addressList.add(
+        AddressModel(
+            fullAddress: fullAddressController.text,
+            getterName: getterNameController.text,
+            getterPhone: getterMobileController.text,
+            value: addressList.last.value++),
+      );
+
+      update(['updateAddress']);
+    }
+  }
+
+  void goToFinalBasketLevel() {
+
+    SendDateModel sendTime = sendTimeList.singleWhere((element) => element.isSelected.isTrue);
+    TimeOfDayModel time = sendTime.timeOfDay.singleWhere((element) => element.value == sendTime.groupSendTimeValue.value);
+
+
+    Get.toNamed(NameRouts.orderDetails , arguments: {
+      'sendTime':time,
+      'dayOfWeek':sendTime,
+    });
   }
 }

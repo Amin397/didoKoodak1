@@ -77,15 +77,21 @@ class SelectAddressAlertWidget extends StatelessWidget {
                       borderRadius: radiusAll24,
                     ),
                     padding: paddingAll16,
-                    child: ListView.separated(
-                      separatorBuilder: (BuildContext context, int index) {
-                        return const Divider();
-                      },
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: controller.addressList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return _buildAddressItem(
-                          address: controller.addressList[index],
+                    child: GetBuilder(
+                      init: controller,
+                      id: 'updateAddress',
+                      builder: (ctx){
+                        return ListView.separated(
+                          separatorBuilder: (BuildContext context, int index) {
+                            return const Divider();
+                          },
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: controller.addressList.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return _buildAddressItem(
+                              address: controller.addressList[index],
+                            );
+                          },
                         );
                       },
                     ),

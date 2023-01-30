@@ -39,6 +39,38 @@ class AddNewAddressAlertWidget extends StatelessWidget {
               ),
             ),
           ),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: InkWell(
+              onTap: (){
+                Get.back(result: true);
+                // controller.showLoginAlert();
+              },
+              child: Container(
+                width: Get.width * .15,
+                height: Get.height * .1,
+                margin: paddingSymmetricH8,
+                decoration: BoxDecoration(
+                  color: const Color(0XFF41B774),
+                  border: Border.all(
+                    color: const Color(0XFF2F8986),
+                    width: 2.0,
+                  ),
+                  borderRadius: radiusAll32,
+                ),
+                child: const Center(
+                  child: Text(
+                    'تایید و ادامه ',
+                    style: TextStyle(
+                      fontFamily: 'xKoodak',
+                      fontSize: 16.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

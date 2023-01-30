@@ -229,24 +229,29 @@ class BuildSelectAddressMainWidget extends StatelessWidget {
   Widget _buildButtonPart() {
     return Align(
       alignment: Alignment.centerLeft,
-      child: Container(
-        width: Get.width * .15,
-        height: Get.height * .08,
-        decoration: BoxDecoration(
-          color: const Color(0XFF41B774),
-          border: Border.all(
-            color: const Color(0XFF2F8986),
-            width: 2.0,
+      child: InkWell(
+        onTap: (){
+          controller.goToFinalBasketLevel();
+        },
+        child: Container(
+          width: Get.width * .15,
+          height: Get.height * .08,
+          decoration: BoxDecoration(
+            color: const Color(0XFF41B774),
+            border: Border.all(
+              color: const Color(0XFF2F8986),
+              width: 2.0,
+            ),
+            borderRadius: radiusAll32,
           ),
-          borderRadius: radiusAll32,
-        ),
-        child: const Center(
-          child: Text(
-            'ادامه ',
-            style: TextStyle(
-              fontFamily: 'xKoodak',
-              fontSize: 16.0,
-              color: Colors.white,
+          child: const Center(
+            child: Text(
+              'ادامه ',
+              style: TextStyle(
+                fontFamily: 'xKoodak',
+                fontSize: 16.0,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
@@ -333,7 +338,7 @@ class BuildSelectAddressMainWidget extends StatelessWidget {
           ),
           Text(
             time.title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 12.0,
               fontFamily: 'xKoodak',
             ),

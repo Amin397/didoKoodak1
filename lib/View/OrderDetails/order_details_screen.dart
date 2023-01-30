@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
+
 import '../../Const/measures.dart';
-import '../../Controller/SelectAddress/select_address_controller.dart';
+import '../../Controller/OrderDetails/order_details_controller.dart';
 import '../../Utils/widget_util.dart';
-import 'Widgets/build_select_address_main_widget.dart';
+import 'Widgets/build_main_order_details_widget.dart';
 
 
-class SelectAddressScreen extends StatelessWidget {
-  SelectAddressScreen({Key? key}) : super(key: key);
+
+class OrderDetailsScreen extends StatelessWidget {
+  OrderDetailsScreen({Key? key}) : super(key: key);
 
 
-  final SelectAddressController controller = Get.put(SelectAddressController());
+  final OrderDetailsController controller = Get.put(OrderDetailsController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +27,8 @@ class SelectAddressScreen extends StatelessWidget {
           body: Stack(
             children: [
               _buildButtons(),
-              BuildSelectAddressMainWidget(
-                controller:controller,
+              BuildMainOrderDetailsWidget(
+                controller: controller,
               ),
               _buildCat(),
             ],
@@ -36,12 +38,28 @@ class SelectAddressScreen extends StatelessWidget {
     );
   }
 
+  Widget _buildCat() {
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Transform(
+        alignment: Alignment.center,
+        transform: Matrix4.rotationY(math.pi),
+        child: Image(
+          image: const AssetImage(
+            'assets/images/Characters/cat.png',
+          ),
+          height: Get.width * .2,
+          width: Get.width * .2,
+        ),
+      ),
+    );
+  }
 
   Widget _buildButtons() {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(
-        margin: paddingAll24,
+        margin: paddingAll12,
         height: Get.height * .15,
         width: Get.width * .1,
         child: Padding(
@@ -56,23 +74,6 @@ class SelectAddressScreen extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCat() {
-    return Align(
-      alignment: Alignment.bottomLeft,
-      child: Transform(
-        alignment: Alignment.center,
-        transform: Matrix4.rotationY(math.pi),
-        child: Image(
-          image:const AssetImage(
-            'assets/images/Characters/cat.png',
-          ),
-          height: Get.width * .2,
-          width: Get.width * .2,
         ),
       ),
     );

@@ -10,6 +10,7 @@ import '../View/GamesList/games_list_screen.dart';
 import '../View/Home/home_screen.dart';
 import '../View/IceCreamGame/ice_cream_game_screen.dart';
 import '../View/KidsProfile/kids_profile_screen.dart';
+import '../View/OrderDetails/order_details_screen.dart';
 import '../View/ParentPanel/parent_panel_screen.dart';
 import '../View/Report/report_screen.dart';
 import '../View/SelectAddress/select_address_screen.dart';
@@ -51,6 +52,7 @@ class NameRouts{
   static const String singleProduct = '/singleProduct';
   static const String basket = '/basket';
   static const String selectAddress = '/selectAddress';
+  static const String orderDetails = '/orderDetails';
 }
 
 class PageRout {
@@ -78,6 +80,11 @@ class PageRout {
     GetPage(
       name: NameRouts.basket,
       page: () => BasketScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: NameRouts.orderDetails,
+      page: () => OrderDetailsScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(
