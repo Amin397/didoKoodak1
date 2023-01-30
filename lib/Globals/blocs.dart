@@ -1,6 +1,7 @@
 import 'package:dido_koodak1/Globals/user_bloc.dart';
 
 import 'basket_bloc.dart';
+import 'cat_sound_bloc.dart';
 import 'music_bloc.dart';
 
 class Blocs{
@@ -8,4 +9,5 @@ class Blocs{
   static final MusicBloc musicBloc = MusicBloc();
   static final UserBloc userBloc = UserBloc();
   static final BasketBloc basketBloc = BasketBloc();
+  static final CatSoundBloc catSoundBloc = CatSoundBloc();
 }

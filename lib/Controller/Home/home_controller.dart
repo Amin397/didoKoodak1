@@ -22,7 +22,20 @@ class HomeController extends GetxController with WidgetsBindingObserver {
   }
 
   void goToSingleHome({required int id}) {
-    print(id);
+    switch(id){
+      case 0:{
+        Blocs.catSoundBloc.init(soundId: 1);
+        break;
+      }
+      case 1:{
+        Blocs.catSoundBloc.init(soundId: 3);
+        break;
+      }
+      case 2:{
+        Blocs.catSoundBloc.init(soundId: 7);
+        break;
+      }
+    }
     Get.toNamed(NameRouts.singleHome, arguments: {
       'page': id,
     });
@@ -40,9 +53,16 @@ class HomeController extends GetxController with WidgetsBindingObserver {
 
   @override
   void onInit() {
-    setInitBgMusic();
+    playWelcomeCatSound();
+    Future.delayed(const Duration(milliseconds: 1500), () {
+      setInitBgMusic();
+    });
     super.onInit();
     WidgetsBinding.instance.addObserver(this);
+  }
+
+  playWelcomeCatSound() {
+    Blocs.catSoundBloc.init(soundId: 0);
   }
 
   void setInitBgMusic() async {
@@ -76,7 +96,7 @@ class HomeController extends GetxController with WidgetsBindingObserver {
     bool exit = await showDialog(
       context: Get.context!,
       barrierDismissible: false,
-      builder: (BuildContext context){
+      builder: (BuildContext context) {
         return const AlertDialog(
           contentPadding: EdgeInsets.zero,
           backgroundColor: Colors.transparent,
@@ -85,7 +105,7 @@ class HomeController extends GetxController with WidgetsBindingObserver {
       },
     );
 
-    if(exit){
+    if (exit) {
       // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
       SystemNavigator.pop();
     }

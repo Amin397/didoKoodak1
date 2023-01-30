@@ -18,7 +18,6 @@ class BuildTentWidget extends StatelessWidget {
         children: [
           _buildBg(),
           _buildTrainClickPart(),
-
           buildShosho(),
           buildRadin(),
         ],

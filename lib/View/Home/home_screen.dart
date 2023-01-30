@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Controller/Home/home_controller.dart';
+import '../../Globals/blocs.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -31,12 +32,28 @@ class HomeScreen extends StatelessWidget {
               _buildClickableCarouselItem(),
               _buildClickableTrainItem(),
               _buildClickableTentItem(),
+              _buildCat(),
             ],
           ),
         ),
       ),
     );
   }
+
+  Widget _buildCat() {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: Image(
+        image: const AssetImage(
+          'assets/images/Characters/cat.png',
+        ),
+        height: Get.width * .15,
+        width: Get.width * .15,
+      ),
+    );
+  }
+
+
 
   Widget _buildBg() {
     return const SizedBox(

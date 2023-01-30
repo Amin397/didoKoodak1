@@ -43,5 +43,13 @@ class MusicBloc {
     });
   }
 
+  void downVolume() async{
+    await player.setVolume(.2);
+  }
+
+  void upVolume()async{
+    await player.setVolume(.8);
+  }
+
 
 }

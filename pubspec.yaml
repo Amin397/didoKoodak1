@@ -96,6 +96,7 @@ flutter:
     - assets/images/Videos/
     - assets/images/Podcasts/
     - assets/images/Products/
+    - assets/sounds/CatVoice/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
